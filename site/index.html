@@ -1,37 +1,620 @@
 <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>whaapy - Soporte y ventas por WhatsApp con IA nativa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    screens: {
+                        'xs': '475px',
+                    },
+                    colors: {
+                        zinc: {
+                            50: '#fafafa',
+                            100: '#f4f4f5',
+                            200: '#e4e4e7',
+                            300: '#d4d4d8',
+                            400: '#a1a1aa',
+                            500: '#71717a',
+                            600: '#52525b',
+                            700: '#3f3f46',
+                            800: '#27272a',
+                            900: '#18181b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .antialiased {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        .backdrop-blur {
+            backdrop-filter: blur(20px);
+        }
+        
+        @supports (backdrop-filter: blur(20px)) {
+            .supports-backdrop-filter\:bg-white\/70 {
+                background-color: rgba(255, 255, 255, 0.7);
+            }
+        }
+        
+        .animate-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: .5;
+            }
+        }
+        
+        .transition-max-height {
+            transition-property: max-height;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 300ms;
+        }
+        
+        .blur-3xl {
+            filter: blur(64px);
+        }
+        
+        .ring-1 {
+            box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
+        }
+        
+        .shadow-2xl {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .shadow-xl {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .shadow-sm {
+            box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(to right, #18181b, #3f3f46, #18181b);
+        }
+        
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 12px 16px;
+            border-radius: 8px;
+            color: white;
+            font-size: 14px;
+            z-index: 1000;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: all 0.3s ease;
+        }
+        
+        .toast.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .toast.success {
+            background-color: #10b981;
+        }
+        
+        .toast.error {
+            background-color: #ef4444;
+        }
+        
+        .mobile-nav-hidden {
+            max-height: 0;
+        }
+        
+        .mobile-nav-visible {
+            max-height: 24rem;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-[#f6f7f8] text-zinc-900 antialiased">
+    <!-- Toast container -->
+    <div id="toast" class="toast"></div>
+    
+    <!-- NAVBAR -->
+    <header class="sticky top-0 z-40 backdrop-blur supports-backdrop-filter:bg-white/70 bg-white/80 border-b border-zinc-200 pt-[env(safe-area-inset-top)]">
+        <div class="mx-auto max-w-6xl px-3 sm:px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-3 min-w-0">
+                <a href="#" class="flex items-center gap-3 shrink-0" aria-label="Ir al inicio">
+                    <div class="h-8 w-8 rounded-xl bg-zinc-900 text-white grid place-content-center font-bold">w</div>
+                    <span class="font-semibold truncate">whaapy</span>
+                </a>
+                <span class="hidden xs:inline-flex ml-2 items-center rounded-full px-2 py-0.5 text-xs font-medium bg-amber-100 text-amber-800 border border-amber-200 shrink-0">
+                    Acceso temprano • En desarrollo
+                </span>
+            </div>
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>NGINX on Railway</title>
-    <meta name="description" content="Choo Choo!" />
+            <!-- desktop nav -->
+            <nav class="hidden md:flex items-center gap-6 text-sm text-zinc-700">
+                <a href="#producto" class="hover:text-zinc-900">Producto</a>
+                <a href="#como-funciona" class="hover:text-zinc-900">Cómo funciona</a>
+            </nav>
 
-    <link rel="icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <!-- desktop CTAs -->
+            <div class="hidden sm:flex items-center gap-2">
+                <a href="#waitlist" class="inline-flex items-center rounded-xl bg-zinc-900 text-white px-4 py-2 text-sm font-semibold shadow-sm hover:bg-zinc-800" data-testid="cta-waitlist-nav">Pedir acceso temprano</a>
+                <a href="#login" class="inline-flex items-center rounded-xl border border-zinc-300 bg-white px-4 py-2 text-sm font-semibold hover:bg-zinc-50" data-testid="cta-login-nav">Iniciar sesión</a>
+            </div>
 
-    <link rel="stylesheet" href="/styles.css?v=1.0" />
-  </head>
+            <!-- mobile toggles -->
+            <div class="flex sm:hidden items-center gap-2">
+                <a href="#waitlist" class="inline-flex items-center rounded-xl bg-zinc-900 text-white px-3 py-2 text-sm font-semibold shadow-sm hover:bg-zinc-800" data-testid="cta-waitlist-nav-mobile">Pedir acceso temprano</a>
+                <button
+                    type="button"
+                    id="mobile-menu-button"
+                    aria-label="Abrir menú"
+                    aria-controls="mobile-nav"
+                    aria-expanded="false"
+                    class="inline-flex h-9 w-9 items-center justify-center rounded-xl border border-zinc-300 bg-white hover:bg-zinc-50"
+                >
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5">
+                        <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                        <path id="close-icon" stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" style="display: none;" />
+                    </svg>
+                </button>
+            </div>
+        </div>
 
-  <body>
-    <main>
-      <img
-        src="https://railway.app/brand/logo-light.svg"
-        alt="Railway logo"
-        class="logo"
-      />
+        <!-- Banner de acceso temprano -->
+        <div class="gradient-bg text-white text-center text-xs py-2 px-3">
+            Abrimos cupos por etapas. <a href="#waitlist" class="underline underline-offset-2">Acceso prioritario a la waitlist</a>.
+        </div>
 
-      <h1>NGINX on Railway</h1>
+        <!-- mobile nav panel -->
+        <div
+            id="mobile-nav"
+            class="md:hidden border-t border-zinc-200 bg-white/90 backdrop-blur transition-max-height duration-300 overflow-hidden mobile-nav-hidden"
+        >
+            <div class="mx-auto max-w-6xl px-3 sm:px-4 py-3 grid gap-2 text-sm">
+                <a href="#producto" class="rounded-lg px-3 py-2 hover:bg-zinc-50 active:bg-zinc-100 mobile-nav-link">Producto</a>
+                <a href="#como-funciona" class="rounded-lg px-3 py-2 hover:bg-zinc-50 active:bg-zinc-100 mobile-nav-link">Cómo funciona</a>
+                <div class="mt-1 grid grid-cols-1 xs:grid-cols-2 gap-2">
+                    <a href="#waitlist" class="inline-flex items-center justify-center rounded-xl bg-zinc-900 text-white px-4 py-2 font-semibold shadow-sm hover:bg-zinc-800">Unirme a la waitlist</a>
+                    <a href="#login" class="inline-flex items-center justify-center rounded-xl border border-zinc-300 bg-white px-4 py-2 font-semibold hover:bg-zinc-50">Iniciar sesión</a>
+                </div>
+            </div>
+        </div>
+    </header>
 
-      <p>
-        Choo Choo! This is an example of an NGINX static site running on
-        Railway.
-        <a
-          href="https://github.com/railwayapp/starters/tree/master/examples/nginx"
-          >View source</a
-        >.
-      </p>
-    </main>
+    <!-- HERO -->
+    <section class="relative overflow-hidden scroll-mt-24" id="inicio">
+        <!-- decor -->
+        <div class="pointer-events-none absolute -top-24 -right-24 h-56 w-56 rounded-full bg-zinc-300 blur-3xl opacity-40 hidden sm:block"></div>
+        <div class="pointer-events-none absolute -bottom-24 -left-24 h-56 w-56 rounded-full bg-zinc-200 blur-3xl opacity-50 hidden sm:block"></div>
 
-    <script src="/script.js"></script>
-  </body>
+        <div class="mx-auto max-w-6xl px-3 sm:px-4 pt-10 sm:pt-12 pb-6 relative">
+            <div class="grid lg:grid-cols-2 gap-8 lg:gap-10 items-center">
+                <div>
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-tight tracking-tight">Soporte y ventas por WhatsApp con IA nativa</h1>
+                    <p class="mt-3 sm:mt-4 text-base sm:text-lg text-zinc-700">Centraliza tus conversaciones, activa una IA que habla como tu marca y automatiza lo repetido con webhooks sencillos. Todo sobre <strong>WhatsApp Cloud API oficial</strong> — sin hacks ni riesgo de ban.</p>
+                    <div class="mt-5 sm:mt-6 flex flex-col sm:flex-row gap-3">
+                        <a href="#waitlist" class="w-full sm:w-auto inline-flex items-center justify-center rounded-2xl bg-zinc-900 text-white px-5 sm:px-6 py-3 font-semibold shadow-sm hover:bg-zinc-800" data-testid="cta-waitlist-hero">Pedir acceso temprano</a>
+                        <a href="#login" class="w-full sm:w-auto inline-flex items-center justify-center rounded-2xl border border-zinc-300 bg-white px-5 sm:px-6 py-3 font-semibold hover:bg-zinc-50" data-testid="cta-login-hero">Iniciar sesión</a>
+                    </div>
+                    <p class="mt-3 text-xs sm:text-sm text-zinc-600">Cuenta gratis durante el desarrollo. Te avisamos antes de cobrar.</p>
+                </div>
+
+                <!-- PRODUCT MOCK -->
+                <div aria-label="Vista previa del inbox" class="relative">
+                    <div class="rounded-3xl bg-white shadow-2xl border border-zinc-200 overflow-hidden ring-1 ring-black/5 max-w-full sm:max-w-[560px] mx-auto">
+                        <div class="border-b border-zinc-200 px-4 py-3 flex items-center justify-between">
+                            <div class="text-sm font-medium">Conversaciones</div>
+                            <div class="text-xs text-zinc-500">Online</div>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2">
+                            <!-- Columna 1: Conversaciones -->
+                            <div class="border-r border-zinc-200 bg-zinc-50">
+                                <div class="p-3">
+                                    <input class="w-full rounded-lg border border-zinc-300 bg-white px-3 py-2 text-sm placeholder:text-zinc-400" placeholder="Buscar conversaciones…" />
+                                </div>
+                                <ul class="divide-y divide-zinc-200">
+                                    <li class="px-3 py-3 hover:bg-white cursor-default">
+                                        <div class="flex items-center gap-3">
+                                            <div class="h-8 w-8 rounded-full bg-zinc-800 text-white grid place-content-center text-sm font-semibold">A</div>
+                                            <div class="flex-1 min-w-0">
+                                                <div class="flex items-center justify-between">
+                                                    <span class="text-sm font-medium truncate">Ana</span>
+                                                    <span class="text-xs text-zinc-500 ml-2 whitespace-nowrap">6h</span>
+                                                </div>
+                                                <div class="text-sm text-zinc-600 truncate">Tú: oki</div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="px-3 py-3 hover:bg-white cursor-default">
+                                        <div class="flex items-center gap-3">
+                                            <div class="h-8 w-8 rounded-full bg-zinc-800 text-white grid place-content-center text-sm font-semibold">C</div>
+                                            <div class="flex-1 min-w-0">
+                                                <div class="flex items-center justify-between">
+                                                    <span class="text-sm font-medium truncate">Cliente Demo</span>
+                                                    <span class="text-xs text-zinc-500 ml-2 whitespace-nowrap">5 ago</span>
+                                                </div>
+                                                <div class="text-sm text-zinc-600 truncate">Tú: Perfecto! Tenemos una…</div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="px-3 py-3 hover:bg-white cursor-default">
+                                        <div class="flex items-center gap-3">
+                                            <div class="h-8 w-8 rounded-full bg-zinc-800 text-white grid place-content-center text-sm font-semibold">M</div>
+                                            <div class="flex-1 min-w-0">
+                                                <div class="flex items-center justify-between">
+                                                    <span class="text-sm font-medium truncate">Mario</span>
+                                                    <span class="text-xs text-zinc-500 ml-2 whitespace-nowrap">10m</span>
+                                                </div>
+                                                <div class="text-sm text-zinc-600 truncate">¿Costo de envío?</div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- Columna 2: Chat -->
+                            <div class="relative">
+                                <div class="px-4 py-2 border-b border-zinc-200 flex items-center gap-2">
+                                    <div class="h-6 w-6 rounded-full bg-zinc-800 text-white grid place-content-center text-xs font-semibold">A</div>
+                                    <div class="text-sm font-medium">Ana</div>
+                                    <span class="ml-2 h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+                                    <span class="text-xs text-zinc-500">Online</span>
+                                    <!-- Toggle IA a la derecha -->
+                                    <div class="ml-auto flex items-center gap-2">
+                                        <span class="text-xs text-zinc-500">🤖</span>
+                                        <button aria-label="Alternar IA" class="group relative inline-flex h-5 w-9 items-center rounded-full border border-zinc-300 bg-zinc-200 transition" data-testid="toggle-ia">
+                                            <span class="absolute left-0.5 h-4 w-4 rounded-full bg-white shadow group-data-[on=true]:translate-x-4 transition-transform"></span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="p-4 space-y-4 h-60 sm:h-72 overflow-y-auto bg-white">
+                                    <!-- inbound -->
+                                    <div class="max-w-[85%] sm:max-w-[70%] rounded-2xl px-4 py-2 bg-zinc-100 text-zinc-900 text-sm shadow-sm">
+                                        ¿Qué es whaapy?
+                                        <div class="mt-1 text-[10px] text-zinc-500">00:08</div>
+                                    </div>
+                                    <!-- outbound IA -->
+                                    <div class="max-w-[85%] sm:max-w-[70%] rounded-2xl px-4 py-2 bg-zinc-900 text-white text-sm ml-auto shadow-sm">
+                                        whaapy conecta tu WhatsApp Cloud API y usa tu propio conocimiento (documentos) para responder al instante. ¿Quieres que te guíe para conectarlo?
+                                        <div class="mt-1 flex items-center gap-2 text-[10px] opacity-70"><span>00:08</span><span class="px-1.5 py-0.5 rounded bg-white/10">IA</span><span>✓✓</span></div>
+                                    </div>
+                                    <!-- inbound -->
+                                    <div class="max-w-[85%] sm:max-w-[70%] rounded-2xl px-4 py-2 bg-zinc-100 text-zinc-900 text-sm shadow-sm">
+                                        háblame de whaapy
+                                        <div class="mt-1 text-[10px] text-zinc-500">13:05</div>
+                                    </div>
+                                    <!-- outbound voice note placeholder -->
+                                    <div class="max-w-[85%] sm:max-w-[70%] ml-auto rounded-2xl p-3 bg-zinc-900 text-white shadow-sm">
+                                        <div class="flex items-center gap-3 text-sm">
+                                            <div class="h-8 w-8 rounded-full border border-white/30 grid place-content-center">▶</div>
+                                            <div class="flex-1 h-2 rounded bg-white/20"></div>
+                                            <div class="text-xs">0:00</div>
+                                        </div>
+                                        <div class="mt-1 flex items-center gap-2 text-[10px] opacity-70"><span>15:34</span><span>✓✓</span></div>
+                                    </div>
+                                    <!-- outbound text -->
+                                    <div class="max-w-[85%] sm:max-w-[70%] rounded-2xl px-4 py-2 bg-zinc-900 text-white text-sm ml-auto shadow-sm">
+                                        whaapy es una bandeja compartida para WhatsApp con IA. Respuestas rápidas, en tu tono y con control por conversación.
+                                        <div class="mt-1 flex items-center gap-2 text-[10px] opacity-70"><span>16:29</span><span>✓✓</span></div>
+                                    </div>
+                                </div>
+                                <div class="p-3 border-t border-zinc-200 bg-zinc-50">
+                                    <div class="flex items-center gap-2">
+                                        <input aria-label="Escribe un mensaje" class="flex-1 rounded-xl border border-zinc-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-zinc-300" placeholder="Escribe un mensaje" />
+                                        <button class="rounded-xl bg-zinc-900 text-white px-4 py-2 text-sm font-semibold hover:bg-zinc-800">Enviar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- POR QUÉ WHAAPY -->
+    <section id="producto" class="mx-auto max-w-6xl px-3 sm:px-4 py-12 sm:py-14 scroll-mt-24">
+        <h2 class="text-2xl md:text-3xl font-bold">Por qué whaapy</h2>
+        <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
+            <div class="rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm">
+                <div class="text-base font-semibold">IA que sí entiende tu negocio</div>
+                <p class="mt-2 text-sm text-zinc-600">Entrénala con tus documentos y reglas. Actívala por conversación y decide cuándo entra y cuándo no.</p>
+            </div>
+            <div class="rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm">
+                <div class="text-base font-semibold">Automatizaciones sin dolor</div>
+                <p class="mt-2 text-sm text-zinc-600">API clara y webhooks configurables para tareas repetidas: altas, validaciones, avisos, estatus, etc.</p>
+            </div>
+            <div class="rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm">
+                <div class="text-base font-semibold">Oficial con WhatsApp</div>
+                <p class="mt-2 text-sm text-zinc-600">Operamos sobre WhatsApp Cloud API. Estable, escalable y sin riesgo de ban.</p>
+            </div>
+            <div class="rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm">
+                <div class="text-base font-semibold">Velocidad y consistencia</div>
+                <p class="mt-2 text-sm text-zinc-600">Respuestas en segundos, tono de marca uniforme y un solo inbox para todo el equipo.</p>
+            </div>
+            <div class="rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm">
+                <div class="text-base font-semibold">Métricas que importan</div>
+                <p class="mt-2 text-sm text-zinc-600">Actividad diaria, FRT (First Response Time) y contactos únicos. Lo esencial, sin ruido.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CÓMO FUNCIONA -->
+    <section id="como-funciona" class="bg-white border-y border-zinc-200 scroll-mt-24">
+        <div class="mx-auto max-w-6xl px-3 sm:px-4 py-12 sm:py-14">
+            <h2 class="text-2xl md:text-3xl font-bold">Cómo funciona</h2>
+            <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
+                <div class="rounded-2xl border border-zinc-200 bg-zinc-50 p-5">
+                    <div class="text-sm text-zinc-500">Paso 1</div>
+                    <div class="mt-1 text-base font-semibold">Conecta tu número</div>
+                    <p class="mt-2 text-sm text-zinc-600">Validamos tu línea con WhatsApp Cloud API y quedas listo en minutos.</p>
+                </div>
+                <div class="rounded-2xl border border-zinc-200 bg-zinc-50 p-5">
+                    <div class="text-sm text-zinc-500">Paso 2</div>
+                    <div class="mt-1 text-base font-semibold">Carga conocimiento y reglas</div>
+                    <p class="mt-2 text-sm text-zinc-600">Sube documentos, define políticas, precios, horarios y tono.</p>
+                </div>
+                <div class="rounded-2xl border border-zinc-200 bg-zinc-50 p-5">
+                    <div class="text-sm text-zinc-500">Paso 3</div>
+                    <div class="mt-1 text-base font-semibold">Atiende en vivo + IA</div>
+                    <p class="mt-2 text-sm text-zinc-600">Tu equipo responde desde el inbox y la IA apoya donde la necesitas. Automatiza eventos con webhooks en un par de clics.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CASOS DE USO -->
+    <section class="mx-auto max-w-6xl px-3 sm:px-4 py-12 sm:py-14 scroll-mt-24">
+        <h2 class="text-2xl md:text-3xl font-bold">Lo que resuelves hoy</h2>
+        <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
+            <div class="rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm">
+                <div class="text-base font-semibold">Soporte 24/7</div>
+                <p class="mt-2 text-sm text-zinc-600">Sin sacrificar calidad.</p>
+            </div>
+            <div class="rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm">
+                <div class="text-base font-semibold">FAQs y políticas</div>
+                <p class="mt-2 text-sm text-zinc-600">Respuestas consistentes.</p>
+            </div>
+            <div class="rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm">
+                <div class="text-base font-semibold">Ventas</div>
+                <p class="mt-2 text-sm text-zinc-600">Seguimiento ordenado en un solo WhatsApp.</p>
+            </div>
+            <div class="rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm">
+                <div class="text-base font-semibold">Trabajo en equipo</div>
+                <p class="mt-2 text-sm text-zinc-600">Etiquetas, presencia en vivo y notas.</p>
+            </div>
+            <div class="rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm">
+                <div class="text-base font-semibold">Automatización</div>
+                <p class="mt-2 text-sm text-zinc-600">Procesos internos vía API/webhooks.</p>
+            </div>
+            <div class="rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm">
+                <div class="text-base font-semibold">Visibilidad</div>
+                <p class="mt-2 text-sm text-zinc-600">Actividad y tiempos de respuesta.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PARA QUIÉN -->
+    <section id="para-quien" class="mx-auto max-w-6xl px-3 sm:px-4 py-6 sm:py-8 scroll-mt-24">
+        <h2 class="text-2xl md:text-3xl font-bold">Para quién</h2>
+        <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+            <div class="rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm">
+                <p class="text-sm text-zinc-700">E-commerce y retail con alto volumen de preguntas.</p>
+            </div>
+            <div class="rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm">
+                <p class="text-sm text-zinc-700">Servicios (clínicas, escuelas, talleres) con agendas y políticas claras.</p>
+            </div>
+            <div class="rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm">
+                <p class="text-sm text-zinc-700">Equipos de ventas/soporte WhatsApp-first.</p>
+            </div>
+            <div class="rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm">
+                <p class="text-sm text-zinc-700">Negocios con devs o power users que quieren automatizar rápido.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ESTADO DEL PRODUCTO -->
+    <section class="bg-white border-y border-zinc-200">
+        <div class="mx-auto max-w-6xl px-3 sm:px-4 py-10 sm:py-12">
+            <h3 class="text-lg sm:text-xl font-bold">Transparencia: estado actual</h3>
+            <div class="mt-3 space-y-3 text-sm text-zinc-700">
+                <p><strong>Disponible hoy</strong>: Inbox completo (texto, imágenes, video, documentos y audio), IA de marca con conocimiento cargado, métricas esenciales (actividad, <strong>FRT</strong>, contactos únicos), <strong>webhooks + API</strong> para automatizaciones simples.</p>
+                <p><strong>En progreso</strong>: Campañas masivas, herramientas avanzadas de equipo, conectores no-code/CRM y reportería ampliada.</p>
+                <blockquote class="border-l-2 border-zinc-300 pl-3 italic text-zinc-600">Nos enfocamos en velocidad, confiabilidad y cumplimiento oficial.</blockquote>
+            </div>
+        </div>
+    </section>
+
+    <!-- PARA DESARROLLADORES -->
+    <section class="mx-auto max-w-6xl px-3 sm:px-4 pb-4">
+        <div class="rounded-2xl border border-zinc-200 bg-zinc-50 p-6 text-center">
+            <h2 class="text-lg md:text-2xl font-bold">¿Tu equipo tiene devs?</h2>
+            <p class="mt-2 text-zinc-700 text-sm">Conecta tus sistemas con <strong>webhooks</strong> y una <strong>API simple</strong> para enriquecer eventos.</p>
+            <a href="#waitlist" class="mt-4 inline-flex items-center rounded-xl bg-zinc-900 text-white px-4 py-2 text-sm font-semibold hover:bg-zinc-800">Quiero acceso temprano dev</a>
+        </div>
+    </section>
+
+    <!-- WAITLIST DESTACADA -->
+    <section id="waitlist" class="mx-auto max-w-6xl px-3 sm:px-4 py-12 sm:py-14 scroll-mt-24">
+        <div class="rounded-3xl border border-zinc-200 bg-white p-5 sm:p-6 shadow-xl">
+            <div class="flex flex-col lg:flex-row items-center gap-6">
+                <div class="flex-1 w-full">
+                    <h2 class="text-2xl md:text-3xl font-bold">Empieza hoy y reserva tu lugar</h2>
+                    <p class="mt-2 text-zinc-700 text-sm sm:text-base">Cuenta gratis durante el desarrollo. Te avisamos antes de cobrar.</p>
+                </div>
+                <form id="waitlist-form" class="flex-1 w-full grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <input 
+                        required 
+                        type="email" 
+                        id="email" 
+                        placeholder="tu@email.com" 
+                        aria-label="Correo" 
+                        class="rounded-xl border border-zinc-300 bg-white px-3 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-zinc-300" 
+                    />
+                    <button 
+                        type="submit" 
+                        id="submit-button"
+                        class="rounded-2xl bg-zinc-900 text-white px-4 py-3 font-semibold hover:bg-zinc-800 disabled:opacity-60" 
+                        data-testid="cta-waitlist-form"
+                    >
+                        Unirme a la waitlist
+                    </button>
+                    <input 
+                        placeholder="Tu nombre (opcional)" 
+                        id="name"
+                        class="rounded-xl border border-zinc-300 bg-white px-3 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-zinc-300" 
+                    />
+                    <input 
+                        placeholder="Empresa (opcional)" 
+                        id="company"
+                        class="rounded-xl border border-zinc-300 bg-white px-3 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-zinc-300" 
+                    />
+                    <p class="sm:col-span-2 text-xs text-zinc-500">Sin spam. Solo avisos de progreso y acceso temprano.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-zinc-200 py-8 sm:py-10">
+        <div class="mx-auto max-w-6xl px-3 sm:px-4 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-zinc-600">
+            <div class="flex items-center gap-2 text-center md:text-left">
+                <div class="h-7 w-7 rounded-xl bg-zinc-900 text-white grid place-content-center font-bold">w</div>
+                <div>© 2025 whaapy — Construido por datagora con ❤️ para empresas mexicanas</div>
+            </div>
+            <div class="flex items-center gap-4">
+                <span class="hidden sm:inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium bg-emerald-100 text-emerald-800 border border-emerald-200">Construido sobre WhatsApp Cloud API oficial</span>
+                <a href="#" class="hover:text-zinc-900">Términos</a>
+                <a href="#" class="hover:text-zinc-900">Privacidad</a>
+                <a href="#login" class="inline-flex items-center rounded-xl border border-zinc-300 bg-white px-3 py-1.5 font-medium hover:bg-zinc-50">Iniciar sesión</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu functionality
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileNav = document.getElementById('mobile-nav');
+        const menuIcon = document.getElementById('menu-icon');
+        const closeIcon = document.getElementById('close-icon');
+        let mobileOpen = false;
+
+        mobileMenuButton.addEventListener('click', function() {
+            mobileOpen = !mobileOpen;
+            
+            if (mobileOpen) {
+                mobileNav.classList.remove('mobile-nav-hidden');
+                mobileNav.classList.add('mobile-nav-visible');
+                menuIcon.style.display = 'none';
+                closeIcon.style.display = 'block';
+                mobileMenuButton.setAttribute('aria-expanded', 'true');
+            } else {
+                mobileNav.classList.remove('mobile-nav-visible');
+                mobileNav.classList.add('mobile-nav-hidden');
+                menuIcon.style.display = 'block';
+                closeIcon.style.display = 'none';
+                mobileMenuButton.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        // Close mobile menu when clicking on nav links
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mobileOpen = false;
+                mobileNav.classList.remove('mobile-nav-visible');
+                mobileNav.classList.add('mobile-nav-hidden');
+                menuIcon.style.display = 'block';
+                closeIcon.style.display = 'none';
+                mobileMenuButton.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        // Toast functionality
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = `toast ${type}`;
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Email validation
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        // Waitlist form functionality
+        const waitlistForm = document.getElementById('waitlist-form');
+        const submitButton = document.getElementById('submit-button');
+        const emailInput = document.getElementById('email');
+        const nameInput = document.getElementById('name');
+        const companyInput = document.getElementById('company');
+
+        waitlistForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const email = emailInput.value.trim();
+            const name = nameInput.value.trim();
+            const company = companyInput.value.trim();
+            
+            if (!isValidEmail(email)) {
+                showToast('Ingresa un email válido', 'error');
+                return;
+            }
+            
+            try {
+                submitButton.disabled = true;
+                submitButton.textContent = 'Enviando…';
+                
+                // Simulate API call (replace with actual endpoint when available)
+                await new Promise(resolve => setTimeout(resolve, 1000));
+                
+                // For demo purposes, we'll show success
+                showToast('¡Te agregamos a la lista! ✨', 'success');
+                
+                // Clear form
+                emailInput.value = '';
+                nameInput.value = '';
+                companyInput.value = '';
+                
+            } catch (error) {
+                showToast('No se pudo registrar. Inténtalo de nuevo.', 'error');
+            } finally {
+                submitButton.disabled = false;
+                submitButton.textContent = 'Unirme a la waitlist';
+            }
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
 </html>
