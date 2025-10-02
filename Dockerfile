@@ -1,4 +1,4 @@
 FROM nginx:alpine  
 COPY site /usr/share/nginx/html  
-EXPOSE $PORT  
-CMD sed -i -e 's/$PORT/'"$PORT"'/g' /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'
+COPY nginx.conf.template /etc/nginx/nginx.conf.template  
+CMD envsubst '${PORT}' < /etc/nginx/nginx.conf.template > /etc/nginx/nginx.conf && nginx -g 'daemon off;'
