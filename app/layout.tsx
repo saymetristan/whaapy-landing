@@ -10,25 +10,24 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: 'Whaapy - Asistente de IA para WhatsApp Business',
-  description: 'Automatiza tu atención al cliente en WhatsApp con IA. Respuestas instantáneas 24/7, ROI de 24x. Conecta tu WhatsApp Business en minutos.',
-  keywords: ['WhatsApp Business', 'IA', 'chatbot', 'atención al cliente', 'automatización', 'ROI', 'asistente virtual'],
-  authors: [{ name: 'Whaapy by Datagora' }],
+  description: 'Automatiza tu atención al cliente en WhatsApp con IA. Respuestas instantáneas 24/7, ROI de 24x. Conecta tu número de WhatsApp Business en minutos.',
+  keywords: ['WhatsApp Business', 'IA', 'Chatbot', 'Atención al cliente', 'Automatización', 'ROI', 'WhatsApp API', 'Asistente virtual'],
+  authors: [{ name: 'Whaapy' }],
+  icons: {
+    icon: '/favicon.ico',
+    apple: '/icons/whaapy-icon-512.png',
+  },
   openGraph: {
     title: 'Whaapy - Asistente de IA para WhatsApp Business',
     description: 'Automatiza tu atención al cliente en WhatsApp con IA. Respuestas instantáneas 24/7, ROI de 24x.',
     type: 'website',
-    locale: 'es_MX',
-    siteName: 'Whaapy',
+    images: ['/icons/whaapy-icon-512.png'],
   },
   twitter: {
-    card: 'summary_large_image',
+    card: 'summary',
     title: 'Whaapy - Asistente de IA para WhatsApp Business',
     description: 'Automatiza tu atención al cliente en WhatsApp con IA. ROI de 24x.',
-  },
-  icons: {
-    icon: '/favicon.ico',
-    shortcut: '/favicon.ico',
-    apple: '/images/whaapy_icons_v2/whaapy_icon_v2_512x512.png',
+    images: ['/icons/whaapy-icon-512.png'],
   },
 }
 

@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import anime from 'animejs'
 import { ArrowRight } from 'lucide-react'
+import Image from 'next/image'
 import AnimatedMockup from './AnimatedMockup'
 import MorphingShape from './MorphingShape'
 import Particles from './Particles'
@@ -75,16 +76,18 @@ export default function Hero() {
       <nav className="absolute top-0 left-0 right-0 z-50 px-6 py-6">
         <div className="max-w-7xl mx-auto">
           <div className="glass-dark rounded-full px-8 py-4 flex items-center justify-between shadow-premium">
-            <div className="flex items-center gap-3">
-              <img 
-                src="/images/whaapy_icons_v2/whaapy_icon_v2_64x64.png" 
-                alt="Whaapy Logo" 
-                width={40} 
-                height={40}
-                className="w-10 h-10"
-              />
+            <a href="/" className="flex items-center gap-3 group">
+              <div className="relative w-10 h-10 rounded-full overflow-hidden bg-white shadow-md group-hover:scale-110 transition-transform duration-300">
+                <Image
+                  src="/icons/whaapy-icon-64.png"
+                  alt="Whaapy Logo"
+                  width={40}
+                  height={40}
+                  className="object-contain"
+                />
+              </div>
               <span className="text-2xl font-bold gradient-text">Whaapy</span>
-            </div>
+            </a>
             <div className="flex items-center gap-4">
               <a 
                 href="https://app.whaapy.com/login" 

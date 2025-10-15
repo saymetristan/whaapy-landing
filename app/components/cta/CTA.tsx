@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import anime from 'animejs'
 import { ArrowRight, Check } from 'lucide-react'
+import Image from 'next/image'
 import MagneticButton from '../shared/MagneticButton'
 import ContactModal from '../shared/ContactModal'
 
@@ -132,14 +133,16 @@ export default function CTA() {
       <footer className="mt-32 pt-16 border-t-2 border-border">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8 text-text-secondary">
-            <div className="flex items-center gap-3">
-              <img 
-                src="/images/whaapy_icons_v2/whaapy_icon_v2_64x64.png" 
-                alt="Whaapy Logo" 
-                width={32} 
-                height={32}
-                className="w-8 h-8"
-              />
+            <div className="flex items-center gap-4">
+              <div className="relative w-8 h-8 rounded-full overflow-hidden bg-white shadow-sm">
+                <Image
+                  src="/icons/whaapy-icon-64.png"
+                  alt="Whaapy Logo"
+                  width={32}
+                  height={32}
+                  className="object-contain"
+                />
+              </div>
               <span className="text-3xl font-bold gradient-text">Whaapy</span>
               <span className="text-base">© 2025. Todos los derechos reservados.</span>
             </div>
