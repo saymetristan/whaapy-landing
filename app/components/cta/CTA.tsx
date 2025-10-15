@@ -134,7 +134,7 @@ export default function CTA() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8 text-text-secondary">
             <div className="flex items-center gap-4">
-              <div className="relative w-8 h-8 rounded-full overflow-hidden bg-white shadow-sm">
+              <div className="relative w-8 h-8 flex items-center justify-center">
                 <Image
                   src="/icons/whaapy-icon-64.png"
                   alt="Whaapy Logo"

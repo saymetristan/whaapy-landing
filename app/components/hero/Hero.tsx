@@ -77,7 +77,7 @@ export default function Hero() {
         <div className="max-w-7xl mx-auto">
           <div className="glass-dark rounded-full px-8 py-4 flex items-center justify-between shadow-premium">
             <a href="/" className="flex items-center gap-3 group">
-              <div className="relative w-10 h-10 rounded-full overflow-hidden bg-white shadow-md group-hover:scale-110 transition-transform duration-300">
+              <div className="relative w-10 h-10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                 <Image
                   src="/icons/whaapy-icon-64.png"
                   alt="Whaapy Logo"
