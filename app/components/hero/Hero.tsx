@@ -1,18 +1,20 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import anime from 'animejs'
 import { ArrowRight } from 'lucide-react'
 import AnimatedMockup from './AnimatedMockup'
 import MorphingShape from './MorphingShape'
 import Particles from './Particles'
 import MagneticButton from '../shared/MagneticButton'
+import ContactModal from '../shared/ContactModal'
 
 export default function Hero() {
   const heroRef = useRef<HTMLDivElement>(null)
   const headlineRef = useRef<HTMLHeadingElement>(null)
   const subheadlineRef = useRef<HTMLParagraphElement>(null)
   const ctaRef = useRef<HTMLDivElement>(null)
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false)
 
   useEffect(() => {
     // Hero headline - entrada staggered
@@ -54,29 +56,12 @@ export default function Hero() {
     }
   }, [])
 
-  const handleCTAClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    const button = e.currentTarget
-    const ripple = document.createElement('span')
-    ripple.classList.add('ripple')
-    button.appendChild(ripple)
-    
-    const rect = button.getBoundingClientRect()
-    const size = Math.max(rect.width, rect.height)
-    const x = e.clientX - rect.left - size / 2
-    const y = e.clientY - rect.top - size / 2
-    
-    ripple.style.width = ripple.style.height = size + 'px'
-    ripple.style.left = x + 'px'
-    ripple.style.top = y + 'px'
-    
-    anime({
-      targets: ripple,
-      scale: [0, 2],
-      opacity: [0.6, 0],
-      duration: 600,
-      easing: 'easeOutQuad',
-      complete: () => ripple.remove()
-    })
+  const handleRegisterClick = () => {
+    window.location.href = 'https://app.whaapy.com/register'
+  }
+
+  const handleDemoClick = () => {
+    setIsContactModalOpen(true)
   }
 
   return (
@@ -152,7 +137,7 @@ export default function Hero() {
 
           <div ref={ctaRef} className="flex flex-col sm:flex-row items-center justify-center gap-4 opacity-0">
             <MagneticButton
-              onClick={handleCTAClick}
+              onClick={handleRegisterClick}
               className="btn-primary group relative px-10 py-5 text-white rounded-2xl transition-all font-bold text-lg flex items-center gap-3 shadow-premium-lg hover:glow-accent-strong shimmer"
               strength={15}
             >
@@ -160,7 +145,7 @@ export default function Hero() {
               <ArrowRight size={22} className="group-hover:translate-x-1 transition-transform" />
             </MagneticButton>
             <MagneticButton
-              onClick={handleCTAClick}
+              onClick={handleDemoClick}
               className="glass-dark group relative px-10 py-5 text-text-primary rounded-2xl hover:border-accent/30 transition-all font-bold text-lg overflow-hidden shadow-premium hover:shadow-premium-lg"
               strength={10}
             >
@@ -181,6 +166,12 @@ export default function Hero() {
           <div className="w-1 h-3 bg-accent rounded-full animate-bounce" />
         </div>
       </div>
+
+      <ContactModal 
+        isOpen={isContactModalOpen} 
+        onClose={() => setIsContactModalOpen(false)}
+        type="demo"
+      />
     </section>
   )
 }

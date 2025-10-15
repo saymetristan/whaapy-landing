@@ -1,13 +1,15 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import anime from 'animejs'
 import { ArrowRight, Check } from 'lucide-react'
 import MagneticButton from '../shared/MagneticButton'
+import ContactModal from '../shared/ContactModal'
 
 export default function CTA() {
   const sectionRef = useRef<HTMLElement>(null)
   const headlineRef = useRef<HTMLHeadingElement>(null)
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false)
 
   useEffect(() => {
     if (!sectionRef.current || !headlineRef.current) return
@@ -68,34 +70,8 @@ export default function CTA() {
     return () => observer.disconnect()
   }, [])
 
-  const handleCTAClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    const button = e.currentTarget
-    const ripple = document.createElement('span')
-    ripple.classList.add('ripple')
-    button.appendChild(ripple)
-    
-    const rect = button.getBoundingClientRect()
-    const size = Math.max(rect.width, rect.height)
-    const x = e.clientX - rect.left - size / 2
-    const y = e.clientY - rect.top - size / 2
-    
-    ripple.style.width = ripple.style.height = size + 'px'
-    ripple.style.left = x + 'px'
-    ripple.style.top = y + 'px'
-    
-    anime({
-      targets: ripple,
-      scale: [0, 2],
-      opacity: [0.6, 0],
-      duration: 600,
-      easing: 'easeOutQuad',
-      complete: () => ripple.remove()
-    })
-
-    // Redirect after animation
-    setTimeout(() => {
-      window.location.href = 'https://app.whaapy.com/register'
-    }, 300)
+  const handleRegisterClick = () => {
+    window.location.href = 'https://app.whaapy.com/register'
   }
 
   return (
@@ -107,29 +83,29 @@ export default function CTA() {
           className="text-4xl md:text-5xl lg:text-7xl font-bold mb-8 leading-[1.05]"
           style={{ clipPath: 'circle(0% at 50% 50%)' }}
         >
-          Activa tu WhatsApp IA en minutos — <br className="hidden md:block" /><span className="gradient-text">¡Gratis para empezar!</span>
+          Activa tu WhatsApp IA <br className="hidden md:block" />en <span className="gradient-text">minutos</span>
         </h2>
 
         {/* Benefits */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-8 mb-12 text-text-secondary flex-wrap">
           <div className="benefit-item flex items-center gap-3 opacity-0">
             <Check className="text-accent" size={24} strokeWidth={3} />
-            <span className="text-lg font-medium">Sin instalaciones ni configuraciones eternas</span>
+            <span className="text-lg font-medium">Setup en menos de 5 minutos</span>
           </div>
           <div className="benefit-item flex items-center gap-3 opacity-0">
             <Check className="text-accent" size={24} strokeWidth={3} />
-            <span className="text-lg font-medium">Precio especial de lanzamiento</span>
+            <span className="text-lg font-medium">Sin instalaciones complicadas</span>
           </div>
           <div className="benefit-item flex items-center gap-3 opacity-0">
             <Check className="text-accent" size={24} strokeWidth={3} />
-            <span className="text-lg font-medium">Sin compromisos</span>
+            <span className="text-lg font-medium">Soporte personalizado incluido</span>
           </div>
         </div>
 
         {/* CTA Button */}
         <div className="cta-button-container opacity-0">
           <MagneticButton
-            onClick={handleCTAClick}
+            onClick={handleRegisterClick}
             className="relative inline-flex items-center gap-4 px-12 py-6 bg-gradient-to-r from-accent to-accent-hover text-white rounded-2xl hover:shadow-2xl transition-all font-bold text-2xl shadow-xl overflow-hidden group"
             strength={20}
           >
@@ -146,6 +122,12 @@ export default function CTA() {
         </div>
       </div>
 
+      <ContactModal 
+        isOpen={isContactModalOpen} 
+        onClose={() => setIsContactModalOpen(false)}
+        type="contact"
+      />
+
       {/* Footer */}
       <footer className="mt-32 pt-16 border-t-2 border-border">
         <div className="max-w-7xl mx-auto px-6">
@@ -161,9 +143,12 @@ export default function CTA() {
               <a href="/privacidad" className="hover:text-text-primary transition-colors">
                 Privacidad
               </a>
-              <a href="mailto:soporte@whaapy.com" className="hover:text-text-primary transition-colors">
+              <button 
+                onClick={() => setIsContactModalOpen(true)}
+                className="hover:text-text-primary transition-colors"
+              >
                 Contacto
-              </a>
+              </button>
             </div>
           </div>
         </div>

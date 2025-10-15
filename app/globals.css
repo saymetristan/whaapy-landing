@@ -5,6 +5,7 @@
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 @layer base {
@@ -17,10 +18,7 @@ html {
     font-feature-settings: 'rlig' 1, 'calt' 1;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-  }
-  
-  html {
-    scroll-behavior: smooth;
+    overflow-x: hidden;
   }
   
   /* Better text rendering */
@@ -297,6 +295,26 @@ html {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  section {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  
+  .glass-dark,
+  .shadow-premium,
+  .shadow-premium-lg {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  
+  footer {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 }
 
