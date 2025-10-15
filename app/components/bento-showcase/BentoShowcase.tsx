@@ -28,8 +28,8 @@ const bentoItems = [
   },
   {
     icon: TrendingUp,
-    title: 'Ahorra $11,500 MXN/mes',
-    description: 'Whaapy cuesta $500/mes vs. $12,000 de contratar un asistente',
+    title: 'ROI de 24x',
+    description: 'Por cada $1 que inviertes, ahorras $24 vs. contratar un asistente',
     size: 'medium',
     gradient: 'from-orange-500/10 to-orange-500/5',
     stat: true
@@ -143,8 +143,8 @@ export default function BentoShowcase() {
               </div>
               <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-2 md:mb-3 text-orange-600">{bentoItems[3].title}</h3>
               <p className="text-base md:text-lg lg:text-xl text-text-secondary leading-relaxed">{bentoItems[3].description}</p>
-              <div className="mt-4 md:mt-6 inline-flex items-center gap-2 text-sm md:text-base font-semibold text-orange-600">
-                <span className="text-text-muted">ROI mensual promedio</span>
+              <div className="mt-4 md:mt-6 inline-flex items-center gap-2 text-sm md:text-base font-semibold">
+                <span className="text-text-muted">$500/mes vs. $12,000 de asistente</span>
               </div>
             </div>
           </div>
