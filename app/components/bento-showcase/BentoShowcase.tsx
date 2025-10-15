@@ -28,10 +28,11 @@ const bentoItems = [
   },
   {
     icon: TrendingUp,
-    title: '3x Conversiones',
-    description: 'Clientes que reciben respuesta instantánea compran 3x más',
+    title: 'Ahorra $11,500 MXN/mes',
+    description: 'Whaapy cuesta $500/mes vs. $12,000 de contratar un asistente',
     size: 'medium',
-    gradient: 'from-orange-500/10 to-orange-500/5'
+    gradient: 'from-orange-500/10 to-orange-500/5',
+    stat: true
   },
   {
     icon: Users,
@@ -85,81 +86,86 @@ export default function BentoShowcase() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="relative py-40 px-6 bg-white overflow-hidden">
+    <section ref={sectionRef} className="relative py-24 md:py-40 px-4 md:px-6 bg-white overflow-hidden">
       {/* Background grid */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(37,211,102,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(37,211,102,0.02)_1px,transparent_1px)] bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_at_center,black_50%,transparent_100%)]" />
       
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Section header */}
-        <div className="text-center max-w-4xl mx-auto mb-20">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+        <div className="text-center max-w-4xl mx-auto mb-12 md:mb-20 px-4">
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 leading-tight">
             Diseñado para <span className="gradient-text">escalar</span>
           </h2>
-          <p className="text-xl md:text-2xl text-text-secondary leading-relaxed">
+          <p className="text-lg md:text-xl lg:text-2xl text-text-secondary leading-relaxed">
             Desde tu primer mensaje hasta millones de conversaciones
           </p>
         </div>
 
         {/* Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[200px]">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 auto-rows-[200px]">
           {/* Large item - spans 2 columns */}
-          <div className="bento-item opacity-0 md:col-span-2 glass-dark rounded-3xl p-10 border-2 border-border hover:border-accent/30 shadow-premium hover:shadow-premium-lg transition-all duration-500 group relative overflow-hidden">
+          <div className="bento-item opacity-0 md:col-span-2 glass-dark rounded-2xl md:rounded-3xl p-6 md:p-10 border-2 border-border hover:border-accent/30 shadow-premium hover:shadow-premium-lg transition-all duration-500 group relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            <div className="relative z-10 h-full flex flex-col">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-accent/20 to-accent/10 flex items-center justify-center mb-6">
-                <Zap size={32} className="text-accent" strokeWidth={2} />
+            <div className="relative z-10 h-full flex flex-col justify-center">
+              <div className="w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-gradient-to-br from-accent/20 to-accent/10 flex items-center justify-center mb-4 md:mb-6">
+                <Zap size={28} className="md:w-8 md:h-8 text-accent" strokeWidth={2} />
               </div>
-              <h3 className="text-4xl font-bold mb-3">{bentoItems[0].title}</h3>
-              <p className="text-xl text-text-secondary">{bentoItems[0].description}</p>
+              <h3 className="text-3xl md:text-4xl font-bold mb-2 md:mb-3">{bentoItems[0].title}</h3>
+              <p className="text-base md:text-xl text-text-secondary">{bentoItems[0].description}</p>
             </div>
           </div>
 
           {/* Small items */}
-          <div className="bento-item opacity-0 glass-dark rounded-3xl p-8 border-2 border-border hover:border-blue-500/30 shadow-premium hover:shadow-premium-lg transition-all duration-500 group relative overflow-hidden">
+          <div className="bento-item opacity-0 glass-dark rounded-2xl md:rounded-3xl p-6 md:p-8 border-2 border-border hover:border-blue-500/30 shadow-premium hover:shadow-premium-lg transition-all duration-500 group relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            <div className="relative z-10">
-              <Shield size={28} className="text-blue-600 mb-4" strokeWidth={2} />
-              <h3 className="text-2xl font-bold mb-2">{bentoItems[1].title}</h3>
-              <p className="text-sm text-text-secondary">{bentoItems[1].description}</p>
+            <div className="relative z-10 h-full flex flex-col justify-center">
+              <Shield size={24} className="md:w-7 md:h-7 text-blue-600 mb-3 md:mb-4" strokeWidth={2} />
+              <h3 className="text-xl md:text-2xl font-bold mb-2">{bentoItems[1].title}</h3>
+              <p className="text-sm md:text-base text-text-secondary">{bentoItems[1].description}</p>
             </div>
           </div>
 
-          <div className="bento-item opacity-0 glass-dark rounded-3xl p-8 border-2 border-border hover:border-purple-500/30 shadow-premium hover:shadow-premium-lg transition-all duration-500 group relative overflow-hidden">
+          <div className="bento-item opacity-0 glass-dark rounded-2xl md:rounded-3xl p-6 md:p-8 border-2 border-border hover:border-purple-500/30 shadow-premium hover:shadow-premium-lg transition-all duration-500 group relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            <div className="relative z-10">
-              <Clock size={28} className="text-purple-600 mb-4" strokeWidth={2} />
-              <h3 className="text-2xl font-bold mb-2">{bentoItems[2].title}</h3>
-              <p className="text-sm text-text-secondary">{bentoItems[2].description}</p>
+            <div className="relative z-10 h-full flex flex-col justify-center">
+              <Clock size={24} className="md:w-7 md:h-7 text-purple-600 mb-3 md:mb-4" strokeWidth={2} />
+              <h3 className="text-xl md:text-2xl font-bold mb-2">{bentoItems[2].title}</h3>
+              <p className="text-sm md:text-base text-text-secondary">{bentoItems[2].description}</p>
             </div>
           </div>
 
-          {/* Medium item */}
-          <div className="bento-item opacity-0 md:col-span-2 glass-dark rounded-3xl p-10 border-2 border-border hover:border-orange-500/30 shadow-premium hover:shadow-premium-lg transition-all duration-500 group relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            <div className="relative z-10">
-              <TrendingUp size={32} className="text-orange-600 mb-4" strokeWidth={2} />
-              <h3 className="text-3xl font-bold mb-3">{bentoItems[3].title}</h3>
-              <p className="text-lg text-text-secondary">{bentoItems[3].description}</p>
+          {/* ROI Card - destacada */}
+          <div className="bento-item opacity-0 md:col-span-2 glass-dark rounded-2xl md:rounded-3xl p-6 md:p-10 border-2 border-orange-500/20 hover:border-orange-500/40 shadow-premium hover:shadow-premium-lg transition-all duration-500 group relative overflow-hidden bg-gradient-to-br from-orange-500/5 to-transparent">
+            <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="relative z-10 h-full flex flex-col justify-center">
+              <div className="w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-gradient-to-br from-orange-500/20 to-orange-500/10 flex items-center justify-center mb-4 md:mb-6">
+                <TrendingUp size={28} className="md:w-8 md:h-8 text-orange-600" strokeWidth={2} />
+              </div>
+              <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-2 md:mb-3 text-orange-600">{bentoItems[3].title}</h3>
+              <p className="text-base md:text-lg lg:text-xl text-text-secondary leading-relaxed">{bentoItems[3].description}</p>
+              <div className="mt-4 md:mt-6 inline-flex items-center gap-2 text-sm md:text-base font-semibold text-orange-600">
+                <span className="text-text-muted">ROI mensual promedio</span>
+              </div>
             </div>
           </div>
 
           {/* Another medium item */}
-          <div className="bento-item opacity-0 md:col-span-2 glass-dark rounded-3xl p-10 border-2 border-border hover:border-pink-500/30 shadow-premium hover:shadow-premium-lg transition-all duration-500 group relative overflow-hidden">
+          <div className="bento-item opacity-0 md:col-span-2 glass-dark rounded-2xl md:rounded-3xl p-6 md:p-10 border-2 border-border hover:border-pink-500/30 shadow-premium hover:shadow-premium-lg transition-all duration-500 group relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-pink-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            <div className="relative z-10">
-              <Users size={32} className="text-pink-600 mb-4" strokeWidth={2} />
-              <h3 className="text-3xl font-bold mb-3">{bentoItems[4].title}</h3>
-              <p className="text-lg text-text-secondary">{bentoItems[4].description}</p>
+            <div className="relative z-10 h-full flex flex-col justify-center">
+              <Users size={28} className="md:w-8 md:h-8 text-pink-600 mb-3 md:mb-4" strokeWidth={2} />
+              <h3 className="text-2xl md:text-3xl font-bold mb-2 md:mb-3">{bentoItems[4].title}</h3>
+              <p className="text-base md:text-lg text-text-secondary">{bentoItems[4].description}</p>
             </div>
           </div>
 
           {/* Small item */}
-          <div className="bento-item opacity-0 glass-dark rounded-3xl p-8 border-2 border-border hover:border-green-500/30 shadow-premium hover:shadow-premium-lg transition-all duration-500 group relative overflow-hidden">
+          <div className="bento-item opacity-0 glass-dark rounded-2xl md:rounded-3xl p-6 md:p-8 border-2 border-border hover:border-green-500/30 shadow-premium hover:shadow-premium-lg transition-all duration-500 group relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            <div className="relative z-10">
-              <MessageSquare size={28} className="text-green-600 mb-4" strokeWidth={2} />
-              <h3 className="text-2xl font-bold mb-2">{bentoItems[5].title}</h3>
-              <p className="text-sm text-text-secondary">{bentoItems[5].description}</p>
+            <div className="relative z-10 h-full flex flex-col justify-center">
+              <MessageSquare size={24} className="md:w-7 md:h-7 text-green-600 mb-3 md:mb-4" strokeWidth={2} />
+              <h3 className="text-xl md:text-2xl font-bold mb-2">{bentoItems[5].title}</h3>
+              <p className="text-sm md:text-base text-text-secondary">{bentoItems[5].description}</p>
             </div>
           </div>
         </div>
