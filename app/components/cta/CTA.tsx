@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react'
 import anime from 'animejs'
 import { ArrowRight, Check } from 'lucide-react'
+import MagneticButton from '../shared/MagneticButton'
 
 export default function CTA() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -127,16 +128,17 @@ export default function CTA() {
 
         {/* CTA Button */}
         <div className="cta-button-container opacity-0">
-          <button 
+          <MagneticButton
             onClick={handleCTAClick}
-            className="relative inline-flex items-center gap-4 px-12 py-6 bg-gradient-to-r from-accent to-accent-hover text-white rounded-2xl hover:shadow-2xl transition-all hover:scale-[1.02] font-bold text-2xl shadow-xl overflow-hidden group"
+            className="relative inline-flex items-center gap-4 px-12 py-6 bg-gradient-to-r from-accent to-accent-hover text-white rounded-2xl hover:shadow-2xl transition-all font-bold text-2xl shadow-xl overflow-hidden group"
+            strength={20}
           >
             <span className="relative z-10">Conectar mi WhatsApp</span>
             <ArrowRight className="relative z-10 group-hover:translate-x-1 transition-transform" size={28} strokeWidth={3} />
             
             {/* Animated gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-          </button>
+          </MagneticButton>
           
           <p className="mt-6 text-lg text-text-muted font-medium">
             Más de 50 negocios ya están usando Whaapy ✨

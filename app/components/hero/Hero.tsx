@@ -6,6 +6,7 @@ import { ArrowRight } from 'lucide-react'
 import AnimatedMockup from './AnimatedMockup'
 import MorphingShape from './MorphingShape'
 import Particles from './Particles'
+import MagneticButton from '../shared/MagneticButton'
 
 export default function Hero() {
   const heroRef = useRef<HTMLDivElement>(null)
@@ -150,19 +151,21 @@ export default function Hero() {
           </p>
 
           <div ref={ctaRef} className="flex flex-col sm:flex-row items-center justify-center gap-4 opacity-0">
-            <button 
+            <MagneticButton
               onClick={handleCTAClick}
-              className="btn-primary group relative px-10 py-5 text-white rounded-2xl transition-all hover:scale-[1.02] font-bold text-lg flex items-center gap-3 shadow-premium-lg hover:glow-accent-strong shimmer"
+              className="btn-primary group relative px-10 py-5 text-white rounded-2xl transition-all font-bold text-lg flex items-center gap-3 shadow-premium-lg hover:glow-accent-strong shimmer"
+              strength={15}
             >
               Conectar mi WhatsApp
               <ArrowRight size={22} className="group-hover:translate-x-1 transition-transform" />
-            </button>
-            <button 
+            </MagneticButton>
+            <MagneticButton
               onClick={handleCTAClick}
-              className="glass-dark group relative px-10 py-5 text-text-primary rounded-2xl hover:border-accent/30 transition-all hover:scale-[1.02] font-bold text-lg overflow-hidden shadow-premium hover:shadow-premium-lg"
+              className="glass-dark group relative px-10 py-5 text-text-primary rounded-2xl hover:border-accent/30 transition-all font-bold text-lg overflow-hidden shadow-premium hover:shadow-premium-lg"
+              strength={10}
             >
               Agendar demo
-            </button>
+            </MagneticButton>
           </div>
         </div>
 
