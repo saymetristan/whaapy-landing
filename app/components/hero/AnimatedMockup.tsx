@@ -2,24 +2,25 @@
 
 import { useEffect, useRef } from 'react'
 import anime from 'animejs'
-import { Bot, User } from 'lucide-react'
+import { Bot, User, Check, CheckCheck } from 'lucide-react'
 
 export default function AnimatedMockup() {
   const mockupRef = useRef<HTMLDivElement>(null)
   const message1Ref = useRef<HTMLDivElement>(null)
   const message2Ref = useRef<HTMLDivElement>(null)
   const message3Ref = useRef<HTMLDivElement>(null)
+  const message4Ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     // Floating mockup con parallax
     if (mockupRef.current) {
       anime({
         targets: mockupRef.current,
-        translateY: [60, 0],
+        translateY: [80, 0],
         opacity: [0, 1],
-        duration: 1600,
+        duration: 1800,
         easing: 'cubicBezier(0.16, 1, 0.3, 1)',
-        delay: 400
+        delay: 600
       })
     }
 
@@ -35,155 +36,148 @@ export default function AnimatedMockup() {
         anime.timeline()
           .add({
             targets: element,
-            scale: [0.8, 1],
+            scale: [0.95, 1],
             opacity: [0, 1],
-            translateY: [20, 0],
-            duration: 600,
-            easing: 'spring(1, 80, 10, 0)',
-          })
-          .add({
-            targets: element.querySelector('.typing-indicator'),
-            opacity: [0, 1],
-            duration: 300,
-            delay: 500
-          })
-          .add({
-            targets: element.querySelector('.ai-response'),
-            opacity: [0, 1],
-            translateX: [-10, 0],
             duration: 500,
-            easing: 'easeOutQuad'
+            easing: 'cubicBezier(0.16, 1, 0.3, 1)',
           })
       }, delay)
     }
 
-    animateMessage(message1Ref, 1000)
-    animateMessage(message2Ref, 3500)
-    animateMessage(message3Ref, 6000)
+    animateMessage(message1Ref, 1500)
+    animateMessage(message2Ref, 2000)
+    animateMessage(message3Ref, 2500)
+    animateMessage(message4Ref, 3000)
   }, [])
 
   return (
     <div 
       ref={mockupRef}
-      className="relative max-w-4xl mx-auto opacity-0"
+      className="relative max-w-5xl mx-auto opacity-0"
     >
-      <div className="bg-surface-elevated rounded-2xl shadow-lg border border-border overflow-hidden">
+      <div className="bg-white rounded-3xl shadow-2xl border border-border/50 overflow-hidden">
         {/* Mockup header */}
-        <div className="bg-accent text-white px-6 py-4 flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
-            <Bot size={20} />
+        <div className="bg-gradient-to-r from-[#25D366] to-[#128C7E] text-white px-8 py-6 flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur flex items-center justify-center">
+              <Bot size={28} className="text-white" />
+            </div>
+            <div>
+              <div className="font-bold text-xl">Inbox de WhatsApp</div>
+              <div className="text-sm opacity-90 flex items-center gap-2">
+                <div className="w-2 h-2 rounded-full bg-white animate-pulse" />
+                IA activa · 4 conversaciones
+              </div>
+            </div>
           </div>
-          <div>
-            <div className="font-semibold">Inbox de WhatsApp</div>
-            <div className="text-sm opacity-80">3 conversaciones activas</div>
+          <div className="hidden md:flex items-center gap-2 bg-white/10 backdrop-blur px-4 py-2 rounded-full">
+            <div className="w-2 h-2 rounded-full bg-accent-light" />
+            <span className="text-sm font-medium">En línea</span>
           </div>
         </div>
 
-        {/* Chat area */}
-        <div className="p-6 space-y-4 min-h-[400px]">
-          {/* Message 1 */}
-          <div ref={message1Ref} className="opacity-0">
-            <div className="flex items-start gap-3 mb-2">
-              <div className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center">
-                <User size={16} />
-              </div>
-              <div className="bg-surface rounded-lg p-3 max-w-xs">
-                <p className="text-sm">Hola, ¿tienen disponibilidad para mañana?</p>
-              </div>
+        {/* Chat area - más grande y espacioso */}
+        <div className="p-8 md:p-12 space-y-6 min-h-[500px] bg-gradient-to-b from-gray-50/50 to-white">
+          {/* Message 1 - Cliente pregunta */}
+          <div ref={message1Ref} className="opacity-0 flex items-start gap-4">
+            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center flex-shrink-0">
+              <User size={20} className="text-gray-600" />
             </div>
-            
-            {/* Typing indicator */}
-            <div className="typing-indicator flex items-center gap-2 ml-11 mb-2 opacity-0">
-              <div className="flex gap-1">
-                <div className="w-2 h-2 bg-accent rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
-                <div className="w-2 h-2 bg-accent rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-                <div className="w-2 h-2 bg-accent rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+            <div className="flex-1">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="font-semibold text-sm text-text-primary">María González</span>
+                <span className="text-xs text-text-muted">10:24 AM</span>
               </div>
-              <span className="text-xs text-text-muted">IA escribiendo...</span>
-            </div>
-
-            {/* AI Response */}
-            <div className="ai-response flex items-start gap-3 opacity-0">
-              <div className="w-8 h-8 rounded-full bg-accent flex items-center justify-center">
-                <Bot size={16} className="text-white" />
-              </div>
-              <div className="bg-accent-light border border-accent/20 rounded-lg p-3 max-w-xs">
-                <div className="flex items-center gap-2 mb-1">
-                  <span className="text-xs font-semibold text-accent">IA</span>
-                </div>
-                <p className="text-sm">¡Claro! Tenemos disponibilidad a las 10am y 3pm. ¿Cuál te viene mejor?</p>
+              <div className="bg-white rounded-2xl rounded-tl-none p-5 shadow-sm border border-border/50 max-w-md">
+                <p className="text-base text-text-primary">Hola, ¿tienen disponibilidad para mañana a las 10am?</p>
               </div>
             </div>
           </div>
 
-          {/* Message 2 */}
-          <div ref={message2Ref} className="opacity-0">
-            <div className="flex items-start gap-3 mb-2">
-              <div className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center">
-                <User size={16} />
-              </div>
-              <div className="bg-surface rounded-lg p-3 max-w-xs">
-                <p className="text-sm">¿Cuánto cuesta el servicio?</p>
-              </div>
+          {/* Message 2 - IA responde */}
+          <div ref={message2Ref} className="opacity-0 flex items-start gap-4 flex-row-reverse">
+            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-accent to-accent-hover flex items-center justify-center flex-shrink-0">
+              <Bot size={20} className="text-white" />
             </div>
-            
-            <div className="typing-indicator flex items-center gap-2 ml-11 mb-2 opacity-0">
-              <div className="flex gap-1">
-                <div className="w-2 h-2 bg-accent rounded-full animate-bounce" />
-                <div className="w-2 h-2 bg-accent rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-                <div className="w-2 h-2 bg-accent rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
-              </div>
-              <span className="text-xs text-text-muted">IA escribiendo...</span>
-            </div>
-
-            <div className="ai-response flex items-start gap-3 opacity-0">
-              <div className="w-8 h-8 rounded-full bg-accent flex items-center justify-center">
-                <Bot size={16} className="text-white" />
-              </div>
-              <div className="bg-accent-light border border-accent/20 rounded-lg p-3 max-w-xs">
-                <div className="flex items-center gap-2 mb-1">
-                  <span className="text-xs font-semibold text-accent">IA</span>
+            <div className="flex-1 flex flex-col items-end">
+              <div className="flex items-center gap-2 mb-2 flex-row-reverse">
+                <span className="font-semibold text-sm text-text-primary">Asistente IA</span>
+                <div className="px-2 py-0.5 bg-accent/10 text-accent text-xs font-semibold rounded-full">
+                  IA
                 </div>
-                <p className="text-sm">Nuestros planes empiezan desde $29/mes. Incluye respuestas ilimitadas y soporte 24/7.</p>
+                <span className="text-xs text-text-muted">10:24 AM</span>
+              </div>
+              <div className="bg-gradient-to-br from-accent-light to-accent-light/50 rounded-2xl rounded-tr-none p-5 shadow-sm border border-accent/20 max-w-md">
+                <p className="text-base text-text-primary">¡Claro! Tenemos disponibilidad a las 10am y también a las 3pm. ¿Cuál te viene mejor? 😊</p>
+                <div className="flex items-center justify-end gap-1 mt-2 text-accent-hover">
+                  <CheckCheck size={16} />
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Message 3 */}
-          <div ref={message3Ref} className="opacity-0">
-            <div className="flex items-start gap-3 mb-2">
-              <div className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center">
-                <User size={16} />
-              </div>
-              <div className="bg-surface rounded-lg p-3 max-w-xs">
-                <p className="text-sm">Perfecto, me gustaría contratar</p>
-              </div>
+          {/* Message 3 - Cliente responde */}
+          <div ref={message3Ref} className="opacity-0 flex items-start gap-4">
+            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center flex-shrink-0">
+              <User size={20} className="text-gray-600" />
             </div>
-            
-            <div className="typing-indicator flex items-center gap-2 ml-11 mb-2 opacity-0">
-              <div className="flex gap-1">
-                <div className="w-2 h-2 bg-accent rounded-full animate-bounce" />
-                <div className="w-2 h-2 bg-accent rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-                <div className="w-2 h-2 bg-accent rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+            <div className="flex-1">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="font-semibold text-sm text-text-primary">María González</span>
+                <span className="text-xs text-text-muted">10:25 AM</span>
               </div>
-              <span className="text-xs text-text-muted">Humano respondiendo...</span>
-            </div>
-
-            <div className="ai-response flex items-start gap-3 opacity-0">
-              <div className="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center">
-                <User size={16} className="text-white" />
-              </div>
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 max-w-xs">
-                <div className="flex items-center gap-2 mb-1">
-                  <span className="text-xs font-semibold text-blue-600">Jorge (Humano)</span>
-                </div>
-                <p className="text-sm">¡Excelente! Te envío el link de pago por aquí... 👇</p>
+              <div className="bg-white rounded-2xl rounded-tl-none p-5 shadow-sm border border-border/50 max-w-md">
+                <p className="text-base text-text-primary">Perfecto las 10am. ¿Cuánto cuesta la consulta?</p>
               </div>
             </div>
           </div>
+
+          {/* Message 4 - Humano toma control */}
+          <div ref={message4Ref} className="opacity-0 flex items-start gap-4 flex-row-reverse">
+            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center flex-shrink-0">
+              <User size={20} className="text-white" />
+            </div>
+            <div className="flex-1 flex flex-col items-end">
+              <div className="flex items-center gap-2 mb-2 flex-row-reverse">
+                <span className="font-semibold text-sm text-text-primary">Jorge (Tú)</span>
+                <div className="px-2 py-0.5 bg-blue-500/10 text-blue-600 text-xs font-semibold rounded-full">
+                  Humano
+                </div>
+                <span className="text-xs text-text-muted">10:25 AM</span>
+              </div>
+              <div className="bg-gradient-to-br from-blue-50 to-blue-50/50 rounded-2xl rounded-tr-none p-5 shadow-sm border border-blue-200/50 max-w-md">
+                <p className="text-base text-text-primary">¡Hola María! La consulta es de $500. Te envío el link de pago para que reserves tu cita 👇</p>
+                <div className="mt-3 bg-white rounded-xl p-3 border border-blue-200/50">
+                  <div className="text-xs font-semibold text-blue-600 mb-1">Link de pago</div>
+                  <div className="text-xs text-text-muted">pay.whaapy.com/consulta-500</div>
+                </div>
+                <div className="flex items-center justify-end gap-1 mt-2 text-blue-600">
+                  <CheckCheck size={16} />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Transition indicator */}
+          <div className="flex items-center justify-center py-4">
+            <div className="bg-accent/10 text-accent px-4 py-2 rounded-full flex items-center gap-2 text-sm font-medium">
+              <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+              <span>IA → Humano (transición automática)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Floating badge */}
+      <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl shadow-xl border border-border px-6 py-4 flex items-center gap-3">
+        <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center">
+          <Bot size={20} className="text-accent" />
+        </div>
+        <div>
+          <div className="text-sm font-bold text-text-primary">Respuesta en &lt;2s</div>
+          <div className="text-xs text-text-muted">100% automatizado</div>
         </div>
       </div>
     </div>
   )
 }
-

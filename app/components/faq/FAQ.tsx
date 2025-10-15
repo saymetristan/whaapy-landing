@@ -73,14 +73,14 @@ export default function FAQ() {
   }
 
   return (
-    <section className="relative py-32 px-6">
+    <section className="relative py-40 px-6 bg-white">
       <div className="max-w-4xl mx-auto">
         {/* Section header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+        <div className="text-center mb-20">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
             Preguntas <span className="gradient-text">frecuentes</span>
           </h2>
-          <p className="text-lg text-text-secondary">
+          <p className="text-xl md:text-2xl text-text-secondary leading-relaxed">
             Todo lo que necesitas saber sobre Whaapy
           </p>
         </div>
@@ -90,17 +90,18 @@ export default function FAQ() {
           {faqs.map((faq, index) => (
             <div 
               key={index}
-              className="bg-surface-elevated rounded-xl border border-border overflow-hidden hover:border-accent/30 transition-colors"
+              className="bg-white rounded-2xl border-2 border-border overflow-hidden hover:border-accent/30 transition-all duration-300 shadow-sm hover:shadow-md"
             >
               <button
                 onClick={() => toggleFAQ(index)}
-                className="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-surface transition-colors"
+                className="w-full px-8 py-6 flex items-center justify-between text-left hover:bg-surface/50 transition-colors"
               >
-                <span className="font-semibold text-lg pr-8">{faq.question}</span>
+                <span className="font-bold text-xl pr-8 text-text-primary">{faq.question}</span>
                 <ChevronDown 
                   id={`faq-chevron-${index}`}
                   className="flex-shrink-0 text-accent transition-transform" 
-                  size={24} 
+                  size={28} 
+                  strokeWidth={2.5}
                 />
               </button>
               <div 
@@ -108,7 +109,7 @@ export default function FAQ() {
                 className="overflow-hidden"
                 style={{ height: 0, opacity: 0 }}
               >
-                <div className="px-6 pb-5 text-text-secondary leading-relaxed">
+                <div className="px-8 pb-6 text-text-secondary leading-relaxed text-lg">
                   {faq.answer}
                 </div>
               </div>
@@ -117,15 +118,16 @@ export default function FAQ() {
         </div>
 
         {/* Contact CTA */}
-        <div className="mt-12 text-center">
-          <p className="text-text-secondary mb-4">
+        <div className="mt-16 text-center">
+          <p className="text-xl text-text-secondary mb-6">
             ¿Tienes más preguntas?
           </p>
           <a 
             href="mailto:soporte@whaapy.com" 
-            className="inline-flex items-center text-accent hover:text-accent-hover font-medium"
+            className="inline-flex items-center text-accent hover:text-accent-hover font-semibold text-lg group"
           >
-            Contáctanos →
+            Contáctanos
+            <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>
           </a>
         </div>
       </div>

@@ -98,30 +98,30 @@ export default function CTA() {
   }
 
   return (
-    <section ref={sectionRef} className="relative py-32 px-6 bg-gradient-to-b from-surface to-accent-light/30">
-      <div className="max-w-4xl mx-auto text-center">
+    <section ref={sectionRef} className="relative py-40 px-6 bg-gradient-to-br from-accent/5 via-white to-accent/10">
+      <div className="max-w-5xl mx-auto text-center">
         {/* Headline with mask reveal */}
         <h2 
           ref={headlineRef}
-          className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
+          className="text-4xl md:text-5xl lg:text-7xl font-bold mb-8 leading-[1.05]"
           style={{ clipPath: 'circle(0% at 50% 50%)' }}
         >
-          Activa tu WhatsApp IA en minutos — <span className="gradient-text">¡Gratis para empezar!</span>
+          Activa tu WhatsApp IA en minutos — <br className="hidden md:block" /><span className="gradient-text">¡Gratis para empezar!</span>
         </h2>
 
         {/* Benefits */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-10 text-text-secondary">
-          <div className="benefit-item flex items-center gap-2 opacity-0">
-            <Check className="text-accent" size={20} />
-            <span>Sin instalaciones ni configuraciones eternas</span>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-8 mb-12 text-text-secondary flex-wrap">
+          <div className="benefit-item flex items-center gap-3 opacity-0">
+            <Check className="text-accent" size={24} strokeWidth={3} />
+            <span className="text-lg font-medium">Sin instalaciones ni configuraciones eternas</span>
           </div>
-          <div className="benefit-item flex items-center gap-2 opacity-0">
-            <Check className="text-accent" size={20} />
-            <span>Precio especial de lanzamiento</span>
+          <div className="benefit-item flex items-center gap-3 opacity-0">
+            <Check className="text-accent" size={24} strokeWidth={3} />
+            <span className="text-lg font-medium">Precio especial de lanzamiento</span>
           </div>
-          <div className="benefit-item flex items-center gap-2 opacity-0">
-            <Check className="text-accent" size={20} />
-            <span>Sin compromisos</span>
+          <div className="benefit-item flex items-center gap-3 opacity-0">
+            <Check className="text-accent" size={24} strokeWidth={3} />
+            <span className="text-lg font-medium">Sin compromisos</span>
           </div>
         </div>
 
@@ -129,30 +129,30 @@ export default function CTA() {
         <div className="cta-button-container opacity-0">
           <button 
             onClick={handleCTAClick}
-            className="relative inline-flex items-center gap-3 px-10 py-5 bg-accent text-white rounded-xl hover:bg-accent-hover transition-all hover:scale-105 font-semibold text-xl shadow-lg hover:shadow-xl overflow-hidden group"
+            className="relative inline-flex items-center gap-4 px-12 py-6 bg-gradient-to-r from-accent to-accent-hover text-white rounded-2xl hover:shadow-2xl transition-all hover:scale-[1.02] font-bold text-2xl shadow-xl overflow-hidden group"
           >
             <span className="relative z-10">Conectar mi WhatsApp</span>
-            <ArrowRight className="relative z-10 group-hover:translate-x-1 transition-transform" size={24} />
+            <ArrowRight className="relative z-10 group-hover:translate-x-1 transition-transform" size={28} strokeWidth={3} />
             
             {/* Animated gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
           </button>
           
-          <p className="mt-4 text-sm text-text-muted">
-            Más de 50 negocios ya están usando Whaapy
+          <p className="mt-6 text-lg text-text-muted font-medium">
+            Más de 50 negocios ya están usando Whaapy ✨
           </p>
         </div>
       </div>
 
       {/* Footer */}
-      <footer className="mt-24 pt-12 border-t border-border">
+      <footer className="mt-32 pt-16 border-t-2 border-border">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6 text-sm text-text-secondary">
-            <div className="flex items-center gap-2">
-              <span className="text-2xl font-bold gradient-text">Whaapy</span>
-              <span>© 2025. Todos los derechos reservados.</span>
+          <div className="flex flex-col md:flex-row items-center justify-between gap-8 text-text-secondary">
+            <div className="flex items-center gap-3">
+              <span className="text-3xl font-bold gradient-text">Whaapy</span>
+              <span className="text-base">© 2025. Todos los derechos reservados.</span>
             </div>
-            <div className="flex items-center gap-6">
+            <div className="flex items-center gap-8 text-base font-medium">
               <a href="/terminos" className="hover:text-text-primary transition-colors">
                 Términos
               </a>

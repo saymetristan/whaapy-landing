@@ -74,20 +74,20 @@ export default function Features() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="relative py-32 px-6">
+    <section ref={sectionRef} className="relative py-40 px-6 bg-white">
       <div className="max-w-7xl mx-auto">
         {/* Section header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Todo lo que necesitas para <span className="gradient-text">automatizar WhatsApp</span>
+        <div className="text-center max-w-4xl mx-auto mb-20">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+            Todo lo que necesitas para <br className="hidden md:block" /><span className="gradient-text">automatizar WhatsApp</span>
           </h2>
-          <p className="text-lg text-text-secondary">
+          <p className="text-xl md:text-2xl text-text-secondary leading-relaxed">
             Herramientas profesionales para gestionar conversaciones a escala
           </p>
         </div>
 
         {/* Features grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {features.map((feature, index) => (
             <FeatureCard key={index} feature={feature} />
           ))}

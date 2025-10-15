@@ -77,14 +77,14 @@ export default function HowItWorks() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="relative py-32 px-6 bg-surface">
+    <section ref={sectionRef} className="relative py-40 px-6 bg-gradient-to-b from-surface to-white">
       <div className="max-w-7xl mx-auto">
         {/* Section header */}
-        <div className="text-center max-w-3xl mx-auto mb-20">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+        <div className="text-center max-w-4xl mx-auto mb-24">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
             Activa en <span className="gradient-text">3 pasos simples</span>
           </h2>
-          <p className="text-lg text-text-secondary">
+          <p className="text-xl md:text-2xl text-text-secondary leading-relaxed">
             Sin configuraciones complicadas. Menos de 10 minutos para estar operando.
           </p>
         </div>
@@ -116,44 +116,44 @@ export default function HowItWorks() {
               return (
                 <div
                   key={index}
-                  className="step-container opacity-0 bg-surface-elevated rounded-2xl p-8 border border-border shadow-sm hover:shadow-md transition-all"
+                  className="step-container opacity-0 bg-white rounded-3xl p-10 border-2 border-border hover:border-accent/30 shadow-sm hover:shadow-xl transition-all duration-500 group"
                 >
-                  {/* Step number badge */}
-                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent text-white font-bold text-xl mb-4">
+                  {/* Step number badge - más grande */}
+                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-accent to-accent-hover text-white font-bold text-2xl mb-6 group-hover:scale-110 transition-transform duration-500">
                     {step.number}
                   </div>
 
-                  {/* Icon */}
-                  <div className="w-16 h-16 rounded-2xl bg-accent-light flex items-center justify-center mb-4">
-                    <Icon className="text-accent" size={32} />
+                  {/* Icon - más prominente */}
+                  <div className="w-20 h-20 rounded-3xl bg-gradient-to-br from-accent/10 to-accent/5 flex items-center justify-center mb-6">
+                    <Icon className="text-accent" size={40} strokeWidth={2} />
                   </div>
 
                   {/* Content */}
-                  <div className="mb-2">
-                    <h3 className="text-xl font-semibold mb-1">{step.title}</h3>
-                    <span className="text-sm text-accent font-medium">{step.time}</span>
+                  <div className="mb-4">
+                    <h3 className="text-2xl font-bold mb-2 text-text-primary">{step.title}</h3>
+                    <span className="inline-block px-3 py-1 bg-accent/10 text-accent font-semibold rounded-full text-sm">{step.time}</span>
                   </div>
-                  <p className="text-text-secondary leading-relaxed">{step.description}</p>
+                  <p className="text-text-secondary leading-relaxed text-lg">{step.description}</p>
                 </div>
               )
             })}
           </div>
         </div>
 
-        {/* Benefits callout */}
-        <div className="mt-16 bg-gradient-to-r from-accent-light to-surface-elevated rounded-2xl p-8 border border-accent/20">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <div>
-              <div className="text-4xl font-bold text-accent mb-2">15h</div>
-              <div className="text-text-secondary">Ahorradas por semana</div>
+        {/* Benefits callout - más prominente */}
+        <div className="mt-20 bg-gradient-to-br from-accent/5 via-accent/10 to-accent/5 rounded-3xl p-12 md:p-16 border-2 border-accent/20">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+            <div className="space-y-2">
+              <div className="text-6xl md:text-7xl font-bold bg-gradient-to-br from-accent to-accent-hover bg-clip-text text-transparent">15h</div>
+              <div className="text-lg font-medium text-text-secondary">Ahorradas por semana</div>
             </div>
-            <div>
-              <div className="text-4xl font-bold text-accent mb-2">24/7</div>
-              <div className="text-text-secondary">Disponibilidad</div>
+            <div className="space-y-2">
+              <div className="text-6xl md:text-7xl font-bold bg-gradient-to-br from-accent to-accent-hover bg-clip-text text-transparent">24/7</div>
+              <div className="text-lg font-medium text-text-secondary">Disponibilidad</div>
             </div>
-            <div>
-              <div className="text-4xl font-bold text-accent mb-2">10x</div>
-              <div className="text-text-secondary">Más rápido</div>
+            <div className="space-y-2">
+              <div className="text-6xl md:text-7xl font-bold bg-gradient-to-br from-accent to-accent-hover bg-clip-text text-transparent">10x</div>
+              <div className="text-lg font-medium text-text-secondary">Más rápido</div>
             </div>
           </div>
         </div>

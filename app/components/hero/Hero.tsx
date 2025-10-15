@@ -79,11 +79,11 @@ export default function Hero() {
   }
 
   return (
-    <section ref={heroRef} className="relative min-h-screen flex items-center justify-center px-6 py-20 overflow-hidden">
-      {/* Background decorative elements */}
-      <div className="liquid-blob" style={{ top: '-10%', right: '-5%' }} />
+    <section ref={heroRef} className="relative min-h-screen flex items-center justify-center px-6 py-32 overflow-hidden bg-gradient-to-b from-white to-surface">
+      {/* Background decorative elements - más sutiles */}
+      <div className="liquid-blob" style={{ top: '-10%', right: '-5%', opacity: 0.3 }} />
       <MorphingShape />
-      <Particles count={30} />
+      <Particles count={20} />
       
       {/* Navigation */}
       <nav className="absolute top-0 left-0 right-0 z-50 px-6 py-6">
@@ -113,41 +113,51 @@ export default function Hero() {
         <div className="text-center max-w-4xl mx-auto mb-16">
           <h1 
             ref={headlineRef}
-            className="text-6xl md:text-7xl lg:text-[72px] font-bold leading-[1.1] tracking-[-0.03em] mb-6"
+            className="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-[-0.04em] mb-6"
           >
-            <span className="inline-block">Atiende </span>
-            <span className="inline-block">a </span>
-            <span className="inline-block">todos </span>
-            <span className="inline-block">tus </span>
-            <span className="inline-block">clientes </span>
-            <span className="inline-block">de </span>
-            <span className="inline-block gradient-text">WhatsApp </span>
-            <span className="inline-block">sin </span>
-            <span className="inline-block">perder </span>
-            <span className="inline-block">ni </span>
-            <span className="inline-block">una </span>
+            <span className="inline-block">Atiende</span>
+            {' '}
+            <span className="inline-block">a</span>
+            {' '}
+            <span className="inline-block">todos</span>
+            {' '}
+            <span className="inline-block">tus</span>
+            {' '}
+            <span className="inline-block">clientes</span>
+            {' '}
+            <span className="inline-block">de</span>
+            <br />
+            <span className="inline-block gradient-text">WhatsApp</span>
+            {' '}
+            <span className="inline-block">sin</span>
+            {' '}
+            <span className="inline-block">perder</span>
+            {' '}
+            <span className="inline-block">ni</span>
+            <br className="hidden md:block" />
+            <span className="inline-block">una</span>
+            {' '}
             <span className="inline-block">conversación</span>
           </h1>
           
           <p 
             ref={subheadlineRef}
-            className="text-lg md:text-xl text-text-secondary max-w-2xl mx-auto mb-8 opacity-0"
+            className="text-xl md:text-2xl text-text-secondary max-w-3xl mx-auto mb-10 opacity-0 leading-relaxed"
           >
-            Conecta tu número de WhatsApp Business y deja que tu asistente de IA responda al instante. 
-            Tú decides cuándo toma el control y cuándo lo haces tú.
+            Conecta tu número de WhatsApp Business y deja que tu asistente de IA responda al instante. Tú decides cuándo toma el control y cuándo lo haces tú.
           </p>
 
           <div ref={ctaRef} className="flex flex-col sm:flex-row items-center justify-center gap-4 opacity-0">
             <button 
               onClick={handleCTAClick}
-              className="relative px-8 py-4 bg-accent text-white rounded-lg hover:bg-accent-hover transition-all hover:scale-105 font-medium text-lg flex items-center gap-2 shadow-md overflow-hidden"
+              className="relative px-10 py-5 bg-accent text-white rounded-2xl hover:bg-accent-hover transition-all hover:scale-[1.02] font-semibold text-lg flex items-center gap-3 shadow-lg hover:shadow-xl overflow-hidden"
             >
               Conectar mi WhatsApp
-              <ArrowRight size={20} />
+              <ArrowRight size={22} />
             </button>
             <button 
               onClick={handleCTAClick}
-              className="relative px-8 py-4 bg-surface border border-border text-text-primary rounded-lg hover:bg-surface-elevated transition-all hover:scale-105 font-medium text-lg overflow-hidden"
+              className="relative px-10 py-5 bg-white border-2 border-border text-text-primary rounded-2xl hover:border-accent/30 hover:bg-surface transition-all hover:scale-[1.02] font-semibold text-lg overflow-hidden"
             >
               Agendar demo
             </button>
