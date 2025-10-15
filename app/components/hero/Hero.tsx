@@ -85,25 +85,27 @@ export default function Hero() {
       <MorphingShape />
       <Particles count={20} />
       
-      {/* Navigation */}
+      {/* Navigation with glassmorphism */}
       <nav className="absolute top-0 left-0 right-0 z-50 px-6 py-6">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="text-2xl font-bold">
-            <span className="gradient-text">Whaapy</span>
-          </div>
-          <div className="flex items-center gap-4">
-            <a 
-              href="https://app.whaapy.com/login" 
-              className="text-text-secondary hover:text-text-primary transition-colors"
-            >
-              Login
-            </a>
-            <a 
-              href="https://app.whaapy.com/register" 
-              className="px-6 py-2 bg-accent text-white rounded-lg hover:bg-accent-hover transition-colors"
-            >
-              Empezar gratis
-            </a>
+        <div className="max-w-7xl mx-auto">
+          <div className="glass-dark rounded-full px-8 py-4 flex items-center justify-between shadow-premium">
+            <div className="text-2xl font-bold">
+              <span className="gradient-text">Whaapy</span>
+            </div>
+            <div className="flex items-center gap-4">
+              <a 
+                href="https://app.whaapy.com/login" 
+                className="text-text-secondary hover:text-text-primary transition-colors font-medium"
+              >
+                Login
+              </a>
+              <a 
+                href="https://app.whaapy.com/register" 
+                className="px-6 py-2.5 btn-primary text-white rounded-full font-semibold shimmer shadow-premium hover:shadow-premium-lg hover:scale-105 transition-all duration-300"
+              >
+                Empezar gratis
+              </a>
+            </div>
           </div>
         </div>
       </nav>
@@ -150,22 +152,22 @@ export default function Hero() {
           <div ref={ctaRef} className="flex flex-col sm:flex-row items-center justify-center gap-4 opacity-0">
             <button 
               onClick={handleCTAClick}
-              className="relative px-10 py-5 bg-accent text-white rounded-2xl hover:bg-accent-hover transition-all hover:scale-[1.02] font-semibold text-lg flex items-center gap-3 shadow-lg hover:shadow-xl overflow-hidden"
+              className="btn-primary group relative px-10 py-5 text-white rounded-2xl transition-all hover:scale-[1.02] font-bold text-lg flex items-center gap-3 shadow-premium-lg hover:glow-accent-strong shimmer"
             >
               Conectar mi WhatsApp
-              <ArrowRight size={22} />
+              <ArrowRight size={22} className="group-hover:translate-x-1 transition-transform" />
             </button>
             <button 
               onClick={handleCTAClick}
-              className="relative px-10 py-5 bg-white border-2 border-border text-text-primary rounded-2xl hover:border-accent/30 hover:bg-surface transition-all hover:scale-[1.02] font-semibold text-lg overflow-hidden"
+              className="glass-dark group relative px-10 py-5 text-text-primary rounded-2xl hover:border-accent/30 transition-all hover:scale-[1.02] font-bold text-lg overflow-hidden shadow-premium hover:shadow-premium-lg"
             >
               Agendar demo
             </button>
           </div>
         </div>
 
-        {/* Animated mockup */}
-        <div className="relative">
+        {/* Animated mockup with floating effect */}
+        <div className="relative floating">
           <AnimatedMockup />
         </div>
       </div>

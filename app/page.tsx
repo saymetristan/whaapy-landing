@@ -10,6 +10,12 @@ import CTA from './components/cta/CTA'
 export default function Home() {
   return (
     <main className="relative overflow-hidden">
+      {/* Animated gradient mesh background */}
+      <div className="gradient-mesh" />
+      
+      {/* Grid overlay */}
+      <div className="grid-overlay" />
+      
       {/* Background decorative elements */}
       <div className="gradient-orb gradient-orb-1" />
       <div className="gradient-orb gradient-orb-2" />

@@ -55,7 +55,7 @@ export default function AnimatedMockup() {
       ref={mockupRef}
       className="relative max-w-5xl mx-auto opacity-0"
     >
-      <div className="bg-white rounded-3xl shadow-2xl border border-border/50 overflow-hidden">
+      <div className="glass-dark rounded-3xl shadow-premium-lg border border-border/50 overflow-hidden">
         {/* Mockup header */}
         <div className="bg-gradient-to-r from-[#25D366] to-[#128C7E] text-white px-8 py-6 flex items-center justify-between">
           <div className="flex items-center gap-4">
@@ -168,9 +168,9 @@ export default function AnimatedMockup() {
         </div>
       </div>
 
-      {/* Floating badge */}
-      <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl shadow-xl border border-border px-6 py-4 flex items-center gap-3">
-        <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center">
+      {/* Floating badge with glassmorphism */}
+      <div className="absolute -bottom-6 -right-6 glass-dark rounded-2xl shadow-premium-lg border border-border px-6 py-4 flex items-center gap-3 floating-delayed">
+        <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center shimmer">
           <Bot size={20} className="text-accent" />
         </div>
         <div>

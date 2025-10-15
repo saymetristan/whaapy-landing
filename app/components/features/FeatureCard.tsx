@@ -55,7 +55,7 @@ export default function FeatureCard({ feature }: FeatureCardProps) {
       ref={cardRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="feature-card feature-card-3d opacity-0 bg-white rounded-3xl p-10 border-2 border-border hover:border-accent/30 shadow-sm hover:shadow-xl transition-all duration-500 relative overflow-hidden group"
+      className="feature-card feature-card-3d opacity-0 glass-dark rounded-3xl p-10 border-2 border-border hover:border-accent/30 shadow-premium hover:shadow-premium-lg hover:glow-accent transition-all duration-500 relative overflow-hidden group"
     >
       {/* Subtle gradient overlay on hover */}
       <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
