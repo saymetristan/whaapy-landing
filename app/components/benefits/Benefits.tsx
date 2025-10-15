@@ -145,9 +145,9 @@ export default function Benefits() {
             <div className="w-16 h-16 rounded-2xl bg-accent/10 flex items-center justify-center mb-6">
               <DollarSign size={32} className="text-accent" strokeWidth={2} />
             </div>
-            <h3 className="text-4xl font-bold text-accent mb-2">$500</h3>
-            <p className="text-lg text-text-secondary font-medium mb-3">ROI mensual promedio</p>
-            <p className="text-base text-text-muted">Costo de Whaapy vs. contratar un asistente o perder ventas por responder tarde</p>
+            <h3 className="text-4xl font-bold text-accent mb-2">24x ROI</h3>
+            <p className="text-lg text-text-secondary font-medium mb-3">Retorno de inversión</p>
+            <p className="text-base text-text-muted">Ahorra en costos de atención sin perder calidad ni ventas por responder tarde</p>
           </div>
         </div>
       </div>
