@@ -144,7 +144,6 @@ export default function BentoShowcase() {
               <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-2 md:mb-3 text-orange-600">{bentoItems[3].title}</h3>
               <p className="text-base md:text-lg lg:text-xl text-text-secondary leading-relaxed">{bentoItems[3].description}</p>
               <div className="mt-4 md:mt-6 inline-flex items-center gap-2 text-sm md:text-base font-semibold text-orange-600">
-                <span className="text-text-muted">Retorno de inversión promedio</span>
               </div>
             </div>
           </div>
