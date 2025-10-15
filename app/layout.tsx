@@ -9,14 +9,26 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'Whaapy - Automatiza WhatsApp con IA',
-  description: 'Atiende a todos tus clientes de WhatsApp sin perder ni una conversación. Conecta tu número y deja que tu asistente de IA responda al instante.',
-  keywords: ['WhatsApp', 'Automatización', 'IA', 'Chatbot', 'WhatsApp Business'],
-  authors: [{ name: 'Whaapy' }],
+  title: 'Whaapy - Asistente de IA para WhatsApp Business',
+  description: 'Automatiza tu atención al cliente en WhatsApp con IA. Respuestas instantáneas 24/7, ROI de 24x. Conecta tu WhatsApp Business en minutos.',
+  keywords: ['WhatsApp Business', 'IA', 'chatbot', 'atención al cliente', 'automatización', 'ROI', 'asistente virtual'],
+  authors: [{ name: 'Whaapy by Datagora' }],
   openGraph: {
-    title: 'Whaapy - Automatiza WhatsApp con IA',
-    description: 'Atiende a todos tus clientes de WhatsApp sin perder ni una conversación',
+    title: 'Whaapy - Asistente de IA para WhatsApp Business',
+    description: 'Automatiza tu atención al cliente en WhatsApp con IA. Respuestas instantáneas 24/7, ROI de 24x.',
     type: 'website',
+    locale: 'es_MX',
+    siteName: 'Whaapy',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Whaapy - Asistente de IA para WhatsApp Business',
+    description: 'Automatiza tu atención al cliente en WhatsApp con IA. ROI de 24x.',
+  },
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/images/whaapy_icons_v2/whaapy_icon_v2_512x512.png',
   },
 }
 
