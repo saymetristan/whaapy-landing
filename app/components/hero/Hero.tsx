@@ -57,10 +57,6 @@ export default function Hero() {
     }
   }, [])
 
-  const handleRegisterClick = () => {
-    window.location.href = 'https://app.whaapy.com/register'
-  }
-
   const handleDemoClick = () => {
     setIsContactModalOpen(true)
   }
@@ -95,12 +91,12 @@ export default function Hero() {
               >
                 Login
               </a>
-              <a 
-                href="https://app.whaapy.com/register" 
+              <button 
+                onClick={handleDemoClick}
                 className="px-6 py-2.5 btn-primary text-white rounded-full font-semibold shimmer shadow-premium hover:shadow-premium-lg hover:scale-105 transition-all duration-300"
               >
-                Empezar gratis
-              </a>
+                Agendar demo
+              </button>
             </div>
           </div>
         </div>
@@ -147,20 +143,19 @@ export default function Hero() {
 
           <div ref={ctaRef} className="flex flex-col sm:flex-row items-center justify-center gap-4 opacity-0">
             <MagneticButton
-              onClick={handleRegisterClick}
+              onClick={handleDemoClick}
               className="btn-primary group relative px-10 py-5 text-white rounded-2xl transition-all font-bold text-lg flex items-center gap-3 shadow-premium-lg hover:glow-accent-strong shimmer"
               strength={15}
             >
-              Conectar mi WhatsApp
+              Agendar demo
               <ArrowRight size={22} className="group-hover:translate-x-1 transition-transform" />
             </MagneticButton>
-            <MagneticButton
-              onClick={handleDemoClick}
-              className="glass-dark group relative px-10 py-5 text-text-primary rounded-2xl hover:border-accent/30 transition-all font-bold text-lg overflow-hidden shadow-premium hover:shadow-premium-lg"
-              strength={10}
+            <a 
+              href="https://app.whaapy.com/login"
+              className="glass-dark group relative px-10 py-5 text-text-primary rounded-2xl hover:border-accent/30 transition-all font-bold text-lg overflow-hidden shadow-premium hover:shadow-premium-lg inline-block"
             >
-              Agendar demo
-            </MagneticButton>
+              Iniciar sesión
+            </a>
           </div>
         </div>
 

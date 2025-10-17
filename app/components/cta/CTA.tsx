@@ -71,8 +71,8 @@ export default function CTA() {
     return () => observer.disconnect()
   }, [])
 
-  const handleRegisterClick = () => {
-    window.location.href = 'https://app.whaapy.com/register'
+  const handleDemoClick = () => {
+    setIsContactModalOpen(true)
   }
 
   return (
@@ -106,11 +106,11 @@ export default function CTA() {
         {/* CTA Button */}
         <div className="cta-button-container opacity-0">
           <MagneticButton
-            onClick={handleRegisterClick}
+            onClick={handleDemoClick}
             className="relative inline-flex items-center gap-4 px-12 py-6 bg-gradient-to-r from-accent to-accent-hover text-white rounded-2xl hover:shadow-2xl transition-all font-bold text-2xl shadow-xl overflow-hidden group"
             strength={20}
           >
-            <span className="relative z-10">Conectar mi WhatsApp</span>
+            <span className="relative z-10">Agendar demo</span>
             <ArrowRight className="relative z-10 group-hover:translate-x-1 transition-transform" size={28} strokeWidth={3} />
             
             {/* Animated gradient overlay */}
