@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { Menu, X } from 'lucide-react'
 import ContactModal from './ContactModal'
+import { captureEvent } from '@/app/lib/analytics'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -43,9 +44,37 @@ export default function Header() {
     }
   }, [isMenuOpen])
 
-  const handleDemoClick = () => {
-    setIsContactModalOpen(true)
+  const closeMenu = (reason: 'overlay' | 'nav_link' | 'cta_click' | 'toggle_button' | 'close_button') => {
+    if (!isMenuOpen) return
+
     setIsMenuOpen(false)
+    captureEvent('header_mobile_menu_closed', {
+      reason,
+    })
+  }
+
+  const openDemoModal = (origin: 'desktop_nav' | 'mobile_cta' | 'mobile_menu') => {
+    captureEvent('cta_demo_click', {
+      location: `header_${origin}`,
+    })
+
+    setIsContactModalOpen(true)
+
+    if (origin !== 'desktop_nav') {
+      closeMenu('cta_click')
+    }
+  }
+
+  const handleMenuToggle = () => {
+    const nextValue = !isMenuOpen
+    if (nextValue) {
+      setIsMenuOpen(true)
+      captureEvent('header_mobile_menu_toggled', {
+        isOpen: true,
+      })
+    } else {
+      closeMenu('toggle_button')
+    }
   }
 
   return (
@@ -77,14 +106,19 @@ export default function Header() {
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-4">
-              <a 
-                href="https://app.whaapy.com/login" 
+              <a
+                href="https://app.whaapy.com/login"
                 className="text-text-secondary hover:text-text-primary transition-colors font-medium px-4 py-2"
+                onClick={() =>
+                  captureEvent('cta_login_click', {
+                    location: 'header_desktop',
+                  })
+                }
               >
                 Login
               </a>
-              <button 
-                onClick={handleDemoClick}
+              <button
+                onClick={() => openDemoModal('desktop_nav')}
                 className="px-6 py-2.5 btn-primary text-white rounded-full font-semibold shimmer shadow-premium hover:shadow-premium-lg hover:scale-105 transition-all duration-300 whitespace-nowrap"
               >
                 Agendar demo
@@ -93,14 +127,14 @@ export default function Header() {
 
             {/* Mobile CTA + Hamburger */}
             <div className="flex md:hidden items-center gap-2 sm:gap-3">
-              <button 
-                onClick={handleDemoClick}
+              <button
+                onClick={() => openDemoModal('mobile_cta')}
                 className="px-4 sm:px-5 py-2 sm:py-2.5 btn-primary text-white rounded-full font-semibold text-sm sm:text-base shimmer shadow-premium hover:scale-105 transition-all duration-300 whitespace-nowrap"
               >
                 Demo
               </button>
               <button
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                onClick={handleMenuToggle}
                 className="p-2 sm:p-2.5 text-text-primary hover:text-accent transition-colors rounded-full hover:bg-accent/10"
                 aria-label="Toggle menu"
               >
@@ -111,12 +145,12 @@ export default function Header() {
         </div>
 
         {/* Mobile Menu Overlay */}
-        <div 
+        <div
           className={`fixed inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-300 md:hidden ${
             isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
           }`}
           style={{ top: '0' }}
-          onClick={() => setIsMenuOpen(false)}
+          onClick={() => closeMenu('overlay')}
         />
 
         {/* Mobile Menu Panel */}
@@ -137,11 +171,11 @@ export default function Header() {
                 />
                 <span className="text-xl font-bold gradient-text">Whaapy</span>
               </div>
-              <button
-                onClick={() => setIsMenuOpen(false)}
-                className="p-2 text-text-secondary hover:text-text-primary transition-colors rounded-full hover:bg-surface"
-              >
-                <X size={24} />
+                <button
+                  onClick={() => closeMenu('close_button')}
+                  className="p-2 text-text-secondary hover:text-text-primary transition-colors rounded-full hover:bg-surface"
+                >
+                  <X size={24} />
               </button>
             </div>
 
@@ -151,32 +185,49 @@ export default function Header() {
                 <a 
                   href="https://app.whaapy.com/login"
                   className="block w-full text-left px-6 py-4 text-lg font-medium text-text-primary hover:bg-surface rounded-2xl transition-all duration-300 hover:translate-x-1"
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={() => {
+                    captureEvent('cta_login_click', {
+                      location: 'header_mobile_menu',
+                    })
+                    closeMenu('nav_link')
+                  }}
                 >
                   Iniciar sesión
                 </a>
-                
-                <button 
-                  onClick={handleDemoClick}
+
+                <button
+                  onClick={() => openDemoModal('mobile_menu')}
                   className="block w-full text-left px-6 py-4 text-lg font-bold text-white bg-gradient-to-r from-accent to-accent-hover rounded-2xl transition-all duration-300 hover:shadow-xl hover:scale-[1.02] shimmer"
                 >
                   Agendar demo
                 </button>
 
                 <div className="pt-6 mt-6 border-t border-border">
-                  <a 
+                  <a
                     href="https://app.whaapy.com"
                     className="block text-sm text-text-secondary hover:text-accent transition-colors mb-3"
-                    onClick={() => setIsMenuOpen(false)}
+                    onClick={() => {
+                      captureEvent('navigation_link_click', {
+                        location: 'header_mobile_menu',
+                        destination: 'dashboard',
+                      })
+                      closeMenu('nav_link')
+                    }}
                   >
                     Dashboard
                   </a>
-                  <a 
+                  <a
                     href="https://github.com/saymetristan/whaapy-docs"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block text-sm text-text-secondary hover:text-accent transition-colors"
-                    onClick={() => setIsMenuOpen(false)}
+                    onClick={() => {
+                      captureEvent('navigation_link_click', {
+                        location: 'header_mobile_menu',
+                        destination: 'docs',
+                      })
+                      closeMenu('nav_link')
+                    }}
                   >
                     Documentación API
                   </a>
