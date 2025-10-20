@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from 'react'
 import anime from 'animejs'
-import { Shield, Zap, Users, Globe, Lock, HeartHandshake } from 'lucide-react'
+import { Shield, Zap, Users, Globe, Code2, HeartHandshake } from 'lucide-react'
 
 const reasons = [
   {
@@ -21,14 +21,14 @@ const reasons = [
     description: 'Tú decides cuándo la IA responde y cuándo intervienes. Transiciones suaves entre IA y humano.'
   },
   {
+    icon: Code2,
+    title: 'API REST 100% Abierta',
+    description: '48 endpoints documentados con OpenAPI. Integra Whaapy con tu CRM, ERP, o sistema actual. Automatiza workflows con n8n, Make, Zapier. Sin vendor lock-in.'
+  },
+  {
     icon: Globe,
     title: 'Funciona en México',
     description: 'Diseñado para negocios mexicanos. Soporte en español, horarios locales, templates en español.'
-  },
-  {
-    icon: Lock,
-    title: 'Sin Vendor Lock-in',
-    description: 'Tus datos son tuyos. Exporta conversaciones cuando quieras. Cancela sin penalización.'
   },
   {
     icon: HeartHandshake,
@@ -109,26 +109,26 @@ export default function WhyWhaapy() {
         <div className="bg-white rounded-3xl border-2 border-border p-12">
           <div className="text-center mb-10">
             <h3 className="text-3xl font-bold mb-2">Empresas que confían en Whaapy</h3>
-            <p className="text-lg text-text-secondary">Más de 50 negocios ya están automatizando WhatsApp con nosotros</p>
+            <p className="text-lg text-text-secondary">Más de 100 empresas ya están automatizando WhatsApp con nosotros</p>
           </div>
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
             <div className="flex items-center justify-center">
               <div className="text-center">
-                <div className="text-4xl font-bold text-accent mb-1">50+</div>
-                <div className="text-sm text-text-muted">Negocios activos</div>
+                <div className="text-4xl font-bold text-accent mb-1">100+</div>
+                <div className="text-sm text-text-muted">Empresas activas</div>
               </div>
             </div>
             <div className="flex items-center justify-center">
               <div className="text-center">
-                <div className="text-4xl font-bold text-accent mb-1">10k+</div>
+                <div className="text-4xl font-bold text-accent mb-1">50k+</div>
                 <div className="text-sm text-text-muted">Mensajes/día</div>
               </div>
             </div>
             <div className="flex items-center justify-center">
               <div className="text-center">
-                <div className="text-4xl font-bold text-accent mb-1">98%</div>
-                <div className="text-sm text-text-muted">Satisfacción</div>
+                <div className="text-4xl font-bold text-accent mb-1">48</div>
+                <div className="text-sm text-text-muted">Endpoints API</div>
               </div>
             </div>
             <div className="flex items-center justify-center">

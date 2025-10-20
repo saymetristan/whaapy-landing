@@ -1,5 +1,7 @@
+import Header from './components/shared/Header'
 import Hero from './components/hero/Hero'
 import Benefits from './components/benefits/Benefits'
+import UniqueFeatures from './components/unique-features/UniqueFeatures'
 import BentoShowcase from './components/bento-showcase/BentoShowcase'
 import Features from './components/features/Features'
 import UseCases from './components/use-cases/UseCases'
@@ -15,6 +17,7 @@ export default function Home() {
     <>
       <SmoothScroll />
       <ScrollProgress />
+      <Header />
       
       <main className="relative overflow-hidden">
         {/* Animated gradient mesh background */}
@@ -29,6 +32,7 @@ export default function Home() {
         
         <Hero />
         <Benefits />
+        <UniqueFeatures />
         <BentoShowcase />
         <Features />
         <UseCases />

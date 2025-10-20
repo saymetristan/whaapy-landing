@@ -298,6 +298,25 @@ html {
   }
 }
 
+/* Badge styles for unique features */
+.badge-unique {
+  background: linear-gradient(135deg, #FFD700, #FFA500);
+  color: #000;
+  padding: 6px 14px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  box-shadow: 0 2px 8px rgba(255, 165, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.badge-unique:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(255, 165, 0, 0.4);
+}
+
 /* Mobile optimizations */
 @media (max-width: 768px) {
   section {

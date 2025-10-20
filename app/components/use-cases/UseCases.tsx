@@ -8,50 +8,50 @@ const useCases = [
   {
     icon: ShoppingBag,
     industry: 'E-commerce',
-    title: 'Tienda Online',
-    problem: 'Preguntas sobre productos, stock, envíos',
-    solution: 'IA responde disponibilidad, precios, tiempos de envío al instante',
-    result: '+40% conversiones'
+    title: 'E-commerce Mediano (50-200 pedidos/día)',
+    problem: 'Equipo de 3-5 personas sobrepasado por consultas repetitivas de stock, envíos, devoluciones',
+    solution: 'IA maneja 80% de FAQs. Equipo se enfoca en resolver casos complejos y cerrar ventas grandes',
+    result: '+65% conversiones, -40% carga'
   },
   {
     icon: Utensils,
     industry: 'Restaurantes',
-    title: 'Restaurante',
-    problem: 'Reservaciones, menú, horarios todo el día',
-    solution: 'IA toma reservas, envía menú, horarios automáticamente',
-    result: '80% menos llamadas'
+    title: 'Cadena de Restaurantes (3-10 sucursales)',
+    problem: 'Reservaciones cruzadas, menús desactualizados, equipo no coordina entre sucursales',
+    solution: 'IA toma reservas por sucursal, envía menú actualizado, coordina con sistema de gestión vía API',
+    result: '0 reservas perdidas, +30% ocupación'
   },
   {
     icon: Home,
     industry: 'Inmobiliarias',
-    title: 'Bienes Raíces',
-    problem: 'Consultas sobre propiedades, visitas, precios',
-    solution: 'IA califica leads, agenda visitas, envía fichas técnicas',
-    result: '5x más leads calificados'
-  },
-  {
-    icon: Wrench,
-    industry: 'Servicios',
-    title: 'Plomería / Electricista',
-    problem: 'Emergencias, presupuestos, disponibilidad',
-    solution: 'IA agenda citas, envía precios, maneja urgencias',
-    result: '0 llamadas perdidas'
+    title: 'Inmobiliaria (10-30 agentes)',
+    problem: 'Agentes reciben 50+ consultas diarias, muchos leads no califican, pierden tiempo en WhatsApp',
+    solution: 'IA califica leads, agenda visitas, envía fichas técnicas. Agentes solo hablan con leads calificados',
+    result: '5x más leads calificados por agente'
   },
   {
     icon: Briefcase,
-    industry: 'Profesionales',
-    title: 'Consultorio Médico',
-    problem: 'Citas, horarios, recordatorios, FAQs',
-    solution: 'IA agenda, confirma, envía recordatorios automáticos',
-    result: '-60% ausencias'
+    industry: 'B2B',
+    title: 'Distribuidora B2B',
+    problem: 'Clientes solicitan cotizaciones, precios, disponibilidad fuera de horario',
+    solution: 'IA consulta catálogo actualizado vía API, envía cotizaciones automáticas, agenda llamadas con vendedores',
+    result: '24/7 atención, +45% ventas fuera de horario'
+  },
+  {
+    icon: Wrench,
+    industry: 'Soporte',
+    title: 'Call Center / Soporte Técnico',
+    problem: 'Alto volumen de tickets repetitivos, tiempo de primera respuesta alto',
+    solution: 'IA resuelve casos nivel 1-2, escala a humano solo casos complejos. Integración con Zendesk/Freshdesk vía API',
+    result: '-70% tickets a humanos, <2s respuesta'
   },
   {
     icon: Store,
-    industry: 'Retail',
-    title: 'Tienda Física',
-    problem: 'Preguntas fuera de horario, apartados',
-    solution: 'IA responde 24/7, gestiona apartados, envía promos',
-    result: '24/7 disponibilidad'
+    industry: 'Salud',
+    title: 'Clínica/Hospital (múltiples consultorios)',
+    problem: 'Recepción sobrepasada con citas, confirmaciones, resultados, FAQs de pacientes',
+    solution: 'IA agenda citas según disponibilidad real, envía recordatorios, responde FAQs médicas básicas',
+    result: '-60% carga administrativa, 0 ausencias'
   }
 ]
 

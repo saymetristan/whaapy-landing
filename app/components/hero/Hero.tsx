@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from 'react'
 import anime from 'animejs'
 import { ArrowRight } from 'lucide-react'
-import Image from 'next/image'
 import AnimatedMockup from './AnimatedMockup'
 import MorphingShape from './MorphingShape'
 import Particles from './Particles'
@@ -62,45 +61,11 @@ export default function Hero() {
   }
 
   return (
-    <section ref={heroRef} className="relative min-h-screen flex items-center justify-center px-6 py-32 overflow-hidden bg-gradient-to-b from-white to-surface">
+    <section ref={heroRef} className="relative min-h-screen flex items-center justify-center px-6 pt-32 pb-20 md:py-32 overflow-hidden bg-gradient-to-b from-white to-surface">
       {/* Background decorative elements - más sutiles */}
       <div className="liquid-blob" style={{ top: '-10%', right: '-5%', opacity: 0.3 }} />
       <MorphingShape />
       <Particles count={20} />
-      
-      {/* Navigation with glassmorphism */}
-      <nav className="absolute top-0 left-0 right-0 z-50 px-6 py-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="glass-dark rounded-full px-8 py-4 flex items-center justify-between shadow-premium">
-            <a href="/" className="flex items-center gap-3 group">
-              <div className="relative w-10 h-10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                <Image
-                  src="/icons/whaapy-icon-64.png"
-                  alt="Whaapy Logo"
-                  width={40}
-                  height={40}
-                  className="object-contain"
-                />
-              </div>
-              <span className="text-2xl font-bold gradient-text">Whaapy</span>
-            </a>
-            <div className="flex items-center gap-4">
-              <a 
-                href="https://app.whaapy.com/login" 
-                className="text-text-secondary hover:text-text-primary transition-colors font-medium"
-              >
-                Login
-              </a>
-              <button 
-                onClick={handleDemoClick}
-                className="px-6 py-2.5 btn-primary text-white rounded-full font-semibold shimmer shadow-premium hover:shadow-premium-lg hover:scale-105 transition-all duration-300"
-              >
-                Agendar demo
-              </button>
-            </div>
-          </div>
-        </div>
-      </nav>
 
       {/* Hero content */}
       <div className="relative z-10 max-w-7xl mx-auto">
@@ -109,36 +74,27 @@ export default function Hero() {
             ref={headlineRef}
             className="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-[-0.04em] mb-6"
           >
-            <span className="inline-block">Atiende</span>
+            <span className="inline-block">Controla</span>
             {' '}
-            <span className="inline-block">a</span>
+            <span className="inline-block">totalmente</span>
             {' '}
-            <span className="inline-block">todos</span>
+            <span className="inline-block">cómo</span>
             {' '}
-            <span className="inline-block">tus</span>
+            <span className="inline-block">tu</span>
             {' '}
-            <span className="inline-block">clientes</span>
+            <span className="inline-block gradient-text">IA</span>
             {' '}
-            <span className="inline-block">de</span>
-            <br />
-            <span className="inline-block gradient-text">WhatsApp</span>
-            {' '}
-            <span className="inline-block">sin</span>
-            {' '}
-            <span className="inline-block">perder</span>
-            {' '}
-            <span className="inline-block">ni</span>
             <br className="hidden md:block" />
-            <span className="inline-block">una</span>
+            <span className="inline-block">atiende</span>
             {' '}
-            <span className="inline-block">conversación</span>
+            <span className="inline-block gradient-text">WhatsApp</span>
           </h1>
           
           <p 
             ref={subheadlineRef}
             className="text-xl md:text-2xl text-text-secondary max-w-3xl mx-auto mb-10 opacity-0 leading-relaxed"
           >
-            Conecta tu número de WhatsApp Business y deja que tu asistente de IA responda al instante. Tú decides cuándo toma el control y cuándo lo haces tú.
+            La única plataforma que te da control granular sobre tu asistente de IA. Activa, pausa, o toma control por conversación. Entrena con tus documentos. Integra con cualquier herramienta.
           </p>
 
           <div ref={ctaRef} className="flex flex-col sm:flex-row items-center justify-center gap-4 opacity-0">

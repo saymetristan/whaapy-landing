@@ -9,32 +9,32 @@ const features = [
   {
     icon: MessageSquare,
     title: 'Inbox Inteligente',
-    description: 'Todas tus conversaciones de WhatsApp en un solo lugar. Filtros, búsqueda, asignaciones automáticas.'
+    description: 'Inbox centralizado con filtros avanzados, búsqueda full-text, etiquetas personalizadas, y asignación automática a tu equipo.'
   },
   {
     icon: Bot,
     title: 'Asistente de IA Entrenado',
-    description: 'Agente entrenado con tus documentos. Responde preguntas sobre productos, precios, horarios, lo que necesites.'
+    description: 'Agente de IA que entrenas con tus documentos (PDFs, Word, TXT). Responde basándose en tu catálogo, precios, y políticas reales.'
   },
   {
     icon: Users,
     title: 'Equipos Colaborativos',
-    description: 'Invita a tu equipo. Asigna conversaciones, ve quién está respondiendo, trabaja en conjunto.'
+    description: 'Sistema multiusuario con roles (Admin, Agente). Asigna conversaciones automáticamente, ve quién está respondiendo en tiempo real.'
   },
   {
     icon: TrendingUp,
     title: 'Métricas en Tiempo Real',
-    description: 'Dashboard con tiempo de respuesta, conversaciones activas, efectividad de la IA.'
+    description: 'Dashboard con tiempo de respuesta promedio, tasa de efectividad de IA, conversaciones activas, comparativas día actual vs ayer.'
   },
   {
     icon: Zap,
     title: 'Templates de WhatsApp',
-    description: 'Usa templates pre-aprobados de Meta. Envía notificaciones, confirmaciones, seguimientos.'
+    description: 'Sincroniza templates aprobados de Meta, envía masivos a segmentos específicos. Sin salir de Whaapy.'
   },
   {
     icon: Settings,
     title: 'Control Granular',
-    description: 'Decide cuándo la IA responde: siempre, nunca, o manualmente por conversación.'
+    description: 'Activa/desactiva IA por conversación. Configura auto-pausa cuando humano interviene. Define keywords de handoff automático a humano.'
   }
 ]
 
