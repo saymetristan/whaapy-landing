@@ -8,6 +8,7 @@ import MorphingShape from './MorphingShape'
 import Particles from './Particles'
 import MagneticButton from '../shared/MagneticButton'
 import ContactModal from '../shared/ContactModal'
+import { captureEvent } from '@/app/lib/analytics'
 
 export default function Hero() {
   const heroRef = useRef<HTMLDivElement>(null)
@@ -57,6 +58,9 @@ export default function Hero() {
   }, [])
 
   const handleDemoClick = () => {
+    captureEvent('cta_demo_click', {
+      location: 'hero_primary_cta',
+    })
     setIsContactModalOpen(true)
   }
 
@@ -106,9 +110,14 @@ export default function Hero() {
               Agendar demo
               <ArrowRight size={22} className="group-hover:translate-x-1 transition-transform" />
             </MagneticButton>
-            <a 
+            <a
               href="https://app.whaapy.com/login"
               className="glass-dark group relative px-10 py-5 text-text-primary rounded-2xl hover:border-accent/30 transition-all font-bold text-lg overflow-hidden shadow-premium hover:shadow-premium-lg inline-block"
+              onClick={() =>
+                captureEvent('cta_login_click', {
+                  location: 'hero_secondary_cta',
+                })
+              }
             >
               Iniciar sesión
             </a>

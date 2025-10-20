@@ -6,6 +6,7 @@ import { ArrowRight, Check } from 'lucide-react'
 import Image from 'next/image'
 import MagneticButton from '../shared/MagneticButton'
 import ContactModal from '../shared/ContactModal'
+import { captureEvent } from '@/app/lib/analytics'
 
 export default function CTA() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -23,6 +24,10 @@ export default function CTA() {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
+          captureEvent('section_viewed', {
+            section: 'cta_final',
+          })
+
           // Text reveal con circular mask
           if (headlineRef.current) {
             anime({
@@ -72,6 +77,9 @@ export default function CTA() {
   }, [])
 
   const handleDemoClick = () => {
+    captureEvent('cta_demo_click', {
+      location: 'bottom_cta',
+    })
     setIsContactModalOpen(true)
   }
 
@@ -153,8 +161,13 @@ export default function CTA() {
               <a href="/privacidad" className="hover:text-text-primary transition-colors">
                 Privacidad
               </a>
-              <button 
-                onClick={() => setIsContactModalOpen(true)}
+              <button
+                onClick={() => {
+                  captureEvent('cta_contact_click', {
+                    location: 'footer_contact',
+                  })
+                  setIsContactModalOpen(true)
+                }}
                 className="hover:text-text-primary transition-colors"
               >
                 Contacto

@@ -1,8 +1,16 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { X, Send, Mail, User, Building2 } from 'lucide-react'
 import anime from 'animejs'
+import { captureEvent } from '@/app/lib/analytics'
+
+const initialFormState = {
+  name: '',
+  email: '',
+  company: '',
+  message: ''
+}
 
 interface ContactModalProps {
   isOpen: boolean
@@ -13,18 +21,50 @@ interface ContactModalProps {
 export default function ContactModal({ isOpen, onClose, type = 'demo' }: ContactModalProps) {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    company: '',
-    message: ''
-  })
+  const [formData, setFormData] = useState(initialFormState)
+
+  useEffect(() => {
+    if (isOpen) {
+      captureEvent('contact_modal_opened', {
+        type,
+      })
+    }
+  }, [isOpen, type])
+
+  useEffect(() => {
+    if (!isOpen) {
+      setIsSubmitting(false)
+      setIsSuccess(false)
+      setFormData(initialFormState)
+    }
+  }, [isOpen])
+
+  const closeModal = (reason: 'overlay' | 'close_button' | 'success_auto_close') => {
+    captureEvent('contact_modal_closed', {
+      type,
+      reason,
+    })
+
+    onClose()
+  }
 
   if (!isOpen) return null
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
+
+    const fieldsCompleted = Object.entries(formData).reduce((acc, [key, value]) => {
+      return {
+        ...acc,
+        [key]: Boolean(value.trim())
+      }
+    }, {} as Record<string, boolean>)
+
+    captureEvent('contact_form_submitted', {
+      type,
+      ...fieldsCompleted,
+    })
 
     try {
       const response = await fetch('https://formspree.io/f/xyzgvqpl', {
@@ -40,7 +80,11 @@ export default function ContactModal({ isOpen, onClose, type = 'demo' }: Contact
 
       if (response.ok) {
         setIsSuccess(true)
-        
+
+        captureEvent('contact_form_submit_success', {
+          type,
+        })
+
         // Animate success
         anime({
           targets: '.success-icon',
@@ -51,13 +95,20 @@ export default function ContactModal({ isOpen, onClose, type = 'demo' }: Contact
         })
 
         setTimeout(() => {
-          onClose()
-          setIsSuccess(false)
-          setFormData({ name: '', email: '', company: '', message: '' })
+          closeModal('success_auto_close')
         }, 2500)
+      } else {
+        captureEvent('contact_form_submit_failed', {
+          type,
+          status: response.status,
+        })
       }
     } catch (error) {
       console.error('Error submitting form:', error)
+      captureEvent('contact_form_submit_error', {
+        type,
+        message: error instanceof Error ? error.message : 'unknown_error',
+      })
     } finally {
       setIsSubmitting(false)
     }
@@ -73,16 +124,16 @@ export default function ContactModal({ isOpen, onClose, type = 'demo' }: Contact
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
       {/* Backdrop */}
-      <div 
+      <div
         className="absolute inset-0 bg-black/60 backdrop-blur-sm"
-        onClick={onClose}
+        onClick={() => closeModal('overlay')}
       />
 
       {/* Modal */}
       <div className="relative bg-white rounded-3xl shadow-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto">
         {/* Close button */}
         <button
-          onClick={onClose}
+          onClick={() => closeModal('close_button')}
           className="absolute top-6 right-6 w-10 h-10 flex items-center justify-center rounded-full bg-surface hover:bg-border transition-colors z-10"
           aria-label="Cerrar"
         >

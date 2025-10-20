@@ -63,6 +63,31 @@ npm run build
 npm start
 ```
 
+## 📊 Analítica
+
+Esta landing integra seguimiento con [PostHog](https://posthog.com) para medir interacciones clave.
+
+1. Define las variables de entorno en un archivo `.env.local`:
+
+```bash
+NEXT_PUBLIC_POSTHOG_KEY="phc_xxx"
+# Opcional, por defecto apunta a https://us.i.posthog.com
+NEXT_PUBLIC_POSTHOG_HOST="https://app.posthog.com"
+```
+
+2. Reinicia el servidor de desarrollo para que los cambios surtan efecto.
+
+Eventos capturados automáticamente:
+
+- `section_viewed` (ej. sección CTA final)
+- `cta_demo_click`, `cta_login_click`, `cta_contact_click`
+- `header_mobile_menu_toggled` / `header_mobile_menu_closed`
+- `contact_modal_opened` / `contact_modal_closed`
+- `contact_form_submitted` + estados `*_success`, `*_failed`, `*_error`
+- `$pageview` en cada navegación + `landing_tab_focus` al recuperar foco
+
+Todos los eventos incluyen el contexto `product_area: "landing"` para segmentar fácilmente en PostHog.
+
 ## 📁 Estructura
 
 ```
