@@ -1,3 +1,4 @@
+import { Suspense } from 'react'
 import Script from 'next/script'
 import RouteChangeTracker from './RouteChangeTracker'
 
@@ -20,7 +21,9 @@ export default function PostHogAnalytics() {
       <Script id="posthog-sdk" strategy="afterInteractive">
         {buildInitScript()}
       </Script>
-      <RouteChangeTracker />
+      <Suspense fallback={null}>
+        <RouteChangeTracker />
+      </Suspense>
     </>
   )
 }
