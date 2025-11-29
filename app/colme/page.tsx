@@ -97,8 +97,9 @@ const TypewriterBrand = () => {
         <>
           <span className="text-accent font-bold">co</span>
           <span className="text-text-muted">llaborative </span>
-          <span className="text-accent font-bold">ll</span>
-          <span className="text-text-muted">m </span>
+          <span className="text-accent font-bold">l</span>
+          <span className="text-text-muted">l</span>
+          <span className="text-accent font-bold">m </span>
           <span className="text-accent font-bold">e</span>
           <span className="text-text-muted">ngine</span>
         </>
