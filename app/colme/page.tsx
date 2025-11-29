@@ -466,7 +466,7 @@ export default function ColmePage() {
       <footer className="border-t-2 border-border py-12 bg-surface">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <p className="text-text-secondary">
-            © 2025 Whaapy by Datagora. Todos los derechos reservados.
+            © 2025 Whaapy. Todos los derechos reservados.
           </p>
           <div className="mt-4 flex gap-6 justify-center flex-wrap">
             <Link href="/terminos" className="text-accent hover:underline">
