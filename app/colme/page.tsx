@@ -2,6 +2,120 @@
 
 import { ArrowLeft, Brain, Zap, Target, Shield, RefreshCw, Sparkles } from 'lucide-react'
 import Link from 'next/link'
+import { useState, useEffect } from 'react'
+
+// Componente TypewriterBrand
+const TypewriterBrand = () => {
+  const [displayText, setDisplayText] = useState('colme')
+  const [isFullPhrase, setIsFullPhrase] = useState(false)
+  const [showCursor, setShowCursor] = useState(true)
+
+  useEffect(() => {
+    let timeoutId: NodeJS.Timeout
+    let isCancelled = false
+    
+    const typeDelay = (ms: number) => new Promise(resolve => {
+      timeoutId = setTimeout(resolve, ms)
+    })
+
+    const animate = async () => {
+      while (!isCancelled) {
+        // 1. Estado inicial: "colme" (verde)
+        setDisplayText('colme')
+        setIsFullPhrase(false)
+        setShowCursor(true)
+        await typeDelay(2500)
+        if (isCancelled) break
+
+        // 2. Borrar "me"
+        setDisplayText('col')
+        await typeDelay(100)
+
+        // 3. Escribir "laborative "
+        const text1 = 'laborative '
+        for (let i = 1; i <= text1.length; i++) {
+          if (isCancelled) break
+          setDisplayText('col' + text1.substring(0, i))
+          await typeDelay(30)
+        }
+
+        // 4. Escribir "llm "
+        const text2 = 'llm '
+        for (let i = 1; i <= text2.length; i++) {
+          if (isCancelled) break
+          setDisplayText('collaborative ' + text2.substring(0, i))
+          await typeDelay(30)
+        }
+
+        // 5. Escribir "engine"
+        const text3 = 'engine'
+        for (let i = 1; i <= text3.length; i++) {
+          if (isCancelled) break
+          setDisplayText('collaborative llm ' + text3.substring(0, i))
+          await typeDelay(30)
+        }
+
+        // 6. Estado final: Highlight roots
+        setIsFullPhrase(true)
+        await typeDelay(500) 
+        setShowCursor(false) // Ocultar cursor para foto finish
+        
+        // 7. Mantener frase completa 4 segundos
+        await typeDelay(4000)
+        if (isCancelled) break
+        
+        // 8. Reset
+        setShowCursor(true)
+        setIsFullPhrase(false) // Volver a verde para borrado
+        
+        // Borrado rápido
+        const fullText = 'collaborative llm engine'
+        for (let i = fullText.length; i >= 3; i--) { 
+           if (isCancelled) break
+           setDisplayText(fullText.substring(0, i))
+           await typeDelay(10)
+        }
+        
+        // 9. Escribir "me"
+        setDisplayText('colm')
+        await typeDelay(50)
+        setDisplayText('colme')
+      }
+    }
+
+    animate()
+
+    return () => {
+      isCancelled = true
+      clearTimeout(timeoutId)
+    }
+  }, [])
+
+  const renderText = () => {
+    if (isFullPhrase) {
+      return (
+        <>
+          <span className="text-accent font-bold">co</span>
+          <span className="text-text-muted">llaborative </span>
+          <span className="text-accent font-bold">l</span>
+          <span className="text-text-muted">lm </span>
+          <span className="text-accent font-bold">e</span>
+          <span className="text-text-muted">ngine</span>
+        </>
+      )
+    }
+    return <span className="text-accent font-bold">{displayText}</span>
+  }
+
+  return (
+    <div className="font-mono text-sm md:text-base tracking-wide h-8 flex items-center justify-center select-none">
+      {renderText()}
+      <span 
+        className={`ml-1.5 w-2 h-4 bg-accent inline-block ${showCursor ? 'animate-pulse' : 'opacity-0'}`}
+      />
+    </div>
+  )
+}
 
 export default function ColmePage() {
   return (
@@ -49,18 +163,9 @@ export default function ColmePage() {
             </p>
           </div>
 
-          {/* Subtitle explanation - Animated */}
-          <div className="text-center mt-6 font-mono text-sm animate-fade-in h-8 flex items-center justify-center">
-            <div className="colme-morph">
-              <span className="colme-text">
-                <span className="text-accent">col</span>me
-              </span>
-              <span className="colme-expanded">
-                <span className="text-accent">co</span>llaborative{' '}
-                <span className="text-accent">l</span>lm{' '}
-                <span className="text-accent">e</span>ngine
-              </span>
-            </div>
+          {/* Subtitle explanation - Animated Typewriter */}
+          <div className="text-center mt-6 animate-fade-in">
+            <TypewriterBrand />
           </div>
         </div>
       </section>
@@ -398,39 +503,6 @@ export default function ColmePage() {
         }
         .animate-fade-in-up {
           animation: fade-in-up 0.8s ease-out forwards;
-        }
-        
-        /* colme morph animation */
-        .colme-morph {
-          position: relative;
-          display: inline-block;
-        }
-        .colme-text,
-        .colme-expanded {
-          transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .colme-text {
-          opacity: 1;
-          display: inline-block;
-          animation: colme-cycle 6s ease-in-out infinite;
-        }
-        .colme-expanded {
-          position: absolute;
-          left: 50%;
-          transform: translateX(-50%);
-          white-space: nowrap;
-          opacity: 0;
-          animation: expanded-cycle 6s ease-in-out infinite;
-        }
-        @keyframes colme-cycle {
-          0%, 40% { opacity: 1; }
-          50%, 90% { opacity: 0; }
-          100% { opacity: 1; }
-        }
-        @keyframes expanded-cycle {
-          0%, 40% { opacity: 0; }
-          50%, 90% { opacity: 1; }
-          100% { opacity: 0; }
         }
       `}</style>
     </main>
