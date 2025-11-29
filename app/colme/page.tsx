@@ -108,11 +108,13 @@ const TypewriterBrand = () => {
   }
 
   return (
-    <div className="font-mono text-sm md:text-base tracking-wide h-8 flex items-center justify-center select-none">
-      {renderText()}
-      <span 
-        className={`ml-1.5 w-2 h-4 bg-accent inline-block ${showCursor ? 'animate-pulse' : 'opacity-0'}`}
-      />
+    <div className="font-mono text-[9px] sm:text-xs md:text-sm tracking-tight sm:tracking-wide min-h-8 flex items-center justify-center select-none px-2 sm:px-4">
+      <div className="text-center">
+        {renderText()}
+        <span 
+          className={`ml-1 w-1.5 h-3 sm:ml-1.5 sm:w-2 sm:h-4 bg-accent inline-block ${showCursor ? 'animate-pulse' : 'opacity-0'}`}
+        />
+      </div>
     </div>
   )
 }
