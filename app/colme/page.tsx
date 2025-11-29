@@ -96,15 +96,15 @@ const TypewriterBrand = () => {
       return (
         <>
           <span className="text-accent font-bold">co</span>
-          <span className="text-text-muted">llaborative </span>
+          <span className="text-text-muted">llaborative&nbsp;</span>
           <span className="text-accent font-bold">l</span>
-          <span className="text-text-muted">lm </span>
+          <span className="text-text-muted">lm&nbsp;</span>
           <span className="text-accent font-bold">e</span>
           <span className="text-text-muted">ngine</span>
         </>
       )
     }
-    return <span className="text-accent font-bold">{displayText}</span>
+    return <span className="text-accent font-bold whitespace-pre">{displayText}</span>
   }
 
   return (
