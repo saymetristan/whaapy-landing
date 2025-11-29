@@ -63,11 +63,11 @@ export default function ColmePage() {
         <section className="mb-16">
           <div className="glass-dark rounded-2xl p-8 md:p-10 shadow-premium">
             <p className="text-lg md:text-xl text-text-primary leading-relaxed">
-              <strong>TL;DR:</strong> Después de meses construyendo AI agents para customer service 
-              en WhatsApp, nos dimos cuenta de que los LLMs por sí solos no son 
+              <strong>TL;DR:</strong> Después de meses construyendo agentes de IA para atención 
+              al cliente en WhatsApp, nos dimos cuenta de que los LLMs por sí solos no son 
               suficientes. Hoy anunciamos <strong className="text-accent">colme-1</strong> — un 
-              multi-layer orchestration system que hace que las conversaciones con IA realmente 
-              funcionen en production.
+              sistema de orquestación multi-capa que hace que las conversaciones con IA realmente 
+              funcionen en producción.
             </p>
           </div>
         </section>
@@ -79,8 +79,8 @@ export default function ColmePage() {
           </h2>
           <div className="prose prose-lg max-w-none">
             <p className="text-text-secondary text-lg leading-relaxed mb-6">
-              Todo el mundo está construyendo &quot;AI agents&quot; wrapping ChatGPT con un 
-              system prompt. Funciona para demos. Falla en production.
+              Todo el mundo está construyendo &quot;agentes de IA&quot; envolviendo ChatGPT con un 
+              system prompt. Funciona para demos. Falla en producción.
             </p>
             <p className="text-text-secondary text-lg leading-relaxed mb-6">
               ¿Por qué? Porque las conversaciones reales con clientes no son uniformes:
@@ -88,25 +88,25 @@ export default function ColmePage() {
             <ul className="space-y-3 text-text-secondary">
               <li className="flex items-start gap-3">
                 <span className="text-accent mt-1.5">→</span>
-                <span>Un &quot;Hola&quot; no necesita el mismo processing que &quot;¿Cuánto cuesta el plan enterprise?&quot;</span>
+                <span>Un &quot;Hola&quot; no necesita el mismo procesamiento que &quot;¿Cuánto cuesta el plan enterprise?&quot;</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-accent mt-1.5">→</span>
-                <span>No todas las preguntas requieren buscar en tu knowledge base</span>
+                <span>No todas las preguntas requieren buscar en tu base de conocimiento</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-accent mt-1.5">→</span>
-                <span>A veces la IA simplemente debería... callarse y hacer handoff a un humano</span>
+                <span>A veces la IA simplemente debería... callarse y escalar a un humano</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-accent mt-1.5">→</span>
-                <span>Y cuando la IA da una respuesta mediocre, ¿quién está haciendo quality validation?</span>
+                <span>Y cuando la IA da una respuesta mediocre, ¿quién la está validando?</span>
               </li>
             </ul>
             <p className="text-text-secondary text-lg leading-relaxed mt-6">
-              Pasamos meses viendo a nuestros agents fallar de maneras sutiles. Clientes 
-              recibiendo respuestas irrelevantes. Tokens burning en saludos simples. 
-              Preguntas críticas yendo a la IA cuando deberían haber ido a sales.
+              Pasamos meses viendo a nuestros agentes fallar de maneras sutiles. Clientes 
+              recibiendo respuestas irrelevantes. Tokens quemándose en saludos simples. 
+              Preguntas críticas yendo a la IA cuando deberían haber ido a ventas.
             </p>
             <p className="text-text-primary text-xl font-semibold mt-8">
               Así que construimos algo diferente.
@@ -125,12 +125,12 @@ export default function ColmePage() {
               <strong className="text-accent">Collaborative LLM Engine</strong>.
             </p>
             <p className="text-text-secondary text-lg leading-relaxed mb-6">
-              No es un modelo. No es un prompt. Es una orchestration layer que se sitúa 
-              entre tus clientes y múltiples LLMs, tomando decisiones en real-time sobre 
+              No es un modelo. No es un prompt. Es una capa de orquestación que se sitúa 
+              entre tus clientes y múltiples LLMs, tomando decisiones en tiempo real sobre 
               cómo manejar cada mensaje.
             </p>
             <p className="text-text-secondary text-lg leading-relaxed">
-              Piensa en él como el &quot;brain&quot; que decide:
+              Piensa en él como el &quot;cerebro&quot; que decide:
             </p>
           </div>
 
@@ -139,27 +139,27 @@ export default function ColmePage() {
             {[
               {
                 icon: Zap,
-                title: "¿Esto necesita inference?",
-                description: "40% de mensajes usan fast-path sin LLM"
+                title: "¿Esto necesita un LLM?",
+                description: "40% de mensajes usan fast-path directo"
               },
               {
                 icon: Brain,
-                title: "¿Cuál LLM debería manejarlo?",
-                description: "Smart routing entre speed vs quality"
+                title: "¿Cuál modelo debería manejarlo?",
+                description: "Routing inteligente: velocidad vs calidad"
               },
               {
                 icon: Target,
-                title: "¿Necesita RAG context?",
+                title: "¿Necesita contexto de RAG?",
                 description: "Y cómo hacer el retrieval correcto"
               },
               {
                 icon: RefreshCw,
                 title: "¿Esta respuesta es buena?",
-                description: "Self-correction automática si no lo es"
+                description: "Auto-corrección si no lo es"
               },
               {
                 icon: Shield,
-                title: "¿Debería hacer handoff?",
+                title: "¿Debería escalar a humano?",
                 description: "Antes de que el cliente se frustre"
               }
             ].map((item, index) => (
@@ -191,23 +191,23 @@ export default function ColmePage() {
           <div className="mb-12">
             <div className="flex items-center gap-3 mb-4">
               <span className="w-8 h-8 rounded-full bg-accent text-white flex items-center justify-center font-bold text-sm">1</span>
-              <h3 className="text-xl font-bold">Intelligence Before Inference</h3>
+              <h3 className="text-xl font-bold">Inteligencia Antes de Inferencia</h3>
             </div>
             <p className="text-text-secondary text-lg leading-relaxed ml-11">
-              La mayoría de AI systems procesan cada mensaje de la misma manera. 
-              colme-1 analiza intent, complexity y sentiment <em>antes</em> de decidir 
+              La mayoría de sistemas de IA procesan cada mensaje de la misma manera. 
+              colme-1 analiza intención, complejidad y sentimiento <em>antes</em> de decidir 
               cómo responder.
             </p>
             <div className="mt-4 ml-11 flex flex-wrap gap-3">
               <span className="bg-surface px-4 py-2 rounded-lg text-sm">
-                <span className="text-accent font-semibold">~200ms</span> fast-path response
+                <span className="text-accent font-semibold">~200ms</span> respuesta fast-path
               </span>
               <span className="bg-surface px-4 py-2 rounded-lg text-sm">
-                <span className="text-accent font-semibold">~2s</span> full RAG pipeline
+                <span className="text-accent font-semibold">~2s</span> pipeline RAG completo
               </span>
             </div>
             <p className="text-text-muted text-sm mt-3 ml-11">
-              Misma calidad. Fracción del token cost.
+              Misma calidad. Fracción del costo en tokens.
             </p>
           </div>
 
@@ -215,20 +215,20 @@ export default function ColmePage() {
           <div className="mb-12">
             <div className="flex items-center gap-3 mb-4">
               <span className="w-8 h-8 rounded-full bg-accent text-white flex items-center justify-center font-bold text-sm">2</span>
-              <h3 className="text-xl font-bold">Multi-Model Orchestration</h3>
+              <h3 className="text-xl font-bold">Orquestación Multi-Modelo</h3>
             </div>
             <p className="text-text-secondary text-lg leading-relaxed ml-11">
-              No creemos en &quot;one model to rule them all&quot;. colme-1 routea diferentes 
+              No creemos en &quot;un modelo para todo&quot;. colme-1 enruta diferentes 
               operaciones a diferentes modelos basándose en lo que cada uno hace mejor:
             </p>
             <ul className="mt-4 ml-11 space-y-2 text-text-secondary">
-              <li>• Fast models para routing decisions</li>
-              <li>• Reasoning models para complex analysis</li>
-              <li>• Specialized models para knowledge retrieval</li>
-              <li>• Quality models para response validation</li>
+              <li>• Modelos rápidos para decisiones de routing</li>
+              <li>• Modelos de reasoning para análisis complejo</li>
+              <li>• Modelos especializados para retrieval de conocimiento</li>
+              <li>• Modelos de calidad para validación de respuestas</li>
             </ul>
             <p className="text-text-muted text-sm mt-4 ml-11 italic">
-              El cliente ve una conversación seamless. Under the hood, múltiples modelos están colaborando.
+              El cliente ve una conversación fluida. Por debajo, múltiples modelos colaborando.
             </p>
           </div>
 
@@ -236,20 +236,20 @@ export default function ColmePage() {
           <div className="mb-12">
             <div className="flex items-center gap-3 mb-4">
               <span className="w-8 h-8 rounded-full bg-accent text-white flex items-center justify-center font-bold text-sm">3</span>
-              <h3 className="text-xl font-bold">Adaptive Knowledge Retrieval</h3>
+              <h3 className="text-xl font-bold">RAG Adaptativo</h3>
             </div>
             <p className="text-text-secondary text-lg leading-relaxed ml-11">
-              RAG está broken en la mayoría de implementaciones. Buscas, obtienes 5 chunks, 
-              los stuffeas en context. Hope for the best.
+              RAG está roto en la mayoría de implementaciones. Buscas, obtienes 5 chunks, 
+              los metes en contexto. Esperas lo mejor.
             </p>
             <p className="text-text-secondary text-lg leading-relaxed mt-4 ml-11">
-              El approach de colme-1:
+              El enfoque de colme-1:
             </p>
             <ul className="mt-3 ml-11 space-y-2 text-text-secondary">
-              <li>• Decide dinámicamente <em>si</em> se necesita knowledge</li>
-              <li>• Multi-query expansion cuando la pregunta es ambigua</li>
-              <li>• LLM-based reranking antes de usar el context</li>
-              <li>• Graceful fallback cuando nada matchea</li>
+              <li>• Decide dinámicamente <em>si</em> se necesita conocimiento</li>
+              <li>• Expansión multi-query cuando la pregunta es ambigua</li>
+              <li>• Reranking con LLM antes de usar el contexto</li>
+              <li>• Fallback elegante cuando nada coincide</li>
             </ul>
           </div>
 
@@ -257,11 +257,11 @@ export default function ColmePage() {
           <div className="mb-12">
             <div className="flex items-center gap-3 mb-4">
               <span className="w-8 h-8 rounded-full bg-accent text-white flex items-center justify-center font-bold text-sm">4</span>
-              <h3 className="text-xl font-bold">Built-in Self-Correction</h3>
+              <h3 className="text-xl font-bold">Auto-Corrección Integrada</h3>
             </div>
             <p className="text-text-secondary text-lg leading-relaxed ml-11">
-              Cuando el confidence score es bajo, colme-1 no simplemente envía la respuesta y pray. 
-              Valida quality, identifica issues, y regenera cuando es necesario.
+              Cuando el nivel de confianza es bajo, colme-1 no simplemente envía la respuesta. 
+              Valida la calidad, identifica problemas, y regenera cuando es necesario.
             </p>
             <p className="text-text-muted text-sm mt-3 ml-11 italic">
               Esto sucede automáticamente, invisible al usuario, antes de que el cliente vea nada.
@@ -272,14 +272,14 @@ export default function ColmePage() {
           <div className="mb-12">
             <div className="flex items-center gap-3 mb-4">
               <span className="w-8 h-8 rounded-full bg-accent text-white flex items-center justify-center font-bold text-sm">5</span>
-              <h3 className="text-xl font-bold">Intelligent Handoff</h3>
+              <h3 className="text-xl font-bold">Handoff Inteligente</h3>
             </div>
             <p className="text-text-secondary text-lg leading-relaxed ml-11">
-              El problema más difícil en AI customer service: saber cuándo parar.
+              El problema más difícil en atención al cliente con IA: saber cuándo parar.
             </p>
             <p className="text-text-secondary text-lg leading-relaxed mt-4 ml-11">
-              colme-1 trackea conversation dynamics, detecta frustration patterns, 
-              y proactivamente triggerea handoff antes de que el cliente tenga que pedirlo.
+              colme-1 analiza la dinámica de la conversación, detecta patrones de frustración, 
+              y proactivamente escala a humano antes de que el cliente tenga que pedirlo.
             </p>
           </div>
         </section>
@@ -292,71 +292,42 @@ export default function ColmePage() {
           <div className="prose prose-lg max-w-none">
             <p className="text-text-secondary text-lg leading-relaxed mb-6">
               Estamos construyendo <strong className="text-accent">Whaapy</strong> — una plataforma 
-              AI-native para customer service en WhatsApp.
+              nativa de IA para atención al cliente en WhatsApp.
             </p>
             <p className="text-text-secondary text-lg leading-relaxed mb-6">
-              Nuestros primeros clientes usaban basic LLM integrations. Funcionaban... 
-              hasta que no. Una mala AI response en el momento equivocado puede perder 
-              una venta, damage trust, o peor.
+              Nuestros primeros clientes usaban integraciones básicas de LLM. Funcionaban... 
+              hasta que no. Una mala respuesta de IA en el momento equivocado puede perder 
+              una venta, dañar la confianza, o peor.
             </p>
             <p className="text-text-secondary text-lg leading-relaxed mb-6">
-              colme-1 es nuestra respuesta a &quot;¿cómo haces que la IA sea reliable enough 
-              para real business conversations?&quot;
+              colme-1 es nuestra respuesta a &quot;¿cómo haces que la IA sea lo suficientemente 
+              confiable para conversaciones de negocio reales?&quot;
             </p>
             <p className="text-text-primary text-xl font-semibold">
               No se trata de hacer la IA más inteligente. Se trata de hacer los{' '}
-              <em>AI systems</em> más inteligentes.
+              <em>sistemas</em> de IA más inteligentes.
             </p>
-          </div>
-        </section>
-
-        {/* What's Next */}
-        <section className="mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            What&apos;s Next
-          </h2>
-          <div className="glass-dark rounded-2xl p-8 shadow-premium">
-            <p className="text-text-secondary text-lg leading-relaxed mb-6">
-              colme-1 está live in production, powering conversaciones para nuestros 
-              clientes hoy.
-            </p>
-            <p className="text-text-secondary text-lg leading-relaxed mb-4">
-              Ya estamos trabajando en <strong className="text-accent">colme-2</strong>, 
-              que introducirá:
-            </p>
-            <ul className="space-y-2 text-text-secondary">
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-accent"></span>
-                Persistent agent memory across conversations
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-accent"></span>
-                Proactive customer outreach
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-accent"></span>
-                Multi-language optimization
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="w-1.5 h-1.5 rounded-full bg-accent"></span>
-                Voice conversation support
-              </li>
-            </ul>
           </div>
         </section>
 
         {/* Closing */}
         <section>
+          <div className="glass-dark rounded-2xl p-8 shadow-premium mb-12">
+            <p className="text-lg text-text-primary leading-relaxed text-center">
+              <strong className="text-accent">colme-1 ya está disponible</strong> para todos los clientes de Whaapy.{' '}
+              Cada conversación que pasa por nuestra plataforma está potenciada por este motor de orquestación.
+            </p>
+          </div>
           <div className="text-center border-t border-border pt-12">
             <p className="text-text-secondary text-lg mb-6">
-              Si estás construyendo AI para customer conversations, conoces el pain.{' '}
+              Si estás construyendo IA para conversaciones con clientes, conoces el dolor.{' '}
               <br className="hidden md:block" />
-              Raw LLMs no son suficientes. The future is orchestration.
+              Los LLMs solos no son suficientes. El futuro es la orquestación.
             </p>
             <p className="text-text-muted text-sm mb-8 italic">
-              colme-1 es el orchestration engine detrás de Whaapy.{' '}
+              colme-1 es el motor de orquestación detrás de Whaapy.{' '}
               <br className="hidden md:block" />
-              No es open-source (yet), pero estamos happy to chat sobre los problemas que resolvemos.
+              No es open-source (aún), pero estamos felices de conversar sobre los problemas que resolvemos.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Link
