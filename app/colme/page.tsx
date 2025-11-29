@@ -31,19 +31,19 @@ const TypewriterBrand = () => {
         setDisplayText('col')
         await typeDelay(100)
 
-        // 3. Escribir "laborative"
-        const text1 = 'laborative'
+        // 3. Escribir "laborative "
+        const text1 = 'laborative '
         for (let i = 1; i <= text1.length; i++) {
           if (isCancelled) break
           setDisplayText('col' + text1.substring(0, i))
           await typeDelay(30)
         }
 
-        // 4. Escribir "llm"
-        const text2 = 'llm'
+        // 4. Escribir "llm "
+        const text2 = 'llm '
         for (let i = 1; i <= text2.length; i++) {
           if (isCancelled) break
-          setDisplayText('collaborative' + text2.substring(0, i))
+          setDisplayText('collaborative ' + text2.substring(0, i))
           await typeDelay(30)
         }
 
@@ -51,7 +51,7 @@ const TypewriterBrand = () => {
         const text3 = 'engine'
         for (let i = 1; i <= text3.length; i++) {
           if (isCancelled) break
-          setDisplayText('collaborativellm' + text3.substring(0, i))
+          setDisplayText('collaborative llm ' + text3.substring(0, i))
           await typeDelay(30)
         }
 
@@ -69,7 +69,7 @@ const TypewriterBrand = () => {
         setIsFullPhrase(false) // Volver a verde para borrado
         
         // Borrado rápido
-        const fullText = 'collaborativellmengine'
+        const fullText = 'collaborative llm engine'
         for (let i = fullText.length; i >= 3; i--) { 
            if (isCancelled) break
            setDisplayText(fullText.substring(0, i))
@@ -96,15 +96,15 @@ const TypewriterBrand = () => {
       return (
         <>
           <span className="text-accent font-bold">co</span>
-          <span className="text-text-muted">llaborative</span>
+          <span className="text-text-muted">llaborative </span>
           <span className="text-accent font-bold">ll</span>
-          <span className="text-text-muted">m</span>
+          <span className="text-text-muted">m </span>
           <span className="text-accent font-bold">e</span>
           <span className="text-text-muted">ngine</span>
         </>
       )
     }
-    return <span className="text-accent font-bold">{displayText}</span>
+    return <span className="text-accent font-bold whitespace-pre">{displayText}</span>
   }
 
   return (
