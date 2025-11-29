@@ -49,10 +49,19 @@ export default function ColmePage() {
             </p>
           </div>
 
-          {/* Subtitle explanation */}
-          <p className="text-center text-text-muted mt-6 font-mono text-sm animate-fade-in">
-            colme = <span className="text-accent">co</span>llaborative <span className="text-accent">l</span>lm <span className="text-accent">e</span>ngine
-          </p>
+          {/* Subtitle explanation - Animated */}
+          <div className="text-center mt-6 font-mono text-sm animate-fade-in h-8 flex items-center justify-center">
+            <div className="colme-morph">
+              <span className="colme-text">
+                <span className="text-accent">col</span>me
+              </span>
+              <span className="colme-expanded">
+                <span className="text-accent">co</span>llaborative{' '}
+                <span className="text-accent">l</span>lm{' '}
+                <span className="text-accent">e</span>ngine
+              </span>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -389,6 +398,39 @@ export default function ColmePage() {
         }
         .animate-fade-in-up {
           animation: fade-in-up 0.8s ease-out forwards;
+        }
+        
+        /* colme morph animation */
+        .colme-morph {
+          position: relative;
+          display: inline-block;
+        }
+        .colme-text,
+        .colme-expanded {
+          transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .colme-text {
+          opacity: 1;
+          display: inline-block;
+          animation: colme-cycle 6s ease-in-out infinite;
+        }
+        .colme-expanded {
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+          white-space: nowrap;
+          opacity: 0;
+          animation: expanded-cycle 6s ease-in-out infinite;
+        }
+        @keyframes colme-cycle {
+          0%, 40% { opacity: 1; }
+          50%, 90% { opacity: 0; }
+          100% { opacity: 1; }
+        }
+        @keyframes expanded-cycle {
+          0%, 40% { opacity: 0; }
+          50%, 90% { opacity: 1; }
+          100% { opacity: 0; }
         }
       `}</style>
     </main>
