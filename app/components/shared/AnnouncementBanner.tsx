@@ -1,50 +1,43 @@
 'use client'
 
 import Link from 'next/link'
-import { useState } from 'react'
+import { ArrowRight } from 'lucide-react'
 
-export default function AnnouncementBanner() {
-  const [isDismissed, setIsDismissed] = useState(false)
-
-  if (isDismissed) return null
-
+export default function AnnouncementBadge() {
   return (
     <Link 
       href="/colme"
-      className="fixed top-0 left-0 right-0 z-[60] group"
+      className="group relative inline-flex items-center gap-2 px-4 py-2 rounded-full 
+                 bg-gradient-to-r from-accent/10 via-accent/5 to-transparent
+                 border border-accent/20 hover:border-accent/40
+                 backdrop-blur-sm
+                 transition-all duration-500 ease-out
+                 hover:shadow-[0_0_30px_-5px_rgba(34,197,94,0.3)]
+                 animate-fade-in-up"
     >
-      <div className="h-7 bg-gradient-to-r from-bg-primary via-accent/5 to-bg-primary flex items-center justify-center gap-2 text-xs border-b border-border-subtle/30 hover:border-accent/30 transition-all duration-300">
-        {/* Dot pulsante */}
-        <span className="relative flex h-1.5 w-1.5">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
-          <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-accent"></span>
-        </span>
-        
-        {/* Texto minimalista */}
-        <span className="text-text-muted group-hover:text-text-primary transition-colors">
-          <span className="font-medium text-accent">colme-1</span>
-          <span className="hidden sm:inline ml-1.5">— Nuestro motor de orquestación ya está disponible</span>
-          <span className="sm:hidden ml-1">disponible</span>
-        </span>
-        
-        {/* Flecha sutil */}
-        <span className="text-text-muted group-hover:text-accent group-hover:translate-x-0.5 transition-all duration-300">
-          →
-        </span>
-        
-        {/* Close - muy sutil */}
-        <button
-          onClick={(e) => {
-            e.preventDefault()
-            e.stopPropagation()
-            setIsDismissed(true)
-          }}
-          className="absolute right-3 text-text-muted/40 hover:text-text-muted transition-colors text-[10px]"
-          aria-label="Cerrar"
-        >
-          ✕
-        </button>
+      {/* Shimmer effect */}
+      <div className="absolute inset-0 rounded-full overflow-hidden">
+        <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out bg-gradient-to-r from-transparent via-white/10 to-transparent" />
       </div>
+      
+      {/* Glow ring on hover */}
+      <div className="absolute -inset-px rounded-full bg-gradient-to-r from-accent/0 via-accent/20 to-accent/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm" />
+      
+      {/* Badge "NEW" */}
+      <span className="relative flex items-center justify-center px-2 py-0.5 text-[10px] font-bold tracking-wider uppercase bg-accent text-white rounded-full">
+        New
+      </span>
+      
+      {/* Text */}
+      <span className="relative text-sm font-medium text-text-primary">
+        Presentamos <span className="text-accent font-semibold">colme-1</span>
+      </span>
+      
+      {/* Arrow */}
+      <ArrowRight 
+        size={14} 
+        className="relative text-text-muted group-hover:text-accent group-hover:translate-x-1 transition-all duration-300" 
+      />
     </Link>
   )
 }

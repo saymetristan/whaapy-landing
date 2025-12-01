@@ -1,5 +1,4 @@
 import Header from './components/shared/Header'
-import AnnouncementBanner from './components/shared/AnnouncementBanner'
 import Hero from './components/hero/Hero'
 import Benefits from './components/benefits/Benefits'
 import UniqueFeatures from './components/unique-features/UniqueFeatures'
@@ -18,7 +17,6 @@ export default function Home() {
     <>
       <SmoothScroll />
       <ScrollProgress />
-      <AnnouncementBanner />
       <Header />
       
       <main className="relative overflow-hidden">
@@ -46,4 +44,3 @@ export default function Home() {
     </>
   )
 }
-

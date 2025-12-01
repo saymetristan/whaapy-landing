@@ -9,6 +9,7 @@ import Particles from './Particles'
 import MagneticButton from '../shared/MagneticButton'
 import ContactModal from '../shared/ContactModal'
 import { captureEvent } from '@/app/lib/analytics'
+import AnnouncementBadge from '../shared/AnnouncementBanner'
 
 export default function Hero() {
   const heroRef = useRef<HTMLDivElement>(null)
@@ -65,7 +66,7 @@ export default function Hero() {
   }
 
   return (
-    <section ref={heroRef} className="relative min-h-screen flex items-center justify-center px-6 pt-36 sm:pt-40 pb-20 md:py-32 overflow-hidden bg-gradient-to-b from-white to-surface">
+    <section ref={heroRef} className="relative min-h-screen flex items-center justify-center px-6 pt-32 sm:pt-36 pb-20 md:py-32 overflow-hidden bg-gradient-to-b from-white to-surface">
       {/* Background decorative elements - más sutiles */}
       <div className="liquid-blob" style={{ top: '-10%', right: '-5%', opacity: 0.3 }} />
       <MorphingShape />
@@ -74,6 +75,11 @@ export default function Hero() {
       {/* Hero content */}
       <div className="relative z-10 max-w-7xl mx-auto">
         <div className="text-center max-w-4xl mx-auto mb-16">
+          {/* Announcement Badge */}
+          <div className="mb-8 flex justify-center">
+            <AnnouncementBadge />
+          </div>
+          
           <h1 
             ref={headlineRef}
             className="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-[-0.04em] mb-6"
