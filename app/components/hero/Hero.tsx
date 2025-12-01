@@ -65,7 +65,7 @@ export default function Hero() {
   }
 
   return (
-    <section ref={heroRef} className="relative min-h-screen flex items-center justify-center px-6 pt-40 sm:pt-44 pb-20 md:py-32 overflow-hidden bg-gradient-to-b from-white to-surface">
+    <section ref={heroRef} className="relative min-h-screen flex items-center justify-center px-6 pt-36 sm:pt-40 pb-20 md:py-32 overflow-hidden bg-gradient-to-b from-white to-surface">
       {/* Background decorative elements - más sutiles */}
       <div className="liquid-blob" style={{ top: '-10%', right: '-5%', opacity: 0.3 }} />
       <MorphingShape />
