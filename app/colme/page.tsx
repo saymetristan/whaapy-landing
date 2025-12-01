@@ -1,6 +1,6 @@
 'use client'
 
-import { ArrowLeft, Brain, Zap, Target, Shield, RefreshCw, Sparkles } from 'lucide-react'
+import { ArrowLeft, Brain, Zap, Target, Shield, RefreshCw, Sparkles, Download, FileText } from 'lucide-react'
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
 
@@ -179,13 +179,30 @@ export default function ColmePage() {
         {/* Intro */}
         <section className="mb-16">
           <div className="glass-dark rounded-2xl p-8 md:p-10 shadow-premium">
-            <p className="text-lg md:text-xl text-text-primary leading-relaxed">
+            <p className="text-lg md:text-xl text-text-primary leading-relaxed mb-6">
               <strong>TL;DR:</strong> Después de meses construyendo agentes de IA para atención 
               al cliente en WhatsApp, nos dimos cuenta de que los LLMs por sí solos no son 
               suficientes. Hoy anunciamos <strong className="text-accent">colme-1</strong> — un 
               sistema de orquestación multi-capa que hace que las conversaciones con IA realmente 
               funcionen en producción.
             </p>
+            
+            {/* PDF Download Button */}
+            <div className="mt-6 pt-6 border-t border-border">
+              <a
+                href="https://wixzlodmqwgedtavdkuy.supabase.co/storage/v1/object/public/page/colme-1_%20Next-Generation%20AI%20Agent%20System.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 bg-accent hover:bg-accent-hover text-white px-6 py-3 rounded-lg font-semibold transition-colors shadow-md hover:shadow-lg"
+              >
+                <FileText size={20} />
+                <span>Descargar Research Paper (PDF)</span>
+                <Download size={18} />
+              </a>
+              <p className="text-sm text-text-muted mt-3">
+                Análisis técnico completo con benchmarks, arquitectura y casos de uso
+              </p>
+            </div>
           </div>
         </section>
 
@@ -458,6 +475,15 @@ export default function ColmePage() {
                 className="inline-flex items-center gap-2 bg-surface hover:bg-border text-text-primary px-6 py-3 rounded-xl font-semibold transition-colors"
               >
                 Contáctanos
+              </a>
+              <a
+                href="https://wixzlodmqwgedtavdkuy.supabase.co/storage/v1/object/public/page/colme-1_%20Next-Generation%20AI%20Agent%20System.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-surface hover:bg-border text-text-primary px-6 py-3 rounded-xl font-semibold transition-colors border border-border"
+              >
+                <FileText size={18} />
+                Research Paper
               </a>
             </div>
           </div>
