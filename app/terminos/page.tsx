@@ -1,221 +1,267 @@
-import type { Metadata } from 'next'
+import { ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
 
-export const metadata: Metadata = {
-  title: 'Términos de Servicio - Whaapy',
-  description: 'Términos y condiciones de uso de Whaapy.',
+export const metadata = {
+  title: 'Términos y Condiciones | Whaapy',
+  description: 'Términos y Condiciones de Uso de Whaapy',
   openGraph: {
-    title: 'Términos de Servicio - Whaapy',
-    description: 'Términos y condiciones de uso de Whaapy.',
+    title: 'Términos y Condiciones | Whaapy',
+    description: 'Términos y Condiciones de Uso de Whaapy',
     url: 'https://whaapy.com/terminos',
     type: 'website',
   },
   other: {
-    'fb:app_id': process.env.NEXT_PUBLIC_META_APP_ID || '',
+    'fb:app_id': '1227498005473392', // TODO: Reemplaza con tu App ID real
   },
 }
 
-export default function TermsPage() {
+export default function TerminosPage() {
   return (
-    <div className="min-h-screen bg-white">
+    <main className="relative min-h-screen bg-white">
       {/* Header */}
-      <header className="border-b border-gray-100">
+      <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-xl border-b border-border">
         <div className="max-w-4xl mx-auto px-6 py-4">
-          <Link href="/" className="text-2xl font-bold text-emerald-600">
-            Whaapy
+          <Link 
+            href="/" 
+            className="inline-flex items-center gap-2 text-text-secondary hover:text-accent transition-colors"
+          >
+            <ArrowLeft size={20} />
+            <span className="font-semibold">Volver a inicio</span>
           </Link>
         </div>
       </header>
 
       {/* Content */}
-      <main className="max-w-4xl mx-auto px-6 py-12">
-        <h1 className="text-4xl font-bold text-gray-900 mb-8">Términos de Servicio</h1>
-        
-        <p className="text-gray-600 mb-8">
-          Última actualización: {new Date().toLocaleDateString('es-MX', { year: 'numeric', month: 'long', day: 'numeric' })}
+      <article className="max-w-4xl mx-auto px-6 py-16 prose prose-lg">
+        <h1 className="text-4xl md:text-5xl font-bold mb-4">Términos y Condiciones</h1>
+        <p className="text-xl text-text-secondary mb-12">
+          Última actualización: 15 de Octubre, 2025
         </p>
 
-        <div className="prose prose-gray max-w-none">
-          <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">1. Aceptación de Términos</h2>
-            <p className="text-gray-700 mb-4">
-              Al acceder y utilizar Whaapy ("el Servicio"), aceptas estar sujeto a estos Términos de Servicio. Si no estás de acuerdo con alguna parte de estos términos, no podrás acceder al Servicio.
-            </p>
-          </section>
+        <p className="lead">
+          Estos Términos y Condiciones (en adelante, los "Términos") regulan el uso de la plataforma <strong>Whaapy</strong>, operada por Datagora Inteligencia Digital S.A.S. de C.V. (en adelante, "Whaapy", "nosotros" o "la Plataforma"). Al registrarse y utilizar Whaapy, usted (en adelante, el "Cliente" o "Usuario") acepta plenamente estos Términos, los cuales constituyen un acuerdo legal vinculante.
+        </p>
 
-          <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">2. Descripción del Servicio</h2>
-            <p className="text-gray-700 mb-4">
-              Whaapy es una plataforma de software como servicio (SaaS) que permite a negocios:
-            </p>
-            <ul className="list-disc pl-6 text-gray-700 space-y-2">
-              <li>Conectar y gestionar su cuenta de WhatsApp Business.</li>
-              <li>Enviar y recibir mensajes de WhatsApp a través de nuestra interfaz.</li>
-              <li>Configurar un asistente de inteligencia artificial para responder automáticamente.</li>
-              <li>Cargar documentos para crear una base de conocimiento.</li>
-              <li>Visualizar métricas y análisis de conversaciones.</li>
-            </ul>
-          </section>
+        <h2>1. Definiciones</h2>
+        <ul>
+          <li><strong>Plataforma:</strong> El servicio SaaS de Whaapy accesible en app.whaapy.com</li>
+          <li><strong>Servicio:</strong> Asistente de IA para WhatsApp Business, incluyendo gestión de conversaciones, agentes de IA, y funcionalidades relacionadas.</li>
+          <li><strong>Cliente/Usuario:</strong> Persona física o moral que contrata y utiliza los servicios de Whaapy.</li>
+          <li><strong>Agente de IA:</strong> Bot conversacional entrenado con información del Cliente para responder mensajes automáticamente.</li>
+          <li><strong>Suscripción:</strong> Plan de pago seleccionado por el Cliente para acceder a la Plataforma.</li>
+          <li><strong>Datos del Cliente:</strong> Toda la información proporcionada por el Cliente, incluyendo conversaciones, documentos, y configuraciones.</li>
+        </ul>
 
-          <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">3. Requisitos de Cuenta</h2>
-            <p className="text-gray-700 mb-4">Para usar Whaapy debes:</p>
-            <ul className="list-disc pl-6 text-gray-700 space-y-2">
-              <li>Tener al menos 18 años de edad.</li>
-              <li>Proporcionar información precisa y completa durante el registro.</li>
-              <li>Mantener la seguridad de tu cuenta y contraseña.</li>
-              <li>Tener una cuenta de WhatsApp Business válida y activa.</li>
-              <li>Cumplir con las políticas de WhatsApp Business y Meta.</li>
-            </ul>
-          </section>
+        <h2>2. Aceptación de los Términos</h2>
+        <p>
+          Al crear una cuenta en Whaapy, usted confirma que:
+        </p>
+        <ul>
+          <li>Ha leído y comprendido estos Términos.</li>
+          <li>Tiene capacidad legal para aceptar este acuerdo.</li>
+          <li>Si actúa en representación de una empresa, cuenta con la autorización para vincular a dicha empresa.</li>
+          <li>Cumplirá con todas las leyes aplicables en su jurisdicción.</li>
+        </ul>
 
-          <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">4. Uso Aceptable</h2>
-            <p className="text-gray-700 mb-4">Te comprometes a NO usar Whaapy para:</p>
-            <ul className="list-disc pl-6 text-gray-700 space-y-2">
-              <li>Enviar spam o mensajes no solicitados.</li>
-              <li>Actividades ilegales o fraudulentas.</li>
-              <li>Acosar, amenazar o abusar de otros usuarios.</li>
-              <li>Distribuir malware o contenido malicioso.</li>
-              <li>Violar las políticas de WhatsApp o Meta.</li>
-              <li>Intentar acceder sin autorización a nuestros sistemas.</li>
-              <li>Revender o redistribuir el Servicio sin autorización.</li>
-            </ul>
-          </section>
+        <h2>3. Descripción del Servicio</h2>
+        <p>Whaapy proporciona:</p>
+        <ul>
+          <li>Conexión de su número de WhatsApp Business a través de la API oficial.</li>
+          <li>Asistente de IA que responde mensajes automáticamente según la configuración del Cliente.</li>
+          <li>Panel de control para gestionar conversaciones, agentes, y equipos.</li>
+          <li>Sistema de transferencia de conversaciones entre IA y humanos.</li>
+          <li>Capacidad de entrenar al agente de IA con documentos y conocimiento personalizado.</li>
+          <li>Gestión de templates de WhatsApp Business.</li>
+          <li>Métricas y reportes de desempeño.</li>
+        </ul>
 
-          <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">5. Políticas de WhatsApp</h2>
-            <p className="text-gray-700 mb-4">
-              Al usar Whaapy, también aceptas cumplir con:
-            </p>
-            <ul className="list-disc pl-6 text-gray-700 space-y-2">
-              <li><a href="https://www.whatsapp.com/legal/business-policy" target="_blank" rel="noopener noreferrer" className="text-emerald-600 hover:underline">Política de WhatsApp Business</a></li>
-              <li><a href="https://www.whatsapp.com/legal/commerce-policy" target="_blank" rel="noopener noreferrer" className="text-emerald-600 hover:underline">Política de Comercio de WhatsApp</a></li>
-              <li><a href="https://developers.facebook.com/terms/" target="_blank" rel="noopener noreferrer" className="text-emerald-600 hover:underline">Términos de la Plataforma de Meta</a></li>
-            </ul>
-            <p className="text-gray-700 mt-4">
-              El incumplimiento de estas políticas puede resultar en la suspensión de tu cuenta de Whaapy y/o tu cuenta de WhatsApp Business.
-            </p>
-          </section>
+        <p><strong>Nota importante:</strong> Whaapy depende de servicios de terceros (Kapso, Meta/WhatsApp, OpenAI). No nos hacemos responsables por interrupciones en estos servicios externos.</p>
 
-          <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">6. Inteligencia Artificial</h2>
-            <p className="text-gray-700 mb-4">
-              Respecto al asistente de IA de Whaapy:
-            </p>
-            <ul className="list-disc pl-6 text-gray-700 space-y-2">
-              <li>La IA genera respuestas basadas en tu base de conocimiento y configuración.</li>
-              <li>No garantizamos que las respuestas de la IA sean 100% precisas.</li>
-              <li>Eres responsable de revisar y supervisar las respuestas automáticas.</li>
-              <li>Puedes desactivar la IA en cualquier momento desde la configuración.</li>
-              <li>Los datos enviados a la IA se procesan de forma segura y no se usan para entrenar modelos de terceros.</li>
-            </ul>
-          </section>
+        <h2>4. Registro y Cuenta</h2>
+        <h3>4.1. Requisitos</h3>
+        <p>Para utilizar Whaapy, usted debe:</p>
+        <ul>
+          <li>Proporcionar información veraz y actualizada.</li>
+          <li>Contar con un número de WhatsApp Business válido.</li>
+          <li>Mantener la seguridad de sus credenciales de acceso.</li>
+          <li>Notificarnos inmediatamente ante cualquier uso no autorizado de su cuenta.</li>
+        </ul>
 
-          <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">7. Propiedad Intelectual</h2>
-            <p className="text-gray-700 mb-4">
-              <strong>Nuestra propiedad:</strong> Whaapy, incluyendo su código, diseño, logos y contenido, es propiedad de Whaapy y está protegido por leyes de propiedad intelectual.
-            </p>
-            <p className="text-gray-700 mb-4">
-              <strong>Tu contenido:</strong> Mantienes la propiedad de todo el contenido que subes a Whaapy (documentos, mensajes, configuraciones). Nos otorgas una licencia limitada para procesar este contenido únicamente para proporcionarte el Servicio.
-            </p>
-          </section>
+        <h3>4.2. Responsabilidad del Cliente</h3>
+        <p>El Cliente es responsable de:</p>
+        <ul>
+          <li>Todas las actividades realizadas bajo su cuenta.</li>
+          <li>El contenido de los mensajes enviados a través de su WhatsApp Business.</li>
+          <li>Cumplir con las políticas de WhatsApp Business y las leyes de protección al consumidor.</li>
+          <li>Obtener consentimiento de sus clientes para recibir mensajes automatizados.</li>
+        </ul>
 
-          <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">8. Pagos y Facturación</h2>
-            <p className="text-gray-700 mb-4">
-              Durante el período beta, el Servicio es gratuito. Cuando implementemos planes de pago:
-            </p>
-            <ul className="list-disc pl-6 text-gray-700 space-y-2">
-              <li>Los precios serán claramente comunicados antes de cualquier cargo.</li>
-              <li>Los pagos se procesarán de forma segura.</li>
-              <li>Podrás cancelar tu suscripción en cualquier momento.</li>
-              <li>No hay reembolsos por períodos parciales de uso.</li>
-            </ul>
-          </section>
+        <h2>5. Planes y Facturación</h2>
+        <h3>5.1. Suscripciones</h3>
+        <p>Whaapy ofrece planes de suscripción mensuales o anuales. Los detalles de cada plan están disponibles en <a href="https://app.whaapy.com" target="_blank">app.whaapy.com</a>.</p>
 
-          <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">9. Limitación de Responsabilidad</h2>
-            <p className="text-gray-700 mb-4">
-              EN LA MÁXIMA MEDIDA PERMITIDA POR LA LEY:
-            </p>
-            <ul className="list-disc pl-6 text-gray-700 space-y-2">
-              <li>El Servicio se proporciona "tal cual" sin garantías de ningún tipo.</li>
-              <li>No garantizamos disponibilidad ininterrumpida del Servicio.</li>
-              <li>No somos responsables por daños indirectos, incidentales o consecuentes.</li>
-              <li>Nuestra responsabilidad total no excederá el monto que hayas pagado por el Servicio en los últimos 12 meses.</li>
-            </ul>
-          </section>
+        <h3>5.2. Pagos</h3>
+        <ul>
+          <li>Los pagos se procesan de forma anticipada al inicio de cada periodo de facturación.</li>
+          <li>Las suscripciones se renuevan automáticamente a menos que el Cliente cancele antes del siguiente ciclo.</li>
+          <li>Los precios pueden cambiar con un aviso de 30 días previo al Cliente.</li>
+          <li>No se realizan reembolsos por periodos de suscripción no utilizados, salvo lo establecido en la sección 7.</li>
+        </ul>
 
-          <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">10. Indemnización</h2>
-            <p className="text-gray-700">
-              Aceptas indemnizar y mantener indemne a Whaapy de cualquier reclamo, daño o gasto (incluyendo honorarios de abogados) que surja de tu uso del Servicio o violación de estos términos.
-            </p>
-          </section>
+        <h3>5.3. Impuestos</h3>
+        <p>Los precios no incluyen impuestos. El Cliente es responsable del pago de cualquier impuesto aplicable (IVA, ISR, etc.).</p>
 
-          <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">11. Terminación</h2>
-            <p className="text-gray-700 mb-4">
-              Podemos suspender o terminar tu acceso al Servicio:
-            </p>
-            <ul className="list-disc pl-6 text-gray-700 space-y-2">
-              <li>Si violas estos términos o las políticas de WhatsApp/Meta.</li>
-              <li>Si detectamos actividad fraudulenta o abusiva.</li>
-              <li>Si no pagas las tarifas aplicables (cuando se implementen).</li>
-              <li>Por cualquier razón con previo aviso de 30 días.</li>
-            </ul>
-            <p className="text-gray-700 mt-4">
-              Puedes cancelar tu cuenta en cualquier momento desde la configuración.
-            </p>
-          </section>
+        <h2>6. Uso Aceptable de la Plataforma</h2>
+        <h3>6.1. Está prohibido:</h3>
+        <ul>
+          <li>Enviar spam o mensajes no solicitados masivamente.</li>
+          <li>Violar las <a href="https://www.whatsapp.com/legal/business-policy" target="_blank">Políticas de WhatsApp Business</a>.</li>
+          <li>Compartir contenido ilegal, difamatorio, o que viole derechos de terceros.</li>
+          <li>Intentar acceder a cuentas de otros usuarios.</li>
+          <li>Realizar ingeniería inversa o descompilar la Plataforma.</li>
+          <li>Sobrecargar o interferir con la infraestructura de Whaapy.</li>
+          <li>Utilizar la Plataforma para actividades fraudulentas o ilegales.</li>
+        </ul>
 
-          <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">12. Modificaciones</h2>
-            <p className="text-gray-700">
-              Nos reservamos el derecho de modificar estos términos en cualquier momento. Te notificaremos de cambios materiales con al menos 30 días de anticipación. El uso continuado del Servicio después de los cambios constituye aceptación de los nuevos términos.
-            </p>
-          </section>
+        <h3>6.2. Consecuencias</h3>
+        <p>El incumplimiento de estas políticas puede resultar en:</p>
+        <ul>
+          <li>Suspensión temporal o permanente de la cuenta.</li>
+          <li>Terminación inmediata del servicio sin reembolso.</li>
+          <li>Reporte a las autoridades competentes si aplica.</li>
+        </ul>
 
-          <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">13. Ley Aplicable</h2>
-            <p className="text-gray-700">
-              Estos términos se rigen por las leyes de México. Cualquier disputa será resuelta en los tribunales competentes de la Ciudad de México.
-            </p>
-          </section>
+        <h2>7. Cancelación y Reembolsos</h2>
+        <h3>7.1. Cancelación por el Cliente</h3>
+        <ul>
+          <li>Puede cancelar su suscripción en cualquier momento desde su panel de control.</li>
+          <li>La cancelación entrará en vigor al final del periodo de facturación actual.</li>
+          <li>No se realizan reembolsos proporcionales por cancelación anticipada.</li>
+        </ul>
 
-          <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">14. Contacto</h2>
-            <p className="text-gray-700">
-              Para preguntas sobre estos términos:
-            </p>
-            <ul className="list-none text-gray-700 mt-4 space-y-2">
-              <li><strong>Email:</strong> <a href="mailto:soporte@whaapy.com" className="text-emerald-600 hover:underline">soporte@whaapy.com</a></li>
-              <li><strong>Sitio web:</strong> <a href="https://whaapy.com" className="text-emerald-600 hover:underline">whaapy.com</a></li>
-            </ul>
-          </section>
-        </div>
-      </main>
+        <h3>7.2. Cancelación por Whaapy</h3>
+        <p>Whaapy se reserva el derecho de cancelar cuentas que:</p>
+        <ul>
+          <li>Violen estos Términos o el Uso Aceptable.</li>
+          <li>Tengan pagos pendientes por más de 15 días.</li>
+          <li>Representen un riesgo de seguridad o legal para la Plataforma.</li>
+        </ul>
+
+        <h3>7.3. Reembolsos</h3>
+        <p>Se otorgarán reembolsos únicamente en los siguientes casos:</p>
+        <ul>
+          <li>Interrupción del servicio superior a 72 horas consecutivas por causas atribuibles a Whaapy.</li>
+          <li>Cargos duplicados o errores de facturación.</li>
+        </ul>
+
+        <h2>8. Propiedad Intelectual</h2>
+        <h3>8.1. Propiedad de Whaapy</h3>
+        <p>Todos los derechos de propiedad intelectual sobre la Plataforma, incluyendo código, diseño, marca, y contenido, son propiedad exclusiva de Whaapy o sus licenciantes.</p>
+
+        <h3>8.2. Propiedad del Cliente</h3>
+        <p>El Cliente conserva todos los derechos sobre:</p>
+        <ul>
+          <li>Sus datos de conversaciones.</li>
+          <li>Documentos subidos para entrenar al agente de IA.</li>
+          <li>Información de su negocio y clientes.</li>
+        </ul>
+
+        <h3>8.3. Licencia de Uso</h3>
+        <p>El Cliente otorga a Whaapy una licencia limitada, no exclusiva y revocable para:</p>
+        <ul>
+          <li>Procesar y almacenar sus datos para proveer el Servicio.</li>
+          <li>Utilizar datos agregados y anonimizados para mejorar la Plataforma.</li>
+        </ul>
+
+        <h2>9. Privacidad y Protección de Datos</h2>
+        <p>
+          El tratamiento de datos personales se rige por nuestro <Link href="/privacidad" className="text-accent hover:underline">Aviso de Privacidad</Link>. Al aceptar estos Términos, usted también acepta dicho Aviso de Privacidad.
+        </p>
+
+        <h2>10. Limitación de Responsabilidad</h2>
+        <h3>10.1. Exclusión de Garantías</h3>
+        <p>La Plataforma se proporciona "tal cual" y "según disponibilidad". Whaapy no garantiza:</p>
+        <ul>
+          <li>Disponibilidad ininterrumpida del servicio.</li>
+          <li>Precisión absoluta de las respuestas del agente de IA.</li>
+          <li>Compatibilidad con todos los dispositivos y navegadores.</li>
+        </ul>
+
+        <h3>10.2. Limitación de Daños</h3>
+        <p>En ningún caso Whaapy será responsable por:</p>
+        <ul>
+          <li>Daños indirectos, incidentales o consecuentes.</li>
+          <li>Pérdida de ingresos, datos o oportunidades de negocio.</li>
+          <li>Errores en las respuestas del agente de IA que afecten a sus clientes.</li>
+          <li>Interrupciones causadas por terceros (Meta, Kapso, OpenAI, etc.).</li>
+        </ul>
+
+        <p><strong>Responsabilidad máxima:</strong> En caso de que Whaapy sea declarado responsable de cualquier daño, la compensación máxima no excederá el monto pagado por el Cliente en los últimos 3 meses.</p>
+
+        <h2>11. Soporte y SLA</h2>
+        <ul>
+          <li><strong>Soporte:</strong> Disponible vía correo electrónico y chat dentro de la plataforma.</li>
+          <li><strong>Tiempo de respuesta:</strong> 24-48 horas en días hábiles.</li>
+          <li><strong>Uptime objetivo:</strong> 99.5% mensual (excluyendo mantenimientos programados).</li>
+        </ul>
+
+        <h2>12. Modificaciones a los Términos</h2>
+        <p>Whaapy se reserva el derecho de modificar estos Términos. Los cambios serán notificados con al menos 15 días de anticipación mediante:</p>
+        <ul>
+          <li>Correo electrónico a la dirección registrada.</li>
+          <li>Aviso dentro de la plataforma.</li>
+          <li>Publicación en <a href="https://whaapy.com/terminos">whaapy.com/terminos</a></li>
+        </ul>
+
+        <p>El uso continuado de la Plataforma después de la notificación constituye aceptación de los nuevos Términos.</p>
+
+        <h2>13. Ley Aplicable y Jurisdicción</h2>
+        <p>
+          Estos Términos se rigen por las leyes de los Estados Unidos Mexicanos. Cualquier controversia será sometida a los tribunales competentes de San Luis Potosí, S.L.P., México.
+        </p>
+
+        <h2>14. Cláusula Anticorrupción</h2>
+        <p>
+          El Cliente y Whaapy se comprometen a cumplir con la Ley General del Sistema Nacional Anticorrupción, absteniéndose de incurrir en sobornos, actos de corrupción o conductas ilegales.
+        </p>
+
+        <h2>15. Contacto</h2>
+        <p>Para consultas sobre estos Términos, puede contactarnos en:</p>
+        <ul>
+          <li><strong>Correo:</strong> <a href="mailto:contacto@datagora.mx">contacto@datagora.mx</a></li>
+          <li><strong>Teléfono:</strong> <a href="tel:+525564299653">+52 (556) 429 9653</a></li>
+          <li><strong>Soporte:</strong> Desde su panel en <a href="https://app.whaapy.com" target="_blank">app.whaapy.com</a></li>
+        </ul>
+
+        <hr className="my-12" />
+
+        <p className="text-center text-text-muted">
+          Al utilizar Whaapy, usted acepta cumplir con estos Términos y Condiciones.
+        </p>
+
+        <p className="text-center font-bold mt-8">
+          Whaapy by <a href="https://datagora.mx" target="_blank" className="text-accent hover:underline">Datagora</a><br />
+          Transformando la atención al cliente con IA
+        </p>
+      </article>
 
       {/* Footer */}
-      <footer className="border-t border-gray-100 mt-12">
-        <div className="max-w-4xl mx-auto px-6 py-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-gray-500 text-sm">
-              © {new Date().getFullYear()} Whaapy. Todos los derechos reservados.
-            </p>
-            <div className="flex gap-6">
-              <Link href="/privacidad" className="text-gray-500 hover:text-emerald-600 text-sm">
-                Privacidad
-              </Link>
-              <Link href="/terminos" className="text-gray-500 hover:text-emerald-600 text-sm">
-                Términos
-              </Link>
-            </div>
+      <footer className="border-t-2 border-border mt-24 py-12 bg-surface">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <p className="text-text-secondary">
+            © 2025 Whaapy by Datagora. Todos los derechos reservados.
+          </p>
+          <div className="mt-4 flex gap-6 justify-center">
+            <Link href="/terminos" className="text-accent hover:underline">
+              Términos y Condiciones
+            </Link>
+            <Link href="/privacidad" className="text-accent hover:underline">
+              Aviso de Privacidad
+            </Link>
           </div>
         </div>
       </footer>
-    </div>
+    </main>
   )
 }
+
