@@ -107,6 +107,18 @@ export default function Header() {
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-4">
               <a
+                href="#producto"
+                className="text-text-secondary hover:text-text-primary transition-colors font-medium px-4 py-2"
+              >
+                Producto
+              </a>
+              <a
+                href="#equipo"
+                className="text-text-secondary hover:text-text-primary transition-colors font-medium px-4 py-2"
+              >
+                Equipo
+              </a>
+              <a
                 href="https://app.whaapy.com/login"
                 className="text-text-secondary hover:text-text-primary transition-colors font-medium px-4 py-2"
                 onClick={() =>

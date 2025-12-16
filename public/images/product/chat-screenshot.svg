@@ -1,0 +1,63 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="800" fill="#F9FAFB"/>
+  
+  <!-- Chat Container -->
+  <rect x="50" y="50" width="1100" height="700" rx="12" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+  
+  <!-- Chat Header -->
+  <rect x="50" y="50" width="1100" height="70" rx="12" fill="#FFFFFF"/>
+  <rect x="50" y="120" width="1100" height="1" fill="#E5E7EB"/>
+  <circle cx="90" cy="85" r="25" fill="#25D366"/>
+  <text x="90" y="92" text-anchor="middle" fill="#FFFFFF" font-family="Inter, sans-serif" font-size="16" font-weight="600">JP</text>
+  <text x="130" y="82" fill="#111827" font-family="Inter, sans-serif" font-size="18" font-weight="600">Juan Pérez</text>
+  <text x="130" y="102" fill="#6B7280" font-family="Inter, sans-serif" font-size="13">En línea</text>
+  
+  <!-- AI Status Badge -->
+  <rect x="1000" y="70" width="120" height="30" rx="15" fill="#E8F8F0"/>
+  <text x="1060" y="89" text-anchor="middle" fill="#128C7E" font-family="Inter, sans-serif" font-size="12" font-weight="600">🤖 IA Activa</text>
+  
+  <!-- Chat Messages -->
+  <g>
+    <!-- Customer Message 1 -->
+    <rect x="100" y="150" width="500" height="60" rx="12" fill="#F3F4F6"/>
+    <text x="120" y="175" fill="#111827" font-family="Inter, sans-serif" font-size="14">Hola, buenas tardes</text>
+    <text x="120" y="195" fill="#6B7280" font-family="Inter, sans-serif" font-size="12">14:23</text>
+    
+    <!-- AI Response 1 -->
+    <rect x="700" y="230" width="450" height="80" rx="12" fill="#25D366"/>
+    <text x="720" y="255" fill="#FFFFFF" font-family="Inter, sans-serif" font-size="14">¡Hola! 👋 Bienvenido a Whaapy.</text>
+    <text x="720" y="275" fill="#FFFFFF" font-family="Inter, sans-serif" font-size="14">¿En qué puedo ayudarte hoy?</text>
+    <text x="1130" y="300" text-anchor="end" fill="#E8F8F0" font-family="Inter, sans-serif" font-size="12">14:23</text>
+    
+    <!-- Customer Message 2 -->
+    <rect x="100" y="330" width="550" height="80" rx="12" fill="#F3F4F6"/>
+    <text x="120" y="355" fill="#111827" font-family="Inter, sans-serif" font-size="14">Quisiera saber si tienen disponible</text>
+    <text x="120" y="375" fill="#111827" font-family="Inter, sans-serif" font-size="14">el producto XYZ y cuál es el precio</text>
+    <text x="120" y="395" fill="#6B7280" font-family="Inter, sans-serif" font-size="12">14:24</text>
+    
+    <!-- AI Typing Indicator -->
+    <rect x="700" y="430" width="150" height="50" rx="12" fill="#E8F8F0"/>
+    <circle cx="745" cy="455" r="4" fill="#128C7E">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="1.4s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="775" cy="455" r="4" fill="#128C7E">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="1.4s" begin="0.2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="805" cy="455" r="4" fill="#128C7E">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="1.4s" begin="0.4s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+  
+  <!-- Input Area -->
+  <rect x="50" y="700" width="1100" height="50" fill="#F9FAFB"/>
+  <rect x="80" y="710" width="990" height="30" rx="15" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+  <text x="100" y="730" fill="#9CA3AF" font-family="Inter, sans-serif" font-size="13">La IA está respondiendo...</text>
+  
+  <!-- AI Info Panel -->
+  <rect x="900" y="600" width="220" height="80" rx="8" fill="#F9FAFB" stroke="#E5E7EB" stroke-width="1"/>
+  <text x="920" y="625" fill="#6B7280" font-family="Inter, sans-serif" font-size="12" font-weight="600">Respondido por IA</text>
+  <text x="920" y="645" fill="#9CA3AF" font-family="Inter, sans-serif" font-size="11">Consultando knowledge base...</text>
+  <text x="920" y="665" fill="#9CA3AF" font-family="Inter, sans-serif" font-size="11">Confianza: 94%</text>
+</svg>
+

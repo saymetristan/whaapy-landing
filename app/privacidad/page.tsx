@@ -3,16 +3,7 @@ import Link from 'next/link'
 
 export const metadata = {
   title: 'Aviso de Privacidad | Whaapy',
-  description: 'Aviso de Privacidad de Whaapy - Protección de datos personales',
-  openGraph: {
-    title: 'Aviso de Privacidad | Whaapy',
-    description: 'Aviso de Privacidad de Whaapy - Protección de datos personales',
-    url: 'https://whaapy.com/privacidad',
-    type: 'website',
-  },
-  other: {
-    'fb:app_id': '1227498005473392', // TODO: Reemplaza con tu App ID real
-  },
+  description: 'Aviso de Privacidad de Whaapy - Protección de datos personales'
 }
 
 export default function PrivacidadPage() {

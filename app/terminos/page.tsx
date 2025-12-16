@@ -3,16 +3,7 @@ import Link from 'next/link'
 
 export const metadata = {
   title: 'Términos y Condiciones | Whaapy',
-  description: 'Términos y Condiciones de Uso de Whaapy',
-  openGraph: {
-    title: 'Términos y Condiciones | Whaapy',
-    description: 'Términos y Condiciones de Uso de Whaapy',
-    url: 'https://whaapy.com/terminos',
-    type: 'website',
-  },
-  other: {
-    'fb:app_id': '1227498005473392', // TODO: Reemplaza con tu App ID real
-  },
+  description: 'Términos y Condiciones de Uso de Whaapy'
 }
 
 export default function TerminosPage() {

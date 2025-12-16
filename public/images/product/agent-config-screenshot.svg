@@ -1,0 +1,62 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="800" fill="#F9FAFB"/>
+  
+  <!-- Main Container -->
+  <rect x="50" y="50" width="1100" height="700" rx="12" fill="#FFFFFF"/>
+  
+  <!-- Header -->
+  <text x="80" y="100" fill="#111827" font-family="Inter, sans-serif" font-size="28" font-weight="700">Configuración del Agente IA</text>
+  <text x="80" y="130" fill="#6B7280" font-family="Inter, sans-serif" font-size="14">Personaliza cómo tu asistente de IA interactúa con tus clientes</text>
+  
+  <!-- Tabs -->
+  <rect x="80" y="160" width="120" height="40" rx="6" fill="#25D366"/>
+  <text x="140" y="185" text-anchor="middle" fill="#FFFFFF" font-family="Inter, sans-serif" font-size="13" font-weight="600">Personalidad</text>
+  
+  <rect x="210" y="160" width="120" height="40" rx="6" fill="#F3F4F6"/>
+  <text x="270" y="185" text-anchor="middle" fill="#6B7280" font-family="Inter, sans-serif" font-size="13">Knowledge</text>
+  
+  <rect x="340" y="160" width="120" height="40" rx="6" fill="#F3F4F6"/>
+  <text x="400" y="185" text-anchor="middle" fill="#6B7280" font-family="Inter, sans-serif" font-size="13">Handoff</text>
+  
+  <!-- Content Area -->
+  <rect x="80" y="220" width="1040" height="480" rx="8" fill="#F9FAFB"/>
+  
+  <!-- Section 1: Tone -->
+  <text x="110" y="260" fill="#111827" font-family="Inter, sans-serif" font-size="16" font-weight="600">Tono de Comunicación</text>
+  <rect x="110" y="280" width="980" height="50" rx="8" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+  <text x="130" y="310" fill="#6B7280" font-family="Inter, sans-serif" font-size="13">Profesional y amigable, con emojis ocasionales</text>
+  
+  <!-- Section 2: Business Context -->
+  <text x="110" y="370" fill="#111827" font-family="Inter, sans-serif" font-size="16" font-weight="600">Contexto del Negocio</text>
+  <rect x="110" y="390" width="980" height="120" rx="8" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+  <text x="130" y="420" fill="#6B7280" font-family="Inter, sans-serif" font-size="13">Somos una tienda de tecnología especializada en equipos</text>
+  <text x="130" y="440" fill="#6B7280" font-family="Inter, sans-serif" font-size="13">de cómputo y accesorios. Ofrecemos garantía de 1 año y</text>
+  <text x="130" y="460" fill="#6B7280" font-family="Inter, sans-serif" font-size="13">envíos gratis en compras mayores a $1000 MXN.</text>
+  <text x="130" y="490" fill="#9CA3AF" font-family="Inter, sans-serif" font-size="12">512 / 1000 caracteres</text>
+  
+  <!-- Section 3: Auto-Response Settings -->
+  <text x="110" y="550" fill="#111827" font-family="Inter, sans-serif" font-size="16" font-weight="600">Configuración de Respuestas</text>
+  
+  <rect x="110" y="570" width="470" height="50" rx="8" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+  <text x="130" y="600" fill="#111827" font-family="Inter, sans-serif" font-size="14">🤖 IA siempre activa</text>
+  <rect x="520" y="585" width="40" height="20" rx="10" fill="#25D366"/>
+  <circle cx="550" cy="595" r="8" fill="#FFFFFF"/>
+  
+  <rect x="620" y="570" width="470" height="50" rx="8" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+  <text x="640" y="600" fill="#111827" font-family="Inter, sans-serif" font-size="14">⏸️ Pausar IA cuando humano interviene</text>
+  <rect x="1030" y="585" width="40" height="20" rx="10" fill="#25D366"/>
+  <circle cx="1060" cy="595" r="8" fill="#FFFFFF"/>
+  
+  <!-- Stats Panel -->
+  <rect x="110" y="640" width="980" height="40" rx="6" fill="#E8F8F0"/>
+  <text x="130" y="665" fill="#128C7E" font-family="Inter, sans-serif" font-size="13" font-weight="600">📊 Estadísticas: 324 mensajes procesados • 96% de satisfacción</text>
+  
+  <!-- Action Buttons -->
+  <rect x="850" y="720" width="120" height="40" rx="8" fill="#F3F4F6"/>
+  <text x="910" y="745" text-anchor="middle" fill="#6B7280" font-family="Inter, sans-serif" font-size="14" font-weight="500">Cancelar</text>
+  
+  <rect x="990" y="720" width="130" height="40" rx="8" fill="#25D366"/>
+  <text x="1055" y="745" text-anchor="middle" fill="#FFFFFF" font-family="Inter, sans-serif" font-size="14" font-weight="600">Guardar</text>
+</svg>
+

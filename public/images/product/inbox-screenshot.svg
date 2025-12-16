@@ -1,0 +1,72 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="800" fill="#F9FAFB"/>
+  
+  <!-- Sidebar -->
+  <rect width="280" height="800" fill="#FFFFFF"/>
+  <rect x="20" y="20" width="240" height="40" rx="8" fill="#25D366"/>
+  <text x="140" y="45" text-anchor="middle" fill="#FFFFFF" font-family="Inter, sans-serif" font-size="14" font-weight="600">Whaapy</text>
+  
+  <!-- Nav Items -->
+  <rect x="20" y="80" width="240" height="44" rx="6" fill="#F3F4F6"/>
+  <text x="40" y="107" fill="#111827" font-family="Inter, sans-serif" font-size="14" font-weight="500">📥 Inbox</text>
+  
+  <rect x="20" y="134" width="240" height="44" rx="6" fill="#FFFFFF"/>
+  <text x="40" y="161" fill="#6B7280" font-family="Inter, sans-serif" font-size="14">👥 Contactos</text>
+  
+  <rect x="20" y="188" width="240" height="44" rx="6" fill="#FFFFFF"/>
+  <text x="40" y="215" fill="#6B7280" font-family="Inter, sans-serif" font-size="14">📋 Templates</text>
+  
+  <rect x="20" y="242" width="240" height="44" rx="6" fill="#FFFFFF"/>
+  <text x="40" y="269" fill="#6B7280" font-family="Inter, sans-serif" font-size="14">🤖 Agente IA</text>
+  
+  <!-- Main Content Area -->
+  <rect x="280" y="0" width="920" height="800" fill="#FFFFFF"/>
+  
+  <!-- Header -->
+  <text x="310" y="45" fill="#111827" font-family="Inter, sans-serif" font-size="24" font-weight="700">Conversaciones</text>
+  <rect x="310" y="60" width="860" height="2" fill="#E5E7EB"/>
+  
+  <!-- Filters -->
+  <rect x="310" y="80" width="120" height="36" rx="6" fill="#F3F4F6"/>
+  <text x="370" y="103" text-anchor="middle" fill="#6B7280" font-family="Inter, sans-serif" font-size="13">Todas</text>
+  
+  <rect x="440" y="80" width="120" height="36" rx="6" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+  <text x="500" y="103" text-anchor="middle" fill="#6B7280" font-family="Inter, sans-serif" font-size="13">IA Activa</text>
+  
+  <rect x="570" y="80" width="120" height="36" rx="6" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+  <text x="630" y="103" text-anchor="middle" fill="#6B7280" font-family="Inter, sans-serif" font-size="13">Humano</text>
+  
+  <!-- Conversation List -->
+  <g>
+    <!-- Conversation 1 -->
+    <rect x="310" y="140" width="860" height="80" rx="8" fill="#F9FAFB"/>
+    <circle cx="340" cy="180" r="20" fill="#25D366"/>
+    <text x="340" y="186" text-anchor="middle" fill="#FFFFFF" font-family="Inter, sans-serif" font-size="14" font-weight="600">JD</text>
+    <text x="375" y="173" fill="#111827" font-family="Inter, sans-serif" font-size="15" font-weight="600">Juan Pérez</text>
+    <text x="375" y="193" fill="#6B7280" font-family="Inter, sans-serif" font-size="13">¿Tienen disponible el producto X?</text>
+    <rect x="1120" y="165" width="30" height="30" rx="15" fill="#25D366"/>
+    <text x="1135" y="183" text-anchor="middle" fill="#FFFFFF" font-family="Inter, sans-serif" font-size="11" font-weight="600">AI</text>
+    
+    <!-- Conversation 2 -->
+    <rect x="310" y="230" width="860" height="80" rx="8" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+    <circle cx="340" cy="270" r="20" fill="#667eea"/>
+    <text x="340" y="276" text-anchor="middle" fill="#FFFFFF" font-family="Inter, sans-serif" font-size="14" font-weight="600">MC</text>
+    <text x="375" y="263" fill="#111827" font-family="Inter, sans-serif" font-size="15" font-weight="600">María Castro</text>
+    <text x="375" y="283" fill="#6B7280" font-family="Inter, sans-serif" font-size="13">Hola, necesito información sobre...</text>
+    
+    <!-- Conversation 3 -->
+    <rect x="310" y="320" width="860" height="80" rx="8" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="1"/>
+    <circle cx="340" cy="360" r="20" fill="#f59e0b"/>
+    <text x="340" y="366" text-anchor="middle" fill="#FFFFFF" font-family="Inter, sans-serif" font-size="14" font-weight="600">LR</text>
+    <text x="375" y="353" fill="#111827" font-family="Inter, sans-serif" font-size="15" font-weight="600">Luis Rodríguez</text>
+    <text x="375" y="373" fill="#6B7280" font-family="Inter, sans-serif" font-size="13">¿Cuál es el precio del servicio?</text>
+    <rect x="1120" y="345" width="30" height="30" rx="15" fill="#25D366"/>
+    <text x="1135" y="363" text-anchor="middle" fill="#FFFFFF" font-family="Inter, sans-serif" font-size="11" font-weight="600">AI</text>
+  </g>
+  
+  <!-- Stats Footer -->
+  <rect x="310" y="720" width="860" height="60" fill="#F9FAFB"/>
+  <text x="350" y="755" fill="#6B7280" font-family="Inter, sans-serif" font-size="13">📊 32 conversaciones activas • ⚡ 95% respondidas por IA</text>
+</svg>
+
