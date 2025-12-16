@@ -19,7 +19,7 @@ export default function Footer() {
               <h3 className="text-xl font-bold text-text-primary">Sobre Whaapy</h3>
             </div>
             <p className="text-text-secondary text-sm leading-relaxed mb-4">
-              Startup tecnológica mexicana fundada en 2024, especializada en 
+              Startup tecnológica mexicana fundada en 2025, especializada en 
               automatización conversacional con IA para WhatsApp Business.
             </p>
             <p className="text-text-secondary text-sm leading-relaxed mb-4">

@@ -156,7 +156,7 @@ export default function Team() {
             <div className="inline-block bg-surface-elevated rounded-xl px-8 py-4 border border-border">
               <p className="text-text-secondary text-sm">
                 <span className="font-semibold text-text-primary">Hecho en México</span> 🇲🇽 • 
-                Startup tecnológica fundada en 2024
+                Startup tecnológica fundada en 2025
               </p>
             </div>
           </div>

@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from 'react'
 import anime from 'animejs'
 import { ArrowRight, Check } from 'lucide-react'
-import Image from 'next/image'
 import MagneticButton from '../shared/MagneticButton'
 import ContactModal from '../shared/ContactModal'
 import { captureEvent } from '@/app/lib/analytics'
@@ -136,46 +135,6 @@ export default function CTA() {
         onClose={() => setIsContactModalOpen(false)}
         type="contact"
       />
-
-      {/* Footer */}
-      <footer className="mt-32 pt-16 border-t-2 border-border">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-8 text-text-secondary">
-            <div className="flex items-center gap-4">
-              <div className="relative w-8 h-8 flex items-center justify-center">
-                <Image
-                  src="/icons/whaapy-icon-64.png"
-                  alt="Whaapy Logo"
-                  width={32}
-                  height={32}
-                  className="object-contain"
-                />
-              </div>
-              <span className="text-3xl font-bold gradient-text">Whaapy</span>
-              <span className="text-base">© 2025. Todos los derechos reservados.</span>
-            </div>
-            <div className="flex items-center gap-8 text-base font-medium">
-              <a href="/terminos" className="hover:text-text-primary transition-colors">
-                Términos
-              </a>
-              <a href="/privacidad" className="hover:text-text-primary transition-colors">
-                Privacidad
-              </a>
-              <button
-                onClick={() => {
-                  captureEvent('cta_contact_click', {
-                    location: 'footer_contact',
-                  })
-                  setIsContactModalOpen(true)
-                }}
-                className="hover:text-text-primary transition-colors"
-              >
-                Contacto
-              </button>
-            </div>
-          </div>
-        </div>
-      </footer>
     </section>
   )
 }
