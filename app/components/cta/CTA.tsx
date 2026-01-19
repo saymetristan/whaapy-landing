@@ -83,30 +83,30 @@ export default function CTA() {
   }
 
   return (
-    <section ref={sectionRef} className="relative py-40 px-6 bg-gradient-to-br from-accent/5 via-white to-accent/10">
+    <section ref={sectionRef} className="relative py-24 md:py-40 px-6 bg-gradient-to-br from-accent/5 via-white to-accent/10">
       <div className="max-w-5xl mx-auto text-center">
         {/* Headline with mask reveal */}
         <h2 
           ref={headlineRef}
-          className="text-4xl md:text-5xl lg:text-7xl font-bold mb-8 leading-[1.05]"
+          className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 md:mb-8 leading-tight"
           style={{ clipPath: 'circle(0% at 50% 50%)' }}
         >
-          Activa tu WhatsApp IA <br className="hidden md:block" />en <span className="gradient-text">minutos</span>
+          ¿Listo para dejar de vivir <br className="hidden md:block" />pegado al <span className="gradient-text">WhatsApp</span>?
         </h2>
 
         {/* Benefits */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-8 mb-12 text-text-secondary flex-wrap">
-          <div className="benefit-item flex items-center gap-3 opacity-0">
-            <Check className="text-accent" size={24} strokeWidth={3} />
-            <span className="text-lg font-medium">Setup en menos de 5 minutos</span>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-8 mb-8 md:mb-12 text-text-secondary flex-wrap">
+          <div className="benefit-item flex items-center gap-2 md:gap-3 opacity-0">
+            <Check className="text-accent" size={20} strokeWidth={3} />
+            <span className="text-base md:text-lg font-medium">Configuración en 10 minutos</span>
           </div>
-          <div className="benefit-item flex items-center gap-3 opacity-0">
-            <Check className="text-accent" size={24} strokeWidth={3} />
-            <span className="text-lg font-medium">Sin instalaciones complicadas</span>
+          <div className="benefit-item flex items-center gap-2 md:gap-3 opacity-0">
+            <Check className="text-accent" size={20} strokeWidth={3} />
+            <span className="text-base md:text-lg font-medium">Sin contratos largos</span>
           </div>
-          <div className="benefit-item flex items-center gap-3 opacity-0">
-            <Check className="text-accent" size={24} strokeWidth={3} />
-            <span className="text-lg font-medium">Soporte personalizado incluido</span>
+          <div className="benefit-item flex items-center gap-2 md:gap-3 opacity-0">
+            <Check className="text-accent" size={20} strokeWidth={3} />
+            <span className="text-base md:text-lg font-medium">Soporte en español</span>
           </div>
         </div>
 
@@ -114,18 +114,18 @@ export default function CTA() {
         <div className="cta-button-container opacity-0">
           <MagneticButton
             onClick={handleDemoClick}
-            className="relative inline-flex items-center gap-4 px-12 py-6 bg-gradient-to-r from-accent to-accent-hover text-white rounded-2xl hover:shadow-2xl transition-all font-bold text-2xl shadow-xl overflow-hidden group"
+            className="relative inline-flex items-center gap-3 md:gap-4 px-8 md:px-12 py-5 md:py-6 bg-gradient-to-r from-accent to-accent-hover text-white rounded-2xl hover:shadow-2xl transition-all font-bold text-xl md:text-2xl shadow-xl overflow-hidden group"
             strength={20}
           >
-            <span className="relative z-10">Agendar demo</span>
-            <ArrowRight className="relative z-10 group-hover:translate-x-1 transition-transform" size={28} strokeWidth={3} />
+            <span className="relative z-10">Quiero mi demo gratis</span>
+            <ArrowRight className="relative z-10 group-hover:translate-x-1 transition-transform" size={24} strokeWidth={3} />
             
             {/* Animated gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
           </MagneticButton>
           
-          <p className="mt-6 text-lg text-text-muted font-medium">
-            Más de 50 negocios ya están usando Whaapy ✨
+          <p className="mt-5 md:mt-6 text-base md:text-lg text-text-muted font-medium">
+            Más de 100 negocios ya recuperaron su tiempo ✨
           </p>
         </div>
       </div>

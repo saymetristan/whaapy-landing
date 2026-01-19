@@ -19,18 +19,19 @@ export default function Footer() {
               <h3 className="text-xl font-bold text-text-primary">Sobre Whaapy</h3>
             </div>
             <p className="text-text-secondary text-sm leading-relaxed mb-4">
-              Startup tecnológica mexicana fundada en 2025, especializada en 
-              automatización conversacional con IA para WhatsApp Business.
+              Empresa mexicana que ayuda a negocios a atender mejor a sus 
+              clientes por WhatsApp, sin perder el toque personal ni vivir 
+              pegados al celular.
             </p>
             <p className="text-text-secondary text-sm leading-relaxed mb-4">
-              Plataforma SaaS B2B diseñada para PyMEs en Latinoamérica que 
-              necesitan escalar su atención al cliente sin perder el toque humano.
+              Más de 100 negocios en México y Latinoamérica ya usan Whaapy 
+              para vender más y trabajar menos.
             </p>
             <a
               href="#equipo"
               className="inline-flex items-center gap-2 text-accent hover:text-accent-hover font-medium text-sm transition-colors"
             >
-              Más sobre nosotros →
+              Conoce al equipo →
             </a>
           </div>
 
@@ -40,10 +41,10 @@ export default function Footer() {
             <ul className="space-y-3">
               <li>
                 <a
-                  href="#producto"
+                  href="#demo"
                   className="text-text-secondary hover:text-text-primary text-sm transition-colors"
                 >
-                  El Producto
+                  Ver cómo funciona
                 </a>
               </li>
               <li>
@@ -61,7 +62,7 @@ export default function Footer() {
                   rel="noopener noreferrer"
                   className="text-text-secondary hover:text-text-primary text-sm transition-colors"
                 >
-                  Ver demo en vivo
+                  Iniciar sesión
                 </a>
               </li>
             </ul>

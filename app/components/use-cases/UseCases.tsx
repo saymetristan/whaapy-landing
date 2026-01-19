@@ -2,56 +2,55 @@
 
 import { useEffect, useRef } from 'react'
 import anime from 'animejs'
-import { ShoppingBag, Utensils, Home, Wrench, Briefcase, Store } from 'lucide-react'
 
 const useCases = [
   {
-    icon: ShoppingBag,
+    emoji: '🛒',
     industry: 'E-commerce',
-    title: 'E-commerce Mediano (50-200 pedidos/día)',
-    problem: 'Equipo de 3-5 personas sobrepasado por consultas repetitivas de stock, envíos, devoluciones',
-    solution: 'IA maneja 80% de FAQs. Equipo se enfoca en resolver casos complejos y cerrar ventas grandes',
-    result: '+65% conversiones, -40% carga'
+    title: 'Tienda en línea',
+    before: 'Mi equipo de 3 personas no daba abasto contestando "¿tienen talla M?", "¿hacen envíos a Monterrey?"',
+    after: 'El asistente contesta stock, tallas, envíos y formas de pago. El equipo solo cierra ventas.',
+    result: '65% más ventas'
   },
   {
-    icon: Utensils,
+    emoji: '🍽️',
     industry: 'Restaurantes',
-    title: 'Cadena de Restaurantes (3-10 sucursales)',
-    problem: 'Reservaciones cruzadas, menús desactualizados, equipo no coordina entre sucursales',
-    solution: 'IA toma reservas por sucursal, envía menú actualizado, coordina con sistema de gestión vía API',
-    result: '0 reservas perdidas, +30% ocupación'
+    title: 'Restaurante con 3 sucursales',
+    before: 'Recibíamos reservaciones por WhatsApp y se cruzaban. Nadie sabía qué mesas había.',
+    after: 'El asistente toma reservas según disponibilidad real y manda el menú actualizado.',
+    result: 'Cero reservas perdidas'
   },
   {
-    icon: Home,
-    industry: 'Inmobiliarias',
-    title: 'Inmobiliaria (10-30 agentes)',
-    problem: 'Agentes reciben 50+ consultas diarias, muchos leads no califican, pierden tiempo en WhatsApp',
-    solution: 'IA califica leads, agenda visitas, envía fichas técnicas. Agentes solo hablan con leads calificados',
-    result: '5x más leads calificados por agente'
+    emoji: '🏠',
+    industry: 'Inmobiliaria',
+    title: 'Inmobiliaria con 10 agentes',
+    before: 'Cada agente recibía 50+ mensajes diarios. La mayoría no calificaban.',
+    after: 'El asistente califica leads, manda fichas técnicas. Agentes solo hablan con interesados reales.',
+    result: '5x más cierres'
   },
   {
-    icon: Briefcase,
-    industry: 'B2B',
+    emoji: '📦',
+    industry: 'Distribuidora',
     title: 'Distribuidora B2B',
-    problem: 'Clientes solicitan cotizaciones, precios, disponibilidad fuera de horario',
-    solution: 'IA consulta catálogo actualizado vía API, envía cotizaciones automáticas, agenda llamadas con vendedores',
-    result: '24/7 atención, +45% ventas fuera de horario'
+    before: 'Clientes pedían cotizaciones a las 10pm y para cuando contestábamos ya habían comprado con otro.',
+    after: 'El asistente manda cotizaciones automáticas consultando precios actualizados. 24/7.',
+    result: '45% más ventas nocturnas'
   },
   {
-    icon: Wrench,
-    industry: 'Soporte',
-    title: 'Call Center / Soporte Técnico',
-    problem: 'Alto volumen de tickets repetitivos, tiempo de primera respuesta alto',
-    solution: 'IA resuelve casos nivel 1-2, escala a humano solo casos complejos. Integración con Zendesk/Freshdesk vía API',
-    result: '-70% tickets a humanos, <2s respuesta'
-  },
-  {
-    icon: Store,
+    emoji: '🏥',
     industry: 'Salud',
-    title: 'Clínica/Hospital (múltiples consultorios)',
-    problem: 'Recepción sobrepasada con citas, confirmaciones, resultados, FAQs de pacientes',
-    solution: 'IA agenda citas según disponibilidad real, envía recordatorios, responde FAQs médicas básicas',
-    result: '-60% carga administrativa, 0 ausencias'
+    title: 'Clínica médica',
+    before: 'La recepcionista no daba abasto con citas, confirmaciones y preguntas de pacientes.',
+    after: 'El asistente agenda según disponibilidad de cada doctor y manda recordatorios.',
+    result: '60% menos carga admin'
+  },
+  {
+    emoji: '🔧',
+    industry: 'Servicios',
+    title: 'Taller de reparaciones',
+    before: 'Clientes preguntando "¿ya está mi equipo?" todo el día. No podía trabajar de tanto contestar.',
+    after: 'El asistente informa status de reparaciones y agenda citas de entrega.',
+    result: '3h más de trabajo/día'
   }
 ]
 
@@ -91,61 +90,64 @@ export default function UseCases() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="relative py-40 px-6 bg-white">
+    <section ref={sectionRef} className="relative py-24 md:py-40 px-6 bg-white">
       <div className="max-w-7xl mx-auto">
         {/* Section header */}
-        <div className="text-center max-w-4xl mx-auto mb-20">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-            Funciona para <span className="gradient-text">cualquier negocio</span>
+        <div className="text-center max-w-4xl mx-auto mb-12 md:mb-20">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 leading-tight">
+            Negocios como el tuyo <span className="gradient-text">ya lo usan</span>
           </h2>
           <p className="text-xl md:text-2xl text-text-secondary leading-relaxed">
-            Desde e-commerce hasta servicios profesionales, Whaapy se adapta a tu industria
+            Ve cómo otros resolvieron los mismos problemas que tú tienes
           </p>
         </div>
 
         {/* Use cases grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {useCases.map((useCase, index) => {
-            const Icon = useCase.icon
-            
-            return (
-              <div
-                key={index}
-                className="use-case-card opacity-0 bg-surface rounded-3xl p-8 border-2 border-border hover:border-accent/30 transition-all duration-500 hover:shadow-xl group"
-              >
-                {/* Icon & Industry */}
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-14 h-14 rounded-2xl bg-accent/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
-                    <Icon size={28} className="text-accent" strokeWidth={2} />
-                  </div>
-                  <div>
-                    <div className="text-xs font-semibold text-accent uppercase tracking-wide">{useCase.industry}</div>
-                    <div className="text-lg font-bold text-text-primary">{useCase.title}</div>
-                  </div>
-                </div>
-
-                {/* Problem */}
-                <div className="mb-4">
-                  <div className="text-sm font-bold text-text-muted uppercase tracking-wide mb-2">Problema común:</div>
-                  <p className="text-base text-text-secondary">{useCase.problem}</p>
-                </div>
-
-                {/* Solution */}
-                <div className="mb-4">
-                  <div className="text-sm font-bold text-accent uppercase tracking-wide mb-2">Con Whaapy:</div>
-                  <p className="text-base text-text-primary font-medium">{useCase.solution}</p>
-                </div>
-
-                {/* Result */}
-                <div className="inline-block px-4 py-2 bg-accent/10 rounded-full">
-                  <span className="text-sm font-bold text-accent">{useCase.result}</span>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          {useCases.map((useCase, index) => (
+            <div
+              key={index}
+              className="use-case-card opacity-0 bg-surface rounded-3xl p-6 md:p-8 border-2 border-border hover:border-accent/30 transition-all duration-500 hover:shadow-xl group"
+            >
+              {/* Header con emoji e industria */}
+              <div className="flex items-center gap-3 md:gap-4 mb-5 md:mb-6">
+                <span className="text-3xl md:text-4xl group-hover:scale-110 transition-transform duration-300">{useCase.emoji}</span>
+                <div>
+                  <span className="text-xs font-semibold text-accent uppercase tracking-wide">
+                    {useCase.industry}
+                  </span>
+                  <h3 className="text-base md:text-lg font-bold text-text-primary">
+                    {useCase.title}
+                  </h3>
                 </div>
               </div>
-            )
-          })}
+
+              {/* Antes */}
+              <div className="mb-4">
+                <span className="text-xs font-bold text-text-muted uppercase tracking-wide">
+                  ANTES:
+                </span>
+                <p className="text-text-secondary italic mt-1 text-sm md:text-base">"{useCase.before}"</p>
+              </div>
+
+              {/* Ahora */}
+              <div className="mb-5 md:mb-6">
+                <span className="text-xs font-bold text-accent uppercase tracking-wide">
+                  AHORA:
+                </span>
+                <p className="text-text-primary font-medium mt-1 text-sm md:text-base">{useCase.after}</p>
+              </div>
+
+              {/* Resultado */}
+              <div className="inline-block px-4 py-2 bg-accent/10 rounded-full">
+                <span className="text-sm font-bold text-accent">
+                  Resultado: {useCase.result}
+                </span>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
   )
 }
-

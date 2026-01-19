@@ -2,38 +2,37 @@
 
 import { useEffect, useRef } from 'react'
 import anime from 'animejs'
-import { Shield, Zap, Users, Globe, Code2, HeartHandshake } from 'lucide-react'
 
 const reasons = [
   {
-    icon: Zap,
-    title: 'Setup en 5 minutos',
-    description: 'No necesitas ser técnico. Escaneas un QR y listo. Sin APIs complicadas, sin integraciones eternas.'
+    emoji: '⚡',
+    title: 'Se configura en minutos',
+    description: 'Nada de contratar técnicos ni esperar configuraciones. Tú mismo lo haces en 10 minutos desde tu computadora.'
   },
   {
-    icon: Shield,
-    title: '100% Seguro y Privado',
-    description: 'Tus datos y conversaciones están encriptados. Cumplimos con todas las regulaciones de privacidad.'
+    emoji: '🔒',
+    title: 'Tu información está segura',
+    description: 'Tus conversaciones y datos de clientes están protegidos. Cumplimos con todas las regulaciones de privacidad.'
   },
   {
-    icon: Users,
-    title: 'Control Humano Siempre',
-    description: 'Tú decides cuándo la IA responde y cuándo intervienes. Transiciones suaves entre IA y humano.'
+    emoji: '🎮',
+    title: 'Tú siempre tienes el control',
+    description: 'La IA no hace nada sin tu permiso. Tú decides cuándo responde ella y cuándo respondes tú.'
   },
   {
-    icon: Code2,
-    title: 'API REST 100% Abierta',
-    description: '48 endpoints documentados con OpenAPI. Integra Whaapy con tu CRM, ERP, o sistema actual. Automatiza workflows con n8n, Make, Zapier. Sin vendor lock-in.'
+    emoji: '🔗',
+    title: 'Se conecta con lo que ya usas',
+    description: '¿Ya usas algún sistema para tu negocio? Whaapy se puede conectar. Nada de empezar de cero.'
   },
   {
-    icon: Globe,
-    title: 'Funciona en México',
-    description: 'Diseñado para negocios mexicanos. Soporte en español, horarios locales, templates en español.'
+    emoji: '🇲🇽',
+    title: 'Hecho para México',
+    description: 'Soporte en español, horarios de México, entendemos cómo funciona tu negocio.'
   },
   {
-    icon: HeartHandshake,
-    title: 'Soporte Real',
-    description: 'Equipo mexicano listo para ayudarte. No bots, personas reales que entienden tu negocio.'
+    emoji: '👨‍💻',
+    title: 'Gente real te ayuda',
+    description: 'Nada de bots de soporte. Personas que entienden tu negocio y te ayudan a crecer.'
   }
 ]
 
@@ -73,69 +72,53 @@ export default function WhyWhaapy() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="relative py-40 px-6 bg-gradient-to-b from-surface to-white">
+    <section ref={sectionRef} className="relative py-24 md:py-40 px-6 bg-gradient-to-b from-surface to-white">
       <div className="max-w-7xl mx-auto">
         {/* Section header */}
-        <div className="text-center max-w-4xl mx-auto mb-20">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-            Por qué elegir <span className="gradient-text">Whaapy</span>
+        <div className="text-center max-w-4xl mx-auto mb-12 md:mb-20">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 leading-tight">
+            No somos solo <span className="gradient-text">otro bot</span>
           </h2>
           <p className="text-xl md:text-2xl text-text-secondary leading-relaxed">
-            No somos solo otro chatbot. Somos tu equipo de soporte que nunca duerme.
+            Somos tu equipo de ventas que nunca duerme
           </p>
         </div>
 
         {/* Reasons grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
-          {reasons.map((reason, index) => {
-            const Icon = reason.icon
-            
-            return (
-              <div
-                key={index}
-                className="why-card opacity-0 bg-white rounded-3xl p-8 border-2 border-border hover:border-accent/30 transition-all duration-500 hover:shadow-xl"
-              >
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-accent/10 to-accent/5 flex items-center justify-center mb-6">
-                  <Icon size={32} className="text-accent" strokeWidth={2} />
-                </div>
-                <h3 className="text-2xl font-bold mb-3 text-text-primary">{reason.title}</h3>
-                <p className="text-lg text-text-secondary leading-relaxed">{reason.description}</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12 md:mb-20">
+          {reasons.map((reason, index) => (
+            <div
+              key={index}
+              className="why-card opacity-0 bg-white rounded-3xl p-6 md:p-8 border-2 border-border hover:border-accent/30 transition-all duration-500 hover:shadow-xl group"
+            >
+              {/* Emoji */}
+              <div className="text-3xl md:text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                {reason.emoji}
               </div>
-            )
-          })}
+              
+              {/* Título */}
+              <h3 className="text-xl md:text-2xl font-bold mb-3 text-text-primary">{reason.title}</h3>
+              
+              {/* Descripción */}
+              <p className="text-base md:text-lg text-text-secondary leading-relaxed">{reason.description}</p>
+            </div>
+          ))}
         </div>
 
-        {/* Trust badges */}
-        <div className="bg-white rounded-3xl border-2 border-border p-12">
-          <div className="text-center mb-10">
-            <h3 className="text-3xl font-bold mb-2">Empresas que confían en Whaapy</h3>
-            <p className="text-lg text-text-secondary">Más de 100 empresas ya están automatizando WhatsApp con nosotros</p>
-          </div>
-          
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
-            <div className="flex items-center justify-center">
-              <div className="text-center">
-                <div className="text-4xl font-bold text-accent mb-1">100+</div>
-                <div className="text-sm text-text-muted">Empresas activas</div>
-              </div>
+        {/* Trust stats - SIN referencias técnicas */}
+        <div className="bg-white rounded-3xl border-2 border-border p-8 md:p-12">
+          <div className="grid grid-cols-3 gap-6 md:gap-8 text-center">
+            <div>
+              <div className="text-3xl md:text-4xl font-bold text-accent">100+</div>
+              <div className="text-xs md:text-sm text-text-muted mt-1">negocios activos</div>
             </div>
-            <div className="flex items-center justify-center">
-              <div className="text-center">
-                <div className="text-4xl font-bold text-accent mb-1">50k+</div>
-                <div className="text-sm text-text-muted">Mensajes/día</div>
-              </div>
+            <div>
+              <div className="text-3xl md:text-4xl font-bold text-accent">50k+</div>
+              <div className="text-xs md:text-sm text-text-muted mt-1">mensajes/día</div>
             </div>
-            <div className="flex items-center justify-center">
-              <div className="text-center">
-                <div className="text-4xl font-bold text-accent mb-1">48</div>
-                <div className="text-sm text-text-muted">Endpoints API</div>
-              </div>
-            </div>
-            <div className="flex items-center justify-center">
-              <div className="text-center">
-                <div className="text-4xl font-bold text-accent mb-1">&lt;2s</div>
-                <div className="text-sm text-text-muted">Tiempo respuesta</div>
-              </div>
+            <div>
+              <div className="text-3xl md:text-4xl font-bold text-accent">&lt;2s</div>
+              <div className="text-xs md:text-sm text-text-muted mt-1">tiempo respuesta</div>
             </div>
           </div>
         </div>
@@ -143,4 +126,3 @@ export default function WhyWhaapy() {
     </section>
   )
 }
-

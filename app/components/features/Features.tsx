@@ -2,39 +2,37 @@
 
 import { useEffect, useRef } from 'react'
 import anime from 'animejs'
-import { MessageSquare, Bot, Users, TrendingUp, Zap, Settings } from 'lucide-react'
-import FeatureCard from './FeatureCard'
 
 const features = [
   {
-    icon: MessageSquare,
-    title: 'Inbox Inteligente',
-    description: 'Inbox centralizado con filtros avanzados, búsqueda full-text, etiquetas personalizadas, y asignación automática a tu equipo.'
+    emoji: '📥',
+    title: 'Todas tus conversaciones en un solo lugar',
+    description: 'Ve y responde desde tu computadora o celular. Busca clientes por nombre, filtra por estado, organiza con etiquetas.'
   },
   {
-    icon: Bot,
-    title: 'Asistente de IA Entrenado',
-    description: 'Agente de IA que entrenas con tus documentos (PDFs, Word, TXT). Responde basándose en tu catálogo, precios, y políticas reales.'
+    emoji: '🎓',
+    title: 'Un asistente que conoce tu negocio',
+    description: 'Le subes tu catálogo, precios, políticas. El asistente responde con información real de TU negocio, no respuestas genéricas.'
   },
   {
-    icon: Users,
-    title: 'Equipos Colaborativos',
-    description: 'Sistema multiusuario con roles (Admin, Agente). Asigna conversaciones automáticamente, ve quién está respondiendo en tiempo real.'
+    emoji: '👥',
+    title: 'Tu equipo, todos conectados',
+    description: 'Invita a tu personal. Cada quien ve sus conversaciones, pueden pasarse clientes entre ellos, y tú ves todo.'
   },
   {
-    icon: TrendingUp,
-    title: 'Métricas en Tiempo Real',
-    description: 'Dashboard con tiempo de respuesta promedio, tasa de efectividad de IA, conversaciones activas, comparativas día actual vs ayer.'
+    emoji: '📊',
+    title: 'Sabes qué está pasando',
+    description: '¿Cuántos mensajes llegaron hoy? ¿Qué tan rápido contestamos? ¿Qué producto preguntan más? Todo en gráficas fáciles.'
   },
   {
-    icon: Zap,
-    title: 'Templates de WhatsApp',
-    description: 'Sincroniza templates aprobados de Meta, envía masivos a segmentos específicos. Sin salir de Whaapy.'
+    emoji: '📢',
+    title: 'Mensajes que sí llegan',
+    description: 'Envía recordatorios, promociones o seguimientos. A todos tus clientes o solo a los que quieras. Sin miedo a que te bloqueen.'
   },
   {
-    icon: Settings,
-    title: 'Control Granular',
-    description: 'Activa/desactiva IA por conversación. Configura auto-pausa cuando humano interviene. Define keywords de handoff automático a humano.'
+    emoji: '🎮',
+    title: 'Tú decides cuándo la IA responde',
+    description: '¿Cliente importante? Apaga el asistente y atiéndelo tú. ¿Preguntas de siempre? Deja que la IA se encargue. Con un botón cambias.'
   }
 ]
 
@@ -74,26 +72,43 @@ export default function Features() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="relative py-40 px-6 bg-white">
+    <section ref={sectionRef} className="relative py-24 md:py-40 px-6 bg-white">
       <div className="max-w-7xl mx-auto">
         {/* Section header */}
-        <div className="text-center max-w-4xl mx-auto mb-20">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-            Todo lo que necesitas para <br className="hidden md:block" /><span className="gradient-text">automatizar WhatsApp</span>
+        <div className="text-center max-w-4xl mx-auto mb-12 md:mb-20">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 leading-tight">
+            Todo lo que necesitas para <br className="hidden md:block" /><span className="gradient-text">atender sin estrés</span>
           </h2>
           <p className="text-xl md:text-2xl text-text-secondary leading-relaxed">
-            Herramientas profesionales para gestionar conversaciones a escala
+            Simple de usar, poderoso de verdad
           </p>
         </div>
 
         {/* Features grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {features.map((feature, index) => (
-            <FeatureCard key={index} feature={feature} />
+            <div 
+              key={index}
+              className="feature-card opacity-0 bg-white rounded-3xl p-8 border-2 border-border hover:border-accent/30 transition-all duration-500 hover:shadow-xl group"
+            >
+              {/* Emoji grande */}
+              <div className="text-4xl md:text-5xl mb-5 md:mb-6 group-hover:scale-110 transition-transform duration-300">
+                {feature.emoji}
+              </div>
+              
+              {/* Título */}
+              <h3 className="text-lg md:text-xl font-bold mb-3 text-text-primary">
+                {feature.title}
+              </h3>
+              
+              {/* Descripción */}
+              <p className="text-text-secondary leading-relaxed text-sm md:text-base">
+                {feature.description}
+              </p>
+            </div>
           ))}
         </div>
       </div>
     </section>
   )
 }
-

@@ -9,7 +9,6 @@ import Particles from './Particles'
 import MagneticButton from '../shared/MagneticButton'
 import ContactModal from '../shared/ContactModal'
 import { captureEvent } from '@/app/lib/analytics'
-import AnnouncementBadge from '../shared/AnnouncementBanner'
 
 export default function Hero() {
   const heroRef = useRef<HTMLDivElement>(null)
@@ -77,34 +76,40 @@ export default function Hero() {
         <div className="text-center max-w-4xl mx-auto mb-16">
           {/* Announcement Badge */}
           <div className="mb-8 flex justify-center">
-            <AnnouncementBadge />
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 rounded-full border border-accent/20">
+              <span className="text-accent">🎉</span>
+              <span className="text-sm font-medium text-text-secondary">
+                +100 negocios ya lo usan
+              </span>
+            </div>
           </div>
           
           <h1 
             ref={headlineRef}
             className="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-[-0.04em] mb-6"
           >
-            <span className="inline-block">Controla</span>
-            {' '}
-            <span className="inline-block">totalmente</span>
-            {' '}
-            <span className="inline-block">cómo</span>
-            {' '}
-            <span className="inline-block">tu</span>
-            {' '}
-            <span className="inline-block gradient-text">IA</span>
-            {' '}
-            <br className="hidden md:block" />
-            <span className="inline-block">atiende</span>
+            <span className="inline-block">Tu</span>
             {' '}
             <span className="inline-block gradient-text">WhatsApp</span>
+            {' '}
+            <span className="inline-block">vende</span>
+            {' '}
+            <span className="inline-block">por</span>
+            {' '}
+            <span className="inline-block">ti</span>
+            <br className="hidden md:block" />
+            <span className="inline-block">mientras</span>
+            {' '}
+            <span className="inline-block">tú</span>
+            {' '}
+            <span className="inline-block gradient-text">descansas</span>
           </h1>
           
           <p 
             ref={subheadlineRef}
             className="text-xl md:text-2xl text-text-secondary max-w-3xl mx-auto mb-10 opacity-0 leading-relaxed"
           >
-            La única plataforma que te da control granular sobre tu asistente de IA. Activa, pausa, o toma control por conversación. Entrena con tus documentos. Integra con cualquier herramienta.
+            Un asistente inteligente que responde a tus clientes 24/7, conoce tus productos y precios, y te avisa solo cuando realmente te necesitan.
           </p>
 
           <div ref={ctaRef} className="flex flex-col sm:flex-row items-center justify-center gap-4 opacity-0">
@@ -113,19 +118,19 @@ export default function Hero() {
               className="btn-primary group relative px-10 py-5 text-white rounded-2xl transition-all font-bold text-lg flex items-center gap-3 shadow-premium-lg hover:glow-accent-strong shimmer"
               strength={15}
             >
-              Agendar demo
+              Quiero probarlo gratis
               <ArrowRight size={22} className="group-hover:translate-x-1 transition-transform" />
             </MagneticButton>
             <a
-              href="https://app.whaapy.com/login"
+              href="#demo"
               className="glass-dark group relative px-10 py-5 text-text-primary rounded-2xl hover:border-accent/30 transition-all font-bold text-lg overflow-hidden shadow-premium hover:shadow-premium-lg inline-block"
               onClick={() =>
-                captureEvent('cta_login_click', {
+                captureEvent('cta_see_demo_click', {
                   location: 'hero_secondary_cta',
                 })
               }
             >
-              Iniciar sesión
+              Ver cómo funciona
             </a>
           </div>
         </div>

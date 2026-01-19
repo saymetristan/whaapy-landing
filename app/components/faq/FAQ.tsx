@@ -6,28 +6,36 @@ import anime from 'animejs'
 
 const faqs = [
   {
-    question: '¿Necesito API de WhatsApp Business?',
-    answer: 'No. Conectas tu número existente en 2 minutos con un QR o te damos uno nuevo. Nosotros nos encargamos de Meta.'
+    question: '¿Necesito hacer algo técnico o contratar a alguien?',
+    answer: 'No. Todo se hace desde la plataforma, sin código, sin técnicos. Si sabes usar WhatsApp Web, puedes usar Whaapy.'
   },
   {
-    question: '¿Qué pasa si la IA responde algo incorrecto?',
-    answer: 'Tienes control total. Puedes desactivar la IA por conversación, editar respuestas, o tomar el control en cualquier momento.'
+    question: '¿Qué pasa si el asistente dice algo mal?',
+    answer: 'Tienes control total. Puedes apagar el asistente en cualquier conversación con un click. También puedes editar lo que dijo o tomar el control en cualquier momento.'
   },
   {
-    question: '¿Funciona con mi número actual de WhatsApp?',
-    answer: 'Sí, funciona con cualquier número de WhatsApp Business. No necesitas cambiar de número.'
+    question: '¿Puedo seguir usando mi número de WhatsApp actual?',
+    answer: 'Sí. Whaapy funciona con tu número de WhatsApp Business existente. No necesitas cambiar de número ni perder tus contactos.'
   },
   {
-    question: '¿Puedo invitar a mi equipo?',
-    answer: 'Totalmente. Sistema multiusuario con roles (Admin, Agente). Asigna conversaciones, colabora en tiempo real.'
+    question: '¿Pueden entrar mis empleados también?',
+    answer: 'Sí. Puedes invitar a tu equipo de ventas o soporte. Cada quien tiene su acceso y pueden colaborar en las conversaciones.'
   },
   {
-    question: '¿Cómo entreno la IA?',
-    answer: 'Subes documentos (PDF, Word, TXT) con información de tu negocio: productos, precios, políticas. La IA procesa y aprende automáticamente.'
+    question: '¿Cómo le enseño al asistente sobre mi negocio?',
+    answer: 'Subes tus documentos (catálogo, precios, políticas) en PDF, Word o Excel. El asistente los lee y aprende automáticamente. También puedes escribir instrucciones específicas.'
   },
   {
-    question: '¿Puedo usar templates de WhatsApp?',
-    answer: 'Sí. Sincronizamos automáticamente tus templates aprobados por Meta. Envía notificaciones masivas desde el dashboard.'
+    question: '¿Puedo mandar mensajes a todos mis clientes?',
+    answer: 'Sí. Puedes enviar promociones, recordatorios o avisos a todos tus contactos o solo a los que quieras. Usamos los templates oficiales de WhatsApp para que no te bloqueen.'
+  },
+  {
+    question: '¿Cuánto cuesta?',
+    answer: 'Tenemos planes desde $999 MXN al mes. Incluye todo: asistente de IA, mensajes, múltiples usuarios, soporte. Sin costos ocultos ni sorpresas.'
+  },
+  {
+    question: '¿Puedo probarlo antes de pagar?',
+    answer: 'Sí. Ofrecemos una demo personalizada donde te mostramos cómo funcionaría con tu negocio. Sin compromiso.'
   }
 ]
 
@@ -73,20 +81,20 @@ export default function FAQ() {
   }
 
   return (
-    <section className="relative py-40 px-6 bg-white">
+    <section className="relative py-24 md:py-40 px-6 bg-white">
       <div className="max-w-4xl mx-auto">
         {/* Section header */}
-        <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-            Preguntas <span className="gradient-text">frecuentes</span>
+        <div className="text-center mb-12 md:mb-20">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 leading-tight">
+            Lo que todos <span className="gradient-text">preguntan</span>
           </h2>
           <p className="text-xl md:text-2xl text-text-secondary leading-relaxed">
-            Todo lo que necesitas saber sobre Whaapy
+            Respuestas claras, sin tecnicismos
           </p>
         </div>
 
         {/* FAQ items */}
-        <div className="space-y-4">
+        <div className="space-y-3 md:space-y-4">
           {faqs.map((faq, index) => (
             <div 
               key={index}
@@ -94,13 +102,13 @@ export default function FAQ() {
             >
               <button
                 onClick={() => toggleFAQ(index)}
-                className="w-full px-8 py-6 flex items-center justify-between text-left hover:bg-surface/50 transition-colors"
+                className="w-full px-5 md:px-8 py-5 md:py-6 flex items-center justify-between text-left hover:bg-surface/50 transition-colors"
               >
-                <span className="font-bold text-xl pr-8 text-text-primary">{faq.question}</span>
+                <span className="font-bold text-base md:text-xl pr-4 md:pr-8 text-text-primary">{faq.question}</span>
                 <ChevronDown 
                   id={`faq-chevron-${index}`}
                   className="flex-shrink-0 text-accent transition-transform" 
-                  size={28} 
+                  size={24} 
                   strokeWidth={2.5}
                 />
               </button>
@@ -109,7 +117,7 @@ export default function FAQ() {
                 className="overflow-hidden"
                 style={{ height: 0, opacity: 0 }}
               >
-                <div className="px-8 pb-6 text-text-secondary leading-relaxed text-lg">
+                <div className="px-5 md:px-8 pb-5 md:pb-6 text-text-secondary leading-relaxed text-sm md:text-lg">
                   {faq.answer}
                 </div>
               </div>

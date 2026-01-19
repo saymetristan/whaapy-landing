@@ -1,12 +1,10 @@
 import Header from './components/shared/Header'
 import Hero from './components/hero/Hero'
 import Benefits from './components/benefits/Benefits'
-import UniqueFeatures from './components/unique-features/UniqueFeatures'
-import BentoShowcase from './components/bento-showcase/BentoShowcase'
-import ProductShowcase from './components/product/ProductShowcase'
+import ProductDemo from './components/product-demo/ProductDemo'
 import Features from './components/features/Features'
-import UseCases from './components/use-cases/UseCases'
 import HowItWorks from './components/how-it-works/HowItWorks'
+import UseCases from './components/use-cases/UseCases'
 import WhyWhaapy from './components/why-whaapy/WhyWhaapy'
 import FAQ from './components/faq/FAQ'
 import Team from './components/team/Team'
@@ -35,12 +33,10 @@ export default function Home() {
         
         <Hero />
         <Benefits />
-        <UniqueFeatures />
-        <BentoShowcase />
-        <ProductShowcase />
+        <ProductDemo />
         <Features />
-        <UseCases />
         <HowItWorks />
+        <UseCases />
         <WhyWhaapy />
         <FAQ />
         <Team />

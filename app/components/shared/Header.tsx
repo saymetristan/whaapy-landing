@@ -107,18 +107,6 @@ export default function Header() {
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-4">
               <a
-                href="#producto"
-                className="text-text-secondary hover:text-text-primary transition-colors font-medium px-4 py-2"
-              >
-                Producto
-              </a>
-              <a
-                href="#equipo"
-                className="text-text-secondary hover:text-text-primary transition-colors font-medium px-4 py-2"
-              >
-                Equipo
-              </a>
-              <a
                 href="https://app.whaapy.com/login"
                 className="text-text-secondary hover:text-text-primary transition-colors font-medium px-4 py-2"
                 onClick={() =>
@@ -127,13 +115,13 @@ export default function Header() {
                   })
                 }
               >
-                Login
+                Iniciar sesión
               </a>
               <button
                 onClick={() => openDemoModal('desktop_nav')}
                 className="px-6 py-2.5 btn-primary text-white rounded-full font-semibold shimmer shadow-premium hover:shadow-premium-lg hover:scale-105 transition-all duration-300 whitespace-nowrap"
               >
-                Agendar demo
+                Probar gratis
               </button>
             </div>
 
@@ -143,7 +131,7 @@ export default function Header() {
                 onClick={() => openDemoModal('mobile_cta')}
                 className="px-4 sm:px-5 py-2 sm:py-2.5 btn-primary text-white rounded-full font-semibold text-sm sm:text-base shimmer shadow-premium hover:scale-105 transition-all duration-300 whitespace-nowrap"
               >
-                Demo
+                Probar
               </button>
               <button
                 onClick={handleMenuToggle}
@@ -211,13 +199,13 @@ export default function Header() {
                   onClick={() => openDemoModal('mobile_menu')}
                   className="block w-full text-left px-6 py-4 text-lg font-bold text-white bg-gradient-to-r from-accent to-accent-hover rounded-2xl transition-all duration-300 hover:shadow-xl hover:scale-[1.02] shimmer"
                 >
-                  Agendar demo
+                  Probar gratis
                 </button>
 
                 <div className="pt-6 mt-6 border-t border-border">
                   <a
                     href="https://app.whaapy.com"
-                    className="block text-sm text-text-secondary hover:text-accent transition-colors mb-3"
+                    className="block text-sm text-text-secondary hover:text-accent transition-colors"
                     onClick={() => {
                       captureEvent('navigation_link_click', {
                         location: 'header_mobile_menu',
@@ -226,22 +214,7 @@ export default function Header() {
                       closeMenu('nav_link')
                     }}
                   >
-                    Dashboard
-                  </a>
-                  <a
-                    href="https://github.com/saymetristan/whaapy-docs"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block text-sm text-text-secondary hover:text-accent transition-colors"
-                    onClick={() => {
-                      captureEvent('navigation_link_click', {
-                        location: 'header_mobile_menu',
-                        destination: 'docs',
-                      })
-                      closeMenu('nav_link')
-                    }}
-                  >
-                    Documentación API
+                    Ir al Dashboard
                   </a>
                 </div>
               </div>
@@ -250,7 +223,7 @@ export default function Header() {
             {/* Mobile Menu Footer */}
             <div className="p-6 border-t border-border bg-surface/50">
               <p className="text-xs text-text-muted text-center">
-                © 2025 Whaapy. Hecho en México 🇲🇽
+                © 2026 Whaapy. Hecho en México 🇲🇽
               </p>
             </div>
           </div>
