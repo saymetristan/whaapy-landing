@@ -1,30 +1,29 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
-import Image from 'next/image'
 import anime from 'animejs'
 import { Inbox, MessageSquare, Settings, ExternalLink } from 'lucide-react'
+import { InboxMockup } from './mockups/InboxMockup'
+import { ChatMockup } from './mockups/ChatMockup'
+import { AgentConfigMockup } from './mockups/AgentConfigMockup'
 
 const tabs = [
   {
     id: 'inbox',
     icon: Inbox,
     label: 'Todas tus conversaciones',
-    screenshot: '/images/product/inbox-screenshot.svg',
     description: 'Ve todos los mensajes en un solo lugar. Busca clientes, filtra por estado, y organiza con etiquetas.'
   },
   {
     id: 'chat',
     icon: MessageSquare,
     label: 'La IA responde por ti',
-    screenshot: '/images/product/chat-screenshot.svg',
     description: 'Observa cómo el asistente contesta automáticamente. Tú puedes intervenir cuando quieras con un click.'
   },
   {
     id: 'config',
     icon: Settings,
     label: 'Tú tienes el control',
-    screenshot: '/images/product/agent-config-screenshot.svg',
     description: 'Decide cómo se comporta el asistente. Qué tono usa, qué sabe de tu negocio, cuándo debe callarse.'
   }
 ]
@@ -121,19 +120,15 @@ export default function ProductDemo() {
           })}
         </div>
         
-        {/* Screenshot Container */}
+        {/* Mockup Container */}
         <div 
           ref={contentRef}
-          className="animate-in opacity-0 relative bg-surface rounded-2xl md:rounded-3xl p-4 md:p-8 border-2 border-border shadow-premium-lg overflow-hidden"
+          className="animate-in opacity-0 relative bg-surface rounded-2xl md:rounded-3xl p-4 md:p-6 border-2 border-border shadow-premium-lg overflow-hidden"
         >
-          <div className="relative aspect-[16/10] md:aspect-[16/9]">
-            <Image
-              src={currentTab.screenshot}
-              alt={currentTab.label}
-              fill
-              className="object-contain"
-              priority
-            />
+          <div className="relative h-[400px] md:h-[500px]">
+            {activeTab === 'inbox' && <InboxMockup />}
+            {activeTab === 'chat' && <ChatMockup />}
+            {activeTab === 'config' && <AgentConfigMockup />}
           </div>
         </div>
         
