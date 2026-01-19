@@ -10,9 +10,9 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'Whaapy - Asistente de IA para WhatsApp Business',
-  description: 'Automatiza tu atención al cliente en WhatsApp con IA. Respuestas instantáneas 24/7, ROI de 24x. Conecta tu número de WhatsApp Business en minutos.',
-  keywords: ['WhatsApp Business', 'IA', 'Chatbot', 'Atención al cliente', 'Automatización', 'ROI', 'WhatsApp API', 'Asistente virtual'],
+  title: 'Whaapy - Tu WhatsApp vende por ti mientras descansas',
+  description: 'Un asistente inteligente que responde a tus clientes 24/7 por WhatsApp. Configúralo en 10 minutos, sin técnicos ni instalaciones.',
+  keywords: ['WhatsApp Business', 'asistente WhatsApp', 'chatbot WhatsApp', 'atención automática', 'ventas WhatsApp', 'respuestas automáticas', 'negocio WhatsApp'],
   authors: [{ name: 'Whaapy' }],
   icons: {
     icon: '/favicon.ico',
@@ -20,8 +20,8 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL('https://whaapy.com'),
   openGraph: {
-    title: 'Whaapy - Asistente de IA para WhatsApp Business',
-    description: 'Automatiza tu atención al cliente en WhatsApp con IA. Respuestas instantáneas 24/7, ROI de 24x.',
+    title: 'Whaapy - Tu WhatsApp vende por ti mientras descansas',
+    description: 'Un asistente inteligente que responde a tus clientes 24/7 por WhatsApp. Configúralo en 10 minutos.',
     url: 'https://whaapy.com',
     siteName: 'Whaapy',
     type: 'website',
@@ -30,18 +30,18 @@ export const metadata: Metadata = {
         url: '/icons/whaapy-icon-512.png',
         width: 512,
         height: 512,
-        alt: 'Whaapy Logo',
+        alt: 'Whaapy - Tu WhatsApp vende por ti',
       }
     ],
   },
   twitter: {
     card: 'summary',
-    title: 'Whaapy - Asistente de IA para WhatsApp Business',
-    description: 'Automatiza tu atención al cliente en WhatsApp con IA. ROI de 24x.',
+    title: 'Whaapy - Tu WhatsApp vende por ti',
+    description: 'Asistente inteligente que responde a tus clientes 24/7 por WhatsApp. Configúralo en minutos.',
     images: ['/icons/whaapy-icon-512.png'],
   },
   other: {
-    'fb:app_id': '1227498005473392', // TODO: Reemplaza con tu App ID real
+    'fb:app_id': '1227498005473392',
   },
 }
 

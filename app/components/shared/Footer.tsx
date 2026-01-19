@@ -24,8 +24,8 @@ export default function Footer() {
               pegados al celular.
             </p>
             <p className="text-text-secondary text-sm leading-relaxed mb-4">
-              Más de 100 negocios en México y Latinoamérica ya usan Whaapy 
-              para vender más y trabajar menos.
+              Hecho en México para negocios de toda Latinoamérica que quieren 
+              vender más y trabajar menos.
             </p>
             <a
               href="#equipo"

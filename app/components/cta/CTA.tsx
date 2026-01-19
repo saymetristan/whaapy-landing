@@ -125,7 +125,7 @@ export default function CTA() {
           </MagneticButton>
           
           <p className="mt-5 md:mt-6 text-base md:text-lg text-text-muted font-medium">
-            Más de 100 negocios ya recuperaron su tiempo ✨
+            Sin tarjeta de crédito para empezar ✨
           </p>
         </div>
       </div>

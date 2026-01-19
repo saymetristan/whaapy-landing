@@ -105,16 +105,16 @@ export default function WhyWhaapy() {
           ))}
         </div>
 
-        {/* Trust stats - SIN referencias técnicas */}
+        {/* Trust stats - Características reales */}
         <div className="bg-white rounded-3xl border-2 border-border p-8 md:p-12">
           <div className="grid grid-cols-3 gap-6 md:gap-8 text-center">
             <div>
-              <div className="text-3xl md:text-4xl font-bold text-accent">100+</div>
-              <div className="text-xs md:text-sm text-text-muted mt-1">negocios activos</div>
+              <div className="text-3xl md:text-4xl font-bold text-accent">24/7</div>
+              <div className="text-xs md:text-sm text-text-muted mt-1">siempre disponible</div>
             </div>
             <div>
-              <div className="text-3xl md:text-4xl font-bold text-accent">50k+</div>
-              <div className="text-xs md:text-sm text-text-muted mt-1">mensajes/día</div>
+              <div className="text-3xl md:text-4xl font-bold text-accent">10 min</div>
+              <div className="text-xs md:text-sm text-text-muted mt-1">para configurar</div>
             </div>
             <div>
               <div className="text-3xl md:text-4xl font-bold text-accent">&lt;2s</div>

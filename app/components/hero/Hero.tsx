@@ -77,9 +77,9 @@ export default function Hero() {
           {/* Announcement Badge */}
           <div className="mb-8 flex justify-center">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 rounded-full border border-accent/20">
-              <span className="text-accent">🎉</span>
+              <span className="text-accent">🚀</span>
               <span className="text-sm font-medium text-text-secondary">
-                +100 negocios ya lo usan
+                Configúralo en 10 minutos
               </span>
             </div>
           </div>
