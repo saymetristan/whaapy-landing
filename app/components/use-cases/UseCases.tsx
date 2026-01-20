@@ -5,52 +5,40 @@ import anime from 'animejs'
 
 const useCases = [
   {
-    emoji: '🛒',
     industry: 'E-commerce',
+    color: 'bg-blue-500',
     title: 'Tienda en línea',
-    before: 'Mi equipo de 3 personas no daba abasto contestando "¿tienen talla M?", "¿hacen envíos a Monterrey?"',
-    after: 'El asistente contesta stock, tallas, envíos y formas de pago. El equipo solo cierra ventas.',
-    result: '65% más ventas'
+    quote: 'Mi equipo de 3 personas no daba abasto contestando "¿tienen talla M?", "¿hacen envíos a Monterrey?"',
+    solution: 'El asistente contesta stock, tallas, envíos y formas de pago. El equipo solo cierra ventas.',
+    result: '+65%',
+    resultLabel: 'ventas'
   },
   {
-    emoji: '🍽️',
     industry: 'Restaurantes',
+    color: 'bg-orange-500',
     title: 'Restaurante con 3 sucursales',
-    before: 'Recibíamos reservaciones por WhatsApp y se cruzaban. Nadie sabía qué mesas había.',
-    after: 'El asistente toma reservas según disponibilidad real y manda el menú actualizado.',
-    result: 'Cero reservas perdidas'
+    quote: 'Recibíamos reservaciones por WhatsApp y se cruzaban. Nadie sabía qué mesas había.',
+    solution: 'El asistente toma reservas según disponibilidad real y manda el menú actualizado.',
+    result: '0',
+    resultLabel: 'reservas perdidas'
   },
   {
-    emoji: '🏠',
     industry: 'Inmobiliaria',
+    color: 'bg-purple-500',
     title: 'Inmobiliaria con 10 agentes',
-    before: 'Cada agente recibía 50+ mensajes diarios. La mayoría no calificaban.',
-    after: 'El asistente califica leads, manda fichas técnicas. Agentes solo hablan con interesados reales.',
-    result: '5x más cierres'
+    quote: 'Cada agente recibía 50+ mensajes diarios. La mayoría no calificaban.',
+    solution: 'El asistente califica leads, manda fichas técnicas. Agentes solo hablan con interesados reales.',
+    result: '5x',
+    resultLabel: 'más cierres'
   },
   {
-    emoji: '📦',
     industry: 'Distribuidora',
+    color: 'bg-emerald-500',
     title: 'Distribuidora B2B',
-    before: 'Clientes pedían cotizaciones a las 10pm y para cuando contestábamos ya habían comprado con otro.',
-    after: 'El asistente manda cotizaciones automáticas consultando precios actualizados. 24/7.',
-    result: '45% más ventas nocturnas'
-  },
-  {
-    emoji: '🏥',
-    industry: 'Salud',
-    title: 'Clínica médica',
-    before: 'La recepcionista no daba abasto con citas, confirmaciones y preguntas de pacientes.',
-    after: 'El asistente agenda según disponibilidad de cada doctor y manda recordatorios.',
-    result: '60% menos carga admin'
-  },
-  {
-    emoji: '🔧',
-    industry: 'Servicios',
-    title: 'Taller de reparaciones',
-    before: 'Clientes preguntando "¿ya está mi equipo?" todo el día. No podía trabajar de tanto contestar.',
-    after: 'El asistente informa status de reparaciones y agenda citas de entrega.',
-    result: '3h más de trabajo/día'
+    quote: 'Clientes pedían cotizaciones a las 10pm y para cuando contestábamos ya habían comprado con otro.',
+    solution: 'El asistente manda cotizaciones automáticas consultando precios actualizados. 24/7.',
+    result: '+45%',
+    resultLabel: 'ventas nocturnas'
   }
 ]
 
@@ -72,11 +60,11 @@ export default function UseCases() {
           
           anime({
             targets: cards,
-            translateY: [60, 0],
+            translateX: [-30, 0],
             opacity: [0, 1],
-            duration: 1000,
+            duration: 800,
             easing: 'cubicBezier(0.16, 1, 0.3, 1)',
-            delay: anime.stagger(100)
+            delay: anime.stagger(150)
           })
           
           observer.unobserve(entry.target)
@@ -91,7 +79,7 @@ export default function UseCases() {
 
   return (
     <section ref={sectionRef} className="relative py-24 md:py-40 px-6 bg-white">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-5xl mx-auto">
         {/* Section header */}
         <div className="text-center max-w-4xl mx-auto mb-12 md:mb-20">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 leading-tight">
@@ -102,47 +90,46 @@ export default function UseCases() {
           </p>
         </div>
 
-        {/* Use cases grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        {/* Use cases - horizontal cards */}
+        <div className="space-y-6">
           {useCases.map((useCase, index) => (
             <div
               key={index}
-              className="use-case-card opacity-0 bg-surface rounded-3xl p-6 md:p-8 border-2 border-border hover:border-accent/30 transition-all duration-500 hover:shadow-xl group"
+              className={`use-case-card opacity-0 bg-surface rounded-2xl md:rounded-3xl p-6 md:p-8 border border-border hover:border-accent/20 transition-all duration-500 hover:shadow-lg ${
+                index % 2 === 1 ? 'md:ml-12' : 'md:mr-12'
+              }`}
             >
-              {/* Header con emoji e industria */}
-              <div className="flex items-center gap-3 md:gap-4 mb-5 md:mb-6">
-                <span className="text-3xl md:text-4xl group-hover:scale-110 transition-transform duration-300">{useCase.emoji}</span>
-                <div>
-                  <span className="text-xs font-semibold text-accent uppercase tracking-wide">
-                    {useCase.industry}
-                  </span>
-                  <h3 className="text-base md:text-lg font-bold text-text-primary">
-                    {useCase.title}
-                  </h3>
+              <div className="flex flex-col md:flex-row md:items-center gap-6">
+                {/* Left side - Quote and info */}
+                <div className="flex-1 space-y-4">
+                  {/* Industry badge */}
+                  <div className="flex items-center gap-3">
+                    <span className={`w-3 h-3 rounded-full ${useCase.color}`} />
+                    <span className="text-xs font-bold text-text-muted uppercase tracking-wider">
+                      {useCase.industry}
+                    </span>
+                    <span className="text-text-muted">·</span>
+                    <span className="text-sm text-text-secondary">{useCase.title}</span>
+                  </div>
+
+                  {/* Quote */}
+                  <blockquote className="text-lg md:text-xl text-text-primary font-medium leading-relaxed">
+                    "{useCase.quote}"
+                  </blockquote>
+
+                  {/* Solution */}
+                  <p className="text-text-secondary">
+                    <span className="font-semibold text-accent">Ahora:</span> {useCase.solution}
+                  </p>
                 </div>
-              </div>
 
-              {/* Antes */}
-              <div className="mb-4">
-                <span className="text-xs font-bold text-text-muted uppercase tracking-wide">
-                  ANTES:
-                </span>
-                <p className="text-text-secondary italic mt-1 text-sm md:text-base">"{useCase.before}"</p>
-              </div>
-
-              {/* Ahora */}
-              <div className="mb-5 md:mb-6">
-                <span className="text-xs font-bold text-accent uppercase tracking-wide">
-                  AHORA:
-                </span>
-                <p className="text-text-primary font-medium mt-1 text-sm md:text-base">{useCase.after}</p>
-              </div>
-
-              {/* Resultado */}
-              <div className="inline-block px-4 py-2 bg-accent/10 rounded-full">
-                <span className="text-sm font-bold text-accent">
-                  Resultado: {useCase.result}
-                </span>
+                {/* Right side - Result */}
+                <div className="md:w-32 md:text-center md:border-l md:border-border md:pl-8">
+                  <div className="flex md:flex-col items-center gap-2 md:gap-1">
+                    <span className="text-4xl md:text-5xl font-bold text-accent">{useCase.result}</span>
+                    <span className="text-sm text-text-muted">{useCase.resultLabel}</span>
+                  </div>
+                </div>
               </div>
             </div>
           ))}

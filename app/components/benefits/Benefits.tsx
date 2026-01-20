@@ -5,19 +5,19 @@ import anime from 'animejs'
 import { X, Check } from 'lucide-react'
 
 const sinWhaapy = [
-  { emoji: '😫', text: 'Contestas mensajes todo el día, hasta en el baño' },
-  { emoji: '⏰', text: 'Clientes esperan horas para saber un precio' },
-  { emoji: '💸', text: 'Pierdes ventas porque no viste el mensaje a tiempo' },
-  { emoji: '🔄', text: 'Repites lo mismo 50 veces: "Sí tenemos", "El precio es..."' },
-  { emoji: '😴', text: 'Despiertas pensando en los mensajes que no contestaste' }
+  'Contestas mensajes todo el día, hasta en el baño',
+  'Clientes esperan horas para saber un precio',
+  'Pierdes ventas porque no viste el mensaje a tiempo',
+  'Repites lo mismo 50 veces: "Sí tenemos", "El precio es..."',
+  'Despiertas pensando en los mensajes que no contestaste'
 ]
 
 const conWhaapy = [
-  { emoji: '🤖', text: 'Un asistente responde al instante, aunque estés dormido' },
-  { emoji: '⚡', text: 'Tus clientes saben precio y disponibilidad en 2 segundos' },
-  { emoji: '💰', text: 'No pierdes ni una oportunidad, ni de noche ni en domingo' },
-  { emoji: '🎯', text: 'Tú solo intervienes para cerrar la venta o resolver algo especial' },
-  { emoji: '☕', text: 'Revisas tu WhatsApp cuando quieres, no porque tienes que hacerlo' }
+  'Un asistente responde al instante, aunque estés dormido',
+  'Tus clientes saben precio y disponibilidad en 2 segundos',
+  'No pierdes ni una oportunidad, ni de noche ni en domingo',
+  'Tú solo intervienes para cerrar la venta o resolver algo especial',
+  'Revisas tu WhatsApp cuando quieres, no porque tienes que hacerlo'
 ]
 
 export default function Benefits() {
@@ -38,9 +38,9 @@ export default function Benefits() {
           
           anime({
             targets: cards,
-            translateY: [60, 0],
+            translateY: [40, 0],
             opacity: [0, 1],
-            duration: 1000,
+            duration: 800,
             easing: 'cubicBezier(0.16, 1, 0.3, 1)',
             delay: anime.stagger(150)
           })
@@ -81,9 +81,9 @@ export default function Benefits() {
             
             <ul className="space-y-4 md:space-y-5">
               {sinWhaapy.map((item, index) => (
-                <li key={index} className="flex items-start gap-3 md:gap-4 text-base md:text-lg">
-                  <span className="text-xl md:text-2xl flex-shrink-0">{item.emoji}</span>
-                  <span className="text-text-secondary">{item.text}</span>
+                <li key={index} className="flex items-start gap-3 md:gap-4">
+                  <X className="w-5 h-5 text-red-400 shrink-0 mt-0.5" />
+                  <span className="text-text-secondary text-base md:text-lg">{item}</span>
                 </li>
               ))}
             </ul>
@@ -100,36 +100,33 @@ export default function Benefits() {
             
             <ul className="space-y-4 md:space-y-5">
               {conWhaapy.map((item, index) => (
-                <li key={index} className="flex items-start gap-3 md:gap-4 text-base md:text-lg">
-                  <span className="text-xl md:text-2xl flex-shrink-0">{item.emoji}</span>
-                  <span className="text-text-primary font-medium">{item.text}</span>
+                <li key={index} className="flex items-start gap-3 md:gap-4">
+                  <Check className="w-5 h-5 text-accent shrink-0 mt-0.5" />
+                  <span className="text-text-primary font-medium text-base md:text-lg">{item}</span>
                 </li>
               ))}
             </ul>
           </div>
         </div>
 
-        {/* Metric Cards */}
+        {/* Metric Cards - Sin emojis, solo tipografía */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-          <div className="benefit-card opacity-0 bg-white rounded-3xl p-8 md:p-10 border-2 border-border hover:border-accent/30 transition-all duration-500 shadow-sm hover:shadow-xl">
-            <div className="text-4xl md:text-5xl mb-4">⏱️</div>
-            <h3 className="text-3xl md:text-4xl font-bold text-accent mb-2">15 horas</h3>
-            <p className="text-base md:text-lg text-text-secondary font-medium mb-2">menos frente al teléfono cada semana</p>
-            <p className="text-sm md:text-base text-text-muted">Son casi 2 días completos para hacer crecer tu negocio</p>
+          <div className="benefit-card opacity-0 bg-white rounded-3xl p-8 md:p-10 border-2 border-border hover:border-accent/30 transition-all duration-500 shadow-sm hover:shadow-xl text-center">
+            <div className="text-5xl md:text-6xl font-bold text-accent mb-3">15h</div>
+            <p className="text-lg md:text-xl text-text-primary font-semibold mb-1">menos frente al teléfono</p>
+            <p className="text-sm md:text-base text-text-muted">cada semana</p>
           </div>
 
-          <div className="benefit-card opacity-0 bg-white rounded-3xl p-8 md:p-10 border-2 border-border hover:border-accent/30 transition-all duration-500 shadow-sm hover:shadow-xl">
-            <div className="text-4xl md:text-5xl mb-4">📈</div>
-            <h3 className="text-3xl md:text-4xl font-bold text-accent mb-2">3x más</h3>
-            <p className="text-base md:text-lg text-text-secondary font-medium mb-2">ventas cuando contestas al instante</p>
-            <p className="text-sm md:text-base text-text-muted">Los clientes compran cuando están listos, no cuando tú puedes</p>
+          <div className="benefit-card opacity-0 bg-white rounded-3xl p-8 md:p-10 border-2 border-border hover:border-accent/30 transition-all duration-500 shadow-sm hover:shadow-xl text-center">
+            <div className="text-5xl md:text-6xl font-bold text-accent mb-3">3x</div>
+            <p className="text-lg md:text-xl text-text-primary font-semibold mb-1">más ventas</p>
+            <p className="text-sm md:text-base text-text-muted">al contestar al instante</p>
           </div>
 
-          <div className="benefit-card opacity-0 bg-white rounded-3xl p-8 md:p-10 border-2 border-border hover:border-accent/30 transition-all duration-500 shadow-sm hover:shadow-xl">
-            <div className="text-4xl md:text-5xl mb-4">💵</div>
-            <h3 className="text-3xl md:text-4xl font-bold text-accent mb-2">$0 extra</h3>
-            <p className="text-base md:text-lg text-text-secondary font-medium mb-2">en personal</p>
-            <p className="text-sm md:text-base text-text-muted">El asistente no pide aumento ni vacaciones</p>
+          <div className="benefit-card opacity-0 bg-white rounded-3xl p-8 md:p-10 border-2 border-border hover:border-accent/30 transition-all duration-500 shadow-sm hover:shadow-xl text-center">
+            <div className="text-5xl md:text-6xl font-bold text-accent mb-3">$0</div>
+            <p className="text-lg md:text-xl text-text-primary font-semibold mb-1">extra en personal</p>
+            <p className="text-sm md:text-base text-text-muted">el asistente no pide aumento</p>
           </div>
         </div>
       </div>

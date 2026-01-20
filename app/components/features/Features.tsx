@@ -2,37 +2,44 @@
 
 import { useEffect, useRef } from 'react'
 import anime from 'animejs'
+import { Inbox, GraduationCap, Users, BarChart3, Megaphone, Gamepad2 } from 'lucide-react'
 
 const features = [
   {
-    emoji: '📥',
+    icon: Inbox,
     title: 'Todas tus conversaciones en un solo lugar',
-    description: 'Ve y responde desde tu computadora o celular. Busca clientes por nombre, filtra por estado, organiza con etiquetas.'
+    description: 'Ve y responde desde tu computadora o celular. Busca clientes por nombre, filtra por estado, organiza con etiquetas.',
+    size: 'large'
   },
   {
-    emoji: '🎓',
+    icon: GraduationCap,
     title: 'Un asistente que conoce tu negocio',
-    description: 'Le subes tu catálogo, precios, políticas. El asistente responde con información real de TU negocio, no respuestas genéricas.'
+    description: 'Le subes tu catálogo, precios, políticas. Responde con información real de TU negocio.',
+    size: 'medium'
   },
   {
-    emoji: '👥',
+    icon: Users,
     title: 'Tu equipo, todos conectados',
-    description: 'Invita a tu personal. Cada quien ve sus conversaciones, pueden pasarse clientes entre ellos, y tú ves todo.'
+    description: 'Invita a tu personal. Cada quien ve sus conversaciones y tú ves todo.',
+    size: 'medium'
   },
   {
-    emoji: '📊',
+    icon: BarChart3,
     title: 'Sabes qué está pasando',
-    description: '¿Cuántos mensajes llegaron hoy? ¿Qué tan rápido contestamos? ¿Qué producto preguntan más? Todo en gráficas fáciles.'
+    description: '¿Cuántos mensajes llegaron? ¿Qué producto preguntan más? Todo en gráficas fáciles.',
+    size: 'small'
   },
   {
-    emoji: '📢',
+    icon: Megaphone,
     title: 'Mensajes que sí llegan',
-    description: 'Envía recordatorios, promociones o seguimientos. A todos tus clientes o solo a los que quieras. Sin miedo a que te bloqueen.'
+    description: 'Envía promociones o seguimientos a todos tus clientes o solo a los que quieras.',
+    size: 'small'
   },
   {
-    emoji: '🎮',
+    icon: Gamepad2,
     title: 'Tú decides cuándo la IA responde',
-    description: '¿Cliente importante? Apaga el asistente y atiéndelo tú. ¿Preguntas de siempre? Deja que la IA se encargue. Con un botón cambias.'
+    description: '¿Cliente importante? Atiéndelo tú. ¿Preguntas de siempre? La IA se encarga.',
+    size: 'small'
   }
 ]
 
@@ -54,11 +61,11 @@ export default function Features() {
           
           anime({
             targets: cards,
-            translateY: [60, 0],
+            translateY: [40, 0],
             opacity: [0, 1],
-            duration: 1000,
+            duration: 800,
             easing: 'cubicBezier(0.16, 1, 0.3, 1)',
-            delay: anime.stagger(150)
+            delay: anime.stagger(100)
           })
           
           observer.unobserve(entry.target)
@@ -84,29 +91,68 @@ export default function Features() {
           </p>
         </div>
 
-        {/* Features grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {features.map((feature, index) => (
-            <div 
-              key={index}
-              className="feature-card opacity-0 bg-white rounded-3xl p-8 border-2 border-border hover:border-accent/30 transition-all duration-500 hover:shadow-xl group"
-            >
-              {/* Emoji grande */}
-              <div className="text-4xl md:text-5xl mb-5 md:mb-6 group-hover:scale-110 transition-transform duration-300">
-                {feature.emoji}
+        {/* Bento Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+          {/* Card Grande - 2 columnas, 2 filas */}
+          <div className="feature-card opacity-0 md:col-span-2 md:row-span-2 bg-gradient-to-br from-accent/5 to-accent/10 rounded-3xl p-8 md:p-10 border border-accent/20 group hover:shadow-xl transition-all duration-500">
+            <div className="h-full flex flex-col">
+              <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-accent/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <Inbox className="w-7 h-7 md:w-8 md:h-8 text-accent" />
               </div>
-              
-              {/* Título */}
-              <h3 className="text-lg md:text-xl font-bold mb-3 text-text-primary">
-                {feature.title}
+              <h3 className="text-2xl md:text-3xl font-bold mb-4 text-text-primary">
+                {features[0].title}
               </h3>
-              
-              {/* Descripción */}
-              <p className="text-text-secondary leading-relaxed text-sm md:text-base">
-                {feature.description}
+              <p className="text-lg md:text-xl text-text-secondary leading-relaxed flex-grow">
+                {features[0].description}
               </p>
             </div>
-          ))}
+          </div>
+
+          {/* Cards Medianas */}
+          {features.slice(1, 3).map((feature, index) => {
+            const Icon = feature.icon
+            return (
+              <div 
+                key={index}
+                className="feature-card opacity-0 bg-white rounded-3xl p-6 md:p-8 border-2 border-border hover:border-accent/30 transition-all duration-500 hover:shadow-lg group"
+              >
+                <div className="w-12 h-12 rounded-xl bg-surface flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <Icon className="w-6 h-6 text-accent" />
+                </div>
+                <h3 className="text-lg md:text-xl font-bold mb-2 text-text-primary">
+                  {feature.title}
+                </h3>
+                <p className="text-text-secondary text-sm md:text-base leading-relaxed">
+                  {feature.description}
+                </p>
+              </div>
+            )
+          })}
+
+          {/* Cards Pequeñas */}
+          {features.slice(3).map((feature, index) => {
+            const Icon = feature.icon
+            return (
+              <div 
+                key={index + 3}
+                className="feature-card opacity-0 bg-surface rounded-2xl p-5 md:p-6 border border-border hover:border-accent/20 transition-all duration-500 hover:shadow-md group"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-lg bg-white flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform duration-300">
+                    <Icon className="w-5 h-5 text-accent" />
+                  </div>
+                  <div>
+                    <h3 className="text-base md:text-lg font-bold mb-1 text-text-primary">
+                      {feature.title}
+                    </h3>
+                    <p className="text-text-secondary text-sm leading-relaxed">
+                      {feature.description}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )
+          })}
         </div>
       </div>
     </section>
