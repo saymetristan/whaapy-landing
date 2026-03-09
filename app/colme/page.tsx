@@ -507,6 +507,9 @@ export default function ColmePage() {
             <Link href="/colme" className="text-accent hover:underline font-semibold">
               colme-1
             </Link>
+            <Link href="/colme-2" className="text-accent hover:underline">
+              colme-2
+            </Link>
           </div>
         </div>
       </footer>
