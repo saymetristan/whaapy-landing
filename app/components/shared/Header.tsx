@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
-import { Menu, X } from 'lucide-react'
+import { Menu, Sparkles, X } from 'lucide-react'
 import ContactModal from './ContactModal'
 import { captureEvent } from '@/app/lib/analytics'
 
@@ -107,6 +107,19 @@ export default function Header() {
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center gap-4">
               <a
+                href="/colme-2"
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-sm font-semibold text-accent hover:bg-accent/15 transition-all"
+                onClick={() =>
+                  captureEvent('navigation_link_click', {
+                    location: 'header_desktop',
+                    destination: 'colme_2',
+                  })
+                }
+              >
+                <Sparkles size={14} />
+                colme-2
+              </a>
+              <a
                 href="https://app.whaapy.com/login"
                 className="text-text-secondary hover:text-text-primary transition-colors font-medium px-4 py-2"
                 onClick={() =>
@@ -182,6 +195,19 @@ export default function Header() {
             {/* Mobile Menu Items */}
             <div className="flex-1 overflow-y-auto py-6 px-6">
               <div className="space-y-4">
+                <a
+                  href="/colme-2"
+                  className="block w-full text-left px-6 py-4 text-lg font-semibold text-accent bg-accent/5 border border-accent/20 rounded-2xl transition-all duration-300"
+                  onClick={() => {
+                    captureEvent('navigation_link_click', {
+                      location: 'header_mobile_menu',
+                      destination: 'colme_2',
+                    })
+                    closeMenu('nav_link')
+                  }}
+                >
+                  Presentamos colme-2
+                </a>
                 <a 
                   href="https://app.whaapy.com/login"
                   className="block w-full text-left px-6 py-4 text-lg font-medium text-text-primary hover:bg-surface rounded-2xl transition-all duration-300 hover:translate-x-1"

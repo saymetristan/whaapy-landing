@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import anime from 'animejs'
 import { ArrowRight } from 'lucide-react'
+import Link from 'next/link'
 import AnimatedMockup from './AnimatedMockup'
 import MorphingShape from './MorphingShape'
 import Particles from './Particles'
@@ -76,12 +77,22 @@ export default function Hero() {
         <div className="text-center max-w-4xl mx-auto mb-16">
           {/* Announcement Badge */}
           <div className="mb-8 flex justify-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 rounded-full border border-accent/20">
-              <span className="text-accent">🚀</span>
+            <Link
+              href="/colme-2"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 rounded-full border border-accent/20 hover:bg-accent/15 hover:border-accent/30 transition-all"
+              onClick={() =>
+                captureEvent('navigation_link_click', {
+                  location: 'hero_badge',
+                  destination: 'colme_2',
+                })
+              }
+            >
+              <span className="text-accent font-semibold">Nuevo</span>
               <span className="text-sm font-medium text-text-secondary">
-                Configúralo en 10 minutos
+                Presentamos colme-2
               </span>
-            </div>
+              <ArrowRight size={14} className="text-accent" />
+            </Link>
           </div>
           
           <h1 
