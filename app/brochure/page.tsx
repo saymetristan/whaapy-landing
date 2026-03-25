@@ -207,10 +207,6 @@ export default function BrochurePage() {
                     <span>Escribenos por WhatsApp</span>
                     <ArrowUpRight className="h-4 w-4" />
                   </a>
-
-                  <div className="rounded-full border border-border bg-white/80 px-4 py-2 text-sm text-text-secondary shadow-premium">
-                    Desde <span className="font-semibold text-text-primary">$999 MXN/mes</span>
-                  </div>
                 </div>
 
                 <div className="mt-10 grid gap-4 sm:grid-cols-3">
@@ -403,10 +399,6 @@ export default function BrochurePage() {
                   No es solo un bot. Es una capa comercial para responder mejor,
                   vender mejor y ordenar el seguimiento desde WhatsApp.
                 </p>
-
-                <div className="mt-8 inline-flex rounded-full border border-accent/20 bg-white px-5 py-3 text-sm font-semibold text-text-primary shadow-premium">
-                  Desde <span className="ml-1 text-accent">$999 MXN/mes</span>
-                </div>
               </div>
 
               <div className="grid gap-4 sm:grid-cols-2">
