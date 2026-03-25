@@ -25,23 +25,23 @@ const WHATSAPP_URL =
   'https://wa.me/19288000091?text=Hola%2C%20me%20interesa%20conocer%20Whaapy'
 
 const painPoints = [
-  'Pierdes ventas cuando te escriben fuera de horario.',
-  'Respondes tarde y el cliente se enfria.',
-  'Tu equipo repite las mismas respuestas todos los dias.',
-  'No tienes visibilidad clara de conversaciones y oportunidades.',
+  'Te escriben fuera de horario y nadie contesta.',
+  'Respondes tarde y el cliente ya le compro a otro.',
+  'Tu equipo repite las mismas respuestas todo el dia.',
+  'No sabes cuantas ventas se te escapan por WhatsApp.',
 ]
 
 const wins = [
-  'La IA responde al instante, 24/7, desde tu WhatsApp.',
-  'Habla en tu tono y con la informacion real de tu negocio.',
-  'Escala a un humano cuando hace falta cerrar o intervenir.',
-  'Todo queda ordenado en inbox, pipeline y dashboard.',
+  'Whaapy contesta al instante, a cualquier hora, todos los dias.',
+  'Responde como tu lo harias: con tu informacion, tus productos, tu estilo.',
+  'Te avisa cuando el cliente necesita hablar con una persona real.',
+  'Ves todas tus conversaciones y ventas organizadas en un solo lugar.',
 ]
 
 const stats = [
-  { value: '15h', label: 'ahorradas por semana' },
-  { value: '3x', label: 'mas conversion sobre seguimiento manual' },
-  { value: '<2s', label: 'tiempo de respuesta' },
+  { value: '15h', label: 'menos pegado al celular cada semana' },
+  { value: '3x', label: 'mas ventas cerradas vs responder a mano' },
+  { value: '<2s', label: 'en contestar cualquier mensaje' },
 ]
 
 type Feature = {
@@ -52,43 +52,43 @@ type Feature = {
 
 const features: Feature[] = [
   {
-    title: 'Inbox unificado',
-    description: 'Vista lista y pipeline para operar conversaciones y oportunidades.',
+    title: 'Todas tus conversaciones en un lugar',
+    description: 'Ve chats, seguimientos y ventas pendientes sin brincar entre apps.',
     icon: MessageSquareText,
   },
   {
-    title: 'IA conversacional 24/7',
-    description: 'Responde preguntas, filtra leads y empuja la conversacion.',
+    title: 'Responde solo, las 24 horas',
+    description: 'Tu asistente contesta preguntas, da precios y agenda sin que estes presente.',
     icon: Bot,
   },
   {
-    title: 'Base de conocimiento',
-    description: 'Tu agente aprende productos, procesos, politicas y contexto.',
+    title: 'Conoce tu negocio',
+    description: 'Le ensenas tus productos, servicios y formas de trabajar. Responde con esa info.',
     icon: Brain,
   },
   {
-    title: 'Templates Meta',
-    description: 'Gestiona plantillas aprobadas para seguimiento y reactivacion.',
+    title: 'Mensajes de seguimiento',
+    description: 'Envia recordatorios y promociones a clientes que dejaron de contestar.',
     icon: Megaphone,
   },
   {
-    title: 'Dashboard y metricas',
-    description: 'Mide actividad, tiempos de respuesta y comportamiento comercial.',
+    title: 'Ve como van tus ventas',
+    description: 'Un tablero simple con cuantos mensajes recibes, en cuanto contestas y que pasa.',
     icon: BarChart3,
   },
   {
-    title: 'Handoff inteligente',
-    description: 'La IA detecta cuando conviene pasar la conversacion a un humano.',
+    title: 'Te avisa cuando intervenir',
+    description: 'Si el cliente necesita algo que solo tu puedes resolver, Whaapy te lo pasa.',
     icon: Users,
   },
   {
-    title: 'API e integraciones',
-    description: 'Conecta flujos con CRMs, n8n, automatizaciones y sistemas propios.',
+    title: 'Se conecta con tus otras herramientas',
+    description: 'Funciona con tu CRM, tu sistema de pedidos o lo que ya uses.',
     icon: PlugZap,
   },
   {
-    title: 'Soporte en espanol',
-    description: 'Implementacion rapida con acompanamiento real para tu equipo.',
+    title: 'Te acompanamos en espanol',
+    description: 'Te ayudamos a configurarlo y a sacarle provecho desde el dia uno.',
     icon: Headphones,
   },
 ]
@@ -102,30 +102,30 @@ type Industry = {
 
 const industries: Industry[] = [
   {
-    title: 'E-commerce',
+    title: 'Tiendas en linea',
     description:
-      'Responde dudas de productos, stock, envios y seguimiento sin saturar a tu equipo.',
+      'Contesta dudas de productos, disponibilidad y envios sin que tu equipo se sature.',
     accent: 'bg-sky-500',
     icon: ShoppingBag,
   },
   {
-    title: 'Restaurantes',
+    title: 'Restaurantes y cafes',
     description:
-      'Atiende reservas, menu, promociones y pedidos desde un solo flujo conversacional.',
+      'Reservas, menu del dia, promociones y pedidos, todo desde WhatsApp.',
     accent: 'bg-orange-500',
     icon: UtensilsCrossed,
   },
   {
-    title: 'Servicios',
+    title: 'Clinicas, despachos y servicios',
     description:
-      'Agenda citas, responde preguntas frecuentes y captura leads fuera de horario.',
+      'Agenda citas, responde lo que siempre preguntan y captura clientes fuera de horario.',
     accent: 'bg-violet-500',
     icon: BriefcaseBusiness,
   },
   {
-    title: 'Agencias',
+    title: 'Agencias que revenden',
     description:
-      'Ofrece WhatsApp con IA como servicio para multiples clientes y verticales.',
+      'Ofrecelo a tus clientes como un servicio mas y gana con cada cuenta.',
     accent: 'bg-emerald-500',
     icon: Sparkles,
   },
@@ -184,7 +184,7 @@ export default function BrochurePage() {
 
             <div className="grid flex-1 items-center gap-14 py-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16 lg:py-16">
               <div className="max-w-2xl">
-                <SectionBadge>Brochure Web</SectionBadge>
+                <SectionBadge>Conoce Whaapy</SectionBadge>
 
                 <h1 className="mt-6 text-balance text-5xl font-bold leading-[0.95] tracking-[-0.05em] text-text-primary sm:text-6xl lg:text-7xl">
                   Tu WhatsApp <span className="gradient-text">vende por ti</span>{' '}
@@ -192,9 +192,9 @@ export default function BrochurePage() {
                 </h1>
 
                 <p className="mt-6 max-w-xl text-lg leading-8 text-text-secondary sm:text-xl">
-                  Asistente de IA que atiende, vende y agenda por tu negocio.
-                  Responde en segundos, en tu tono, y escala al humano cuando
-                  conviene.
+                  Un asistente que contesta a tus clientes, les da informacion
+                  de tus productos y agenda citas. Todo desde tu WhatsApp, sin
+                  que tengas que estar ahi.
                 </p>
 
                 <div className="mt-8 flex flex-wrap items-center gap-4">
@@ -214,21 +214,21 @@ export default function BrochurePage() {
                     <Clock3 className="h-5 w-5 text-accent" />
                     <p className="mt-3 text-2xl font-bold text-text-primary">24/7</p>
                     <p className="mt-1 text-sm text-text-secondary">
-                      Atencion automatica sin depender del horario del equipo.
+                      Contesta aunque estes dormido o de vacaciones.
                     </p>
                   </div>
                   <div className="rounded-2xl border border-border bg-white/80 p-4 shadow-premium">
                     <TrendingUp className="h-5 w-5 text-accent" />
                     <p className="mt-3 text-2xl font-bold text-text-primary">&lt;2s</p>
                     <p className="mt-1 text-sm text-text-secondary">
-                      Tiempo de respuesta para no dejar enfriar al lead.
+                      Le contesta al cliente antes de que se vaya con otro.
                     </p>
                   </div>
                   <div className="rounded-2xl border border-border bg-white/80 p-4 shadow-premium">
                     <Sparkles className="h-5 w-5 text-accent" />
                     <p className="mt-3 text-2xl font-bold text-text-primary">10 min</p>
                     <p className="mt-1 text-sm text-text-secondary">
-                      Setup rapido para empezar sin proyecto eterno.
+                      Lo configuras rapido y empieza a trabajar ese mismo dia.
                     </p>
                   </div>
                 </div>
@@ -254,13 +254,13 @@ export default function BrochurePage() {
         <section className="border-b border-border/70 bg-surface py-24">
           <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10">
             <div className="max-w-2xl">
-              <SectionBadge>Antes y despues</SectionBadge>
+              <SectionBadge>El problema</SectionBadge>
               <h2 className="mt-4 text-4xl font-bold tracking-[-0.04em] text-text-primary sm:text-5xl">
-                Menos caos operativo. Mas conversion real.
+                Dejas de perder clientes que ya te escribieron.
               </h2>
               <p className="mt-4 text-lg text-text-secondary">
-                Whaapy no solo responde mensajes. Ordena la operacion de ventas y
-                te da velocidad, consistencia y seguimiento.
+                Whaapy no es solo un bot. Responde como tu, da seguimiento y te
+                avisa cuando el cliente necesita a una persona real.
               </p>
             </div>
 
@@ -312,13 +312,13 @@ export default function BrochurePage() {
         <section className="border-b border-border/70 py-24">
           <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10">
             <div className="max-w-2xl">
-              <SectionBadge>Producto</SectionBadge>
+              <SectionBadge>Asi se ve</SectionBadge>
               <h2 className="mt-4 text-4xl font-bold tracking-[-0.04em] text-text-primary sm:text-5xl">
-                Todo desde un solo lugar
+                Todo en un solo lugar, facil de usar
               </h2>
               <p className="mt-4 text-lg text-text-secondary">
-                Conversaciones, pipeline, configuracion del agente y metricas
-                operativas integradas en la misma capa de trabajo.
+                Tus conversaciones, tus ventas pendientes, la configuracion de
+                tu asistente y tus resultados. Todo junto, sin complicaciones.
               </p>
             </div>
 
@@ -334,7 +334,7 @@ export default function BrochurePage() {
                   />
                 </div>
                 <p className="mt-4 text-sm font-medium text-text-secondary">
-                  Inbox inteligente con IA que responde en tu tono.
+                  Todos tus chats de WhatsApp en una sola pantalla. La IA contesta por ti.
                 </p>
               </article>
 
@@ -349,7 +349,7 @@ export default function BrochurePage() {
                   />
                 </div>
                 <p className="mt-4 text-sm font-medium text-text-secondary">
-                  Pipeline visual para seguir oportunidades sin perder contexto.
+                  Arrastra cada cliente por etapa: nuevo, interesado, cotizado, cerrado.
                 </p>
               </article>
 
@@ -364,8 +364,7 @@ export default function BrochurePage() {
                   />
                 </div>
                 <p className="mt-4 text-sm font-medium text-text-secondary">
-                  Configura el motor, reglas y personalidad de tu agente en
-                  minutos.
+                  Dile a tu asistente como hablar, que ofrecer y cuando pedirte ayuda.
                 </p>
               </article>
 
@@ -380,7 +379,7 @@ export default function BrochurePage() {
                   />
                 </div>
                 <p className="mt-4 text-sm font-medium text-text-secondary">
-                  Metricas en tiempo real para entender actividad y rendimiento.
+                  Ve cuantos mensajes recibes, en cuanto contestas y como van tus ventas.
                 </p>
               </article>
             </div>
@@ -391,13 +390,13 @@ export default function BrochurePage() {
           <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10">
             <div className="grid gap-14 lg:grid-cols-[0.95fr_1.05fr]">
               <div>
-                <SectionBadge>Todo incluido</SectionBadge>
+                <SectionBadge>Que incluye</SectionBadge>
                 <h2 className="mt-4 text-4xl font-bold tracking-[-0.04em] text-text-primary sm:text-5xl">
-                  Operacion, automatizacion y conversion en la misma herramienta
+                  Todo lo que necesitas para vender mas por WhatsApp
                 </h2>
                 <p className="mt-4 max-w-xl text-lg text-text-secondary">
-                  No es solo un bot. Es una capa comercial para responder mejor,
-                  vender mejor y ordenar el seguimiento desde WhatsApp.
+                  Whaapy junta las conversaciones, el seguimiento y la
+                  inteligencia para que tu equipo venda sin perder clientes.
                 </p>
               </div>
 
@@ -436,13 +435,13 @@ export default function BrochurePage() {
         <section className="py-24">
           <div className="mx-auto max-w-7xl px-6 sm:px-8 lg:px-10">
             <div className="max-w-2xl">
-              <SectionBadge>Ideal para</SectionBadge>
+              <SectionBadge>Para quien es</SectionBadge>
               <h2 className="mt-4 text-4xl font-bold tracking-[-0.04em] text-text-primary sm:text-5xl">
-                Equipos que venden por WhatsApp y ya no quieren operar a mano
+                Si vendes por WhatsApp y ya no das abasto, esto es para ti
               </h2>
               <p className="mt-4 text-lg text-text-secondary">
-                Whaapy funciona bien cuando la velocidad de respuesta y el orden
-                comercial ya impactan ventas, servicio o conversion.
+                Negocios que reciben muchos mensajes y pierden ventas por no
+                contestar rapido o no dar seguimiento.
               </p>
             </div>
 
@@ -478,11 +477,11 @@ export default function BrochurePage() {
                     Hablemos
                   </p>
                   <h3 className="mt-4 text-4xl font-bold tracking-[-0.04em] sm:text-5xl">
-                    Agenda una demo de 15 minutos. Sin compromiso.
+                    Platicamos 15 minutos y ves si te sirve. Sin compromiso.
                   </h3>
                   <p className="mt-4 text-lg leading-8 text-white/70">
-                    Te mostramos el producto, aterrizamos el caso de uso y vemos
-                    si hace sentido para tu operacion.
+                    Te ensenamos como funciona con tu tipo de negocio y
+                    respondemos todas tus dudas.
                   </p>
                 </div>
 
