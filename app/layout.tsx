@@ -17,7 +17,10 @@ const instrument = Instrument_Serif({
 })
 
 export const viewport: Viewport = {
-  themeColor: '#0A0A0A',
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#FAFAFA' },
+    { media: '(prefers-color-scheme: dark)', color: '#09090B' },
+  ],
   width: 'device-width',
   initialScale: 1,
 }
@@ -77,7 +80,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${GeistSans.variable} ${GeistMono.variable} ${instrument.variable}`}
     >
       <body className="bg-bg text-text font-sans antialiased">
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
           <MotionProvider>
             <LenisProvider>
               <PostHogAnalytics />

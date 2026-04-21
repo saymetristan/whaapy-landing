@@ -1,9 +1,12 @@
 'use client'
 
-import Image from 'next/image'
-import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
+import { useEffect, useRef, useState } from 'react'
 import { Bot, MessageSquareText, ShieldCheck, Workflow } from 'lucide-react'
+import InboxMockup from '../mockups/InboxMockup'
+import AIChatMockup from '../mockups/AIChatMockup'
+import AIControlMockup from '../mockups/AIControlMockup'
+import IntegrationsMockup from '../mockups/IntegrationsMockup'
 
 const SCENES = [
   {
@@ -12,8 +15,7 @@ const SCENES = [
     title: 'Cada conversación, un solo lugar.',
     body: 'Tus chats, tus contactos, tu pipeline y tus seguimientos en una sola pantalla. Tu equipo deja de saltar entre apps.',
     icon: MessageSquareText,
-    image: '/images/product-v2/inbox-chat.png',
-    overlay: { top: '12%', left: '4%', width: '36%', height: '76%' },
+    Mockup: InboxMockup,
   },
   {
     id: 'ia',
@@ -21,8 +23,7 @@ const SCENES = [
     title: 'La IA responde con tu negocio.',
     body: 'Le enseñas tu catálogo, tus políticas y tu tono. Responde como tú lo harías, en segundos, las 24 horas.',
     icon: Bot,
-    image: '/images/product-v2/inbox-chat.png',
-    overlay: { top: '14%', left: '40%', width: '38%', height: '70%' },
+    Mockup: AIChatMockup,
   },
   {
     id: 'control',
@@ -30,8 +31,7 @@ const SCENES = [
     title: 'Cuando quieras, tomas el control.',
     body: 'Activas y desactivas la IA por conversación. Modo sugerencia para revisar antes de enviar. Sin sorpresas.',
     icon: ShieldCheck,
-    image: '/images/product-v2/agent-control.png',
-    overlay: { top: '18%', left: '6%', width: '88%', height: '64%' },
+    Mockup: AIControlMockup,
   },
   {
     id: 'integraciones',
@@ -39,8 +39,7 @@ const SCENES = [
     title: 'Tu CRM, tu n8n, tu Meta Ads. Conectados.',
     body: 'Webhooks, API, integración nativa con HighLevel, Meta Lead Ads y n8n. Lo que ya usas, ahora habla con WhatsApp.',
     icon: Workflow,
-    image: '/images/product-v2/pipeline.png',
-    overlay: { top: '20%', left: '4%', width: '92%', height: '60%' },
+    Mockup: IntegrationsMockup,
   },
 ] as const
 
@@ -76,17 +75,25 @@ export default function ProductScroll() {
       const trigger = ScrollTrigger.create({
         trigger: sectionRef.current!,
         start: 'top top',
-        end: () => `+=${(trackRef.current!.offsetHeight - window.innerHeight)}`,
+        end: () => `+=${(SCENES.length - 1) * window.innerHeight}`,
         pin: trackRef.current,
-        pinSpacing: false,
+        pinSpacing: true,
         scrub: 0.4,
+        anticipatePin: 1,
         onUpdate: (self) => {
-          const idx = Math.min(SCENES.length - 1, Math.floor(self.progress * SCENES.length))
+          const idx = Math.min(
+            SCENES.length - 1,
+            Math.round(self.progress * (SCENES.length - 1)),
+          )
           setActive(idx)
         },
       })
 
+      const refresh = () => ScrollTrigger.refresh()
+      window.addEventListener('resize', refresh)
+
       cleanup = () => {
+        window.removeEventListener('resize', refresh)
         trigger.kill()
       }
     })()
@@ -106,10 +113,11 @@ export default function ProductScroll() {
           <div className="mt-12 space-y-12">
             {SCENES.map((scene) => {
               const Icon = scene.icon
+              const Mockup = scene.Mockup
               return (
                 <article key={scene.id}>
                   <div className="flex items-start gap-4">
-                    <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-accent/40 bg-accent/10 text-accent">
+                    <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-accent/40 bg-accent/10 text-accent-deep dark:text-accent-bright">
                       <Icon className="h-4 w-4" />
                     </span>
                     <div>
@@ -120,15 +128,8 @@ export default function ProductScroll() {
                       <p className="mt-2 text-sm leading-relaxed text-text-muted">{scene.body}</p>
                     </div>
                   </div>
-
-                  <div className="frame relative mt-6 aspect-[4/3] overflow-hidden">
-                    <Image
-                      src={scene.image}
-                      alt={scene.title}
-                      fill
-                      sizes="100vw"
-                      className="object-cover object-top"
-                    />
+                  <div className="mt-6 h-[420px]">
+                    <Mockup />
                   </div>
                 </article>
               )
@@ -139,12 +140,14 @@ export default function ProductScroll() {
     )
   }
 
+  const sectionHeight = `${SCENES.length * 100}vh`
+
   return (
     <section
       id="producto"
       ref={sectionRef}
       className="relative"
-      style={{ height: `${SCENES.length * 100}vh` }}
+      style={{ height: sectionHeight }}
     >
       <div ref={trackRef} className="relative flex h-screen items-center">
         <div
@@ -153,7 +156,6 @@ export default function ProductScroll() {
         />
 
         <div className="container-page grid h-full max-h-[820px] grid-cols-1 items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)] lg:gap-20">
-          {/* Texto */}
           <div className="relative">
             <p className="eyebrow">Producto</p>
             <h2 className="display mt-6 text-display-lg text-balance">
@@ -170,8 +172,11 @@ export default function ProductScroll() {
                       type="button"
                       onClick={() => {
                         const top = sectionRef.current!.offsetTop
-                        const dist = sectionRef.current!.offsetHeight - window.innerHeight
-                        window.scrollTo({ top: top + (dist * i) / SCENES.length + 4, behavior: 'smooth' })
+                        const dist = (SCENES.length - 1) * window.innerHeight
+                        const target = top + (dist * i) / (SCENES.length - 1) + 4
+                        const lenis = window.__lenis
+                        if (lenis) lenis.scrollTo(target, { duration: 1 })
+                        else window.scrollTo({ top: target, behavior: 'smooth' })
                       }}
                       className={`group flex w-full items-start gap-4 rounded-xl px-4 py-4 text-left transition-colors ${
                         isActive ? 'bg-surface' : 'hover:bg-surface/60'
@@ -180,7 +185,7 @@ export default function ProductScroll() {
                       <span
                         className={`mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-lg border transition-all ${
                           isActive
-                            ? 'border-accent/40 bg-accent/10 text-accent'
+                            ? 'border-accent/40 bg-accent/10 text-accent-deep dark:text-accent-bright'
                             : 'border-border bg-surface text-text-subtle'
                         }`}
                       >
@@ -215,41 +220,29 @@ export default function ProductScroll() {
             </ul>
           </div>
 
-          {/* Frame */}
           <div className="relative h-[60vh] min-h-[420px] w-full lg:h-[78vh]">
-            <div className="frame relative h-full w-full overflow-hidden">
-              <div
-                aria-hidden
-                className="pointer-events-none absolute inset-0 z-10 bg-gradient-to-b from-bg/0 via-bg/0 to-bg/30"
-              />
-              {SCENES.map((scene, i) => (
-                <motion.div
-                  key={scene.id}
-                  initial={false}
-                  animate={{ opacity: i === active ? 1 : 0, scale: i === active ? 1 : 1.02 }}
-                  transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-                  className="absolute inset-0"
-                >
-                  <Image
-                    src={scene.image}
-                    alt={scene.title}
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 60vw"
-                    className="object-cover object-top"
-                    priority={i === 0}
-                  />
+            <div className="relative h-full w-full">
+              {SCENES.map((scene, i) => {
+                const Mockup = scene.Mockup
+                return (
                   <motion.div
+                    key={scene.id}
                     initial={false}
-                    animate={{ opacity: i === active ? 1 : 0 }}
-                    transition={{ duration: 0.45 }}
-                    className="absolute rounded-xl border-2 border-accent shadow-glow"
-                    style={scene.overlay}
-                  />
-                </motion.div>
-              ))}
+                    animate={{
+                      opacity: i === active ? 1 : 0,
+                      y: i === active ? 0 : 12,
+                      scale: i === active ? 1 : 0.985,
+                    }}
+                    transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+                    className="absolute inset-0"
+                    style={{ pointerEvents: i === active ? 'auto' : 'none' }}
+                  >
+                    <Mockup />
+                  </motion.div>
+                )
+              })}
             </div>
 
-            {/* Progress dots */}
             <div className="mt-6 flex items-center justify-center gap-1.5 lg:absolute lg:-right-3 lg:top-1/2 lg:-translate-y-1/2 lg:mt-0 lg:flex-col">
               {SCENES.map((_, i) => (
                 <span

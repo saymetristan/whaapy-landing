@@ -48,7 +48,12 @@ function FaqItem({ q, a }: { q: string; a: string }) {
         id={buttonId}
         aria-expanded={open}
         aria-controls={panelId}
-        onClick={() => setOpen((v) => !v)}
+        onClick={() => {
+          setOpen((v) => !v)
+          window.requestAnimationFrame(() => {
+            window.setTimeout(() => window.__lenis?.resize(), 380)
+          })
+        }}
         className="flex w-full items-center justify-between gap-6 py-6 text-left transition-colors hover:text-text"
       >
         <span className="text-base font-medium text-text md:text-lg">{q}</span>

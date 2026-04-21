@@ -29,19 +29,16 @@ const config: Config = {
         'display-md': ['clamp(1.75rem, 3vw, 2.5rem)', { lineHeight: '1.1', letterSpacing: '-0.025em' }],
       },
       boxShadow: {
-        glow: '0 0 60px -10px rgba(37, 211, 102, 0.35)',
-        'glow-soft': '0 0 120px -20px rgba(37, 211, 102, 0.2)',
-        frame:
-          '0 1px 0 0 rgba(255, 255, 255, 0.04) inset, 0 0 0 1px rgba(255, 255, 255, 0.06), 0 30px 60px -20px rgba(0, 0, 0, 0.6)',
+        glow: '0 0 60px -10px rgba(37, 211, 102, 0.45)',
+        'glow-soft': '0 0 120px -20px rgba(37, 211, 102, 0.25)',
       },
       backgroundImage: {
-        'noise': "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
-        'grid-faint':
-          'linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)',
+        noise:
+          "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
       },
       animation: {
         'fade-in': 'fadeIn 600ms ease-out both',
-        'shimmer': 'shimmer 2.4s linear infinite',
+        shimmer: 'shimmer 2.4s linear infinite',
         'pulse-soft': 'pulseSoft 3s ease-in-out infinite',
       },
       keyframes: {

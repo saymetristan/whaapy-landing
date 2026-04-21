@@ -3,6 +3,11 @@
 import Lenis from 'lenis'
 import { useEffect } from 'react'
 
+declare global {
+  // eslint-disable-next-line no-var
+  var __lenis: Lenis | undefined
+}
+
 export default function LenisProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -16,15 +21,46 @@ export default function LenisProvider({ children }: { children: React.ReactNode 
       touchMultiplier: 1.4,
     })
 
+    window.__lenis = lenis
+
+    let cleanup: (() => void) | undefined
+    let cancelled = false
     let rafId = 0
-    const raf = (time: number) => {
-      lenis.raf(time)
-      rafId = requestAnimationFrame(raf)
-    }
-    rafId = requestAnimationFrame(raf)
+
+    ;(async () => {
+      try {
+        const gsapMod = await import('gsap')
+        const stMod = await import('gsap/ScrollTrigger')
+        if (cancelled) return
+        const gsap = gsapMod.default
+        const ScrollTrigger = stMod.ScrollTrigger
+        gsap.registerPlugin(ScrollTrigger)
+
+        const onLenisScroll = () => ScrollTrigger.update()
+        lenis.on('scroll', onLenisScroll)
+
+        const tickerCb = (time: number) => lenis.raf(time * 1000)
+        gsap.ticker.add(tickerCb)
+        gsap.ticker.lagSmoothing(0)
+
+        cleanup = () => {
+          lenis.off('scroll', onLenisScroll)
+          gsap.ticker.remove(tickerCb)
+        }
+      } catch {
+        const raf = (time: number) => {
+          lenis.raf(time)
+          rafId = requestAnimationFrame(raf)
+        }
+        rafId = requestAnimationFrame(raf)
+      }
+    })()
 
     return () => {
-      cancelAnimationFrame(rafId)
+      cancelled = true
+      cleanup?.()
+      if (rafId) cancelAnimationFrame(rafId)
+      window.__lenis = undefined
       lenis.destroy()
     }
   }, [])

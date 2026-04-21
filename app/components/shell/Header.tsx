@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { Menu, X } from 'lucide-react'
 import Logo from './Logo'
+import ThemeToggle from './ThemeToggle'
 
 const NAV = [
   { label: 'Producto', href: '#producto' },
@@ -58,20 +59,24 @@ export default function Header() {
           >
             Iniciar sesión
           </Link>
+          <ThemeToggle />
           <Link href="https://app.whaapy.com/signup" className="btn-primary text-sm">
             Probar gratis
           </Link>
         </div>
 
-        <button
-          type="button"
-          className="md:hidden"
-          aria-label={open ? 'Cerrar menú' : 'Abrir menú'}
-          aria-expanded={open}
-          onClick={() => setOpen((v) => !v)}
-        >
-          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
+        <div className="flex items-center gap-2 md:hidden">
+          <ThemeToggle />
+          <button
+            type="button"
+            aria-label={open ? 'Cerrar menú' : 'Abrir menú'}
+            aria-expanded={open}
+            onClick={() => setOpen((v) => !v)}
+            className="grid h-9 w-9 place-items-center rounded-full border border-border bg-surface/60"
+          >
+            {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+          </button>
+        </div>
       </div>
 
       <AnimatePresence>

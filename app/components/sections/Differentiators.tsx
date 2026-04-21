@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { SlidersHorizontal, Plug, Network, Globe2 } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
+import type { MouseEvent as ReactMouseEvent } from 'react'
 
 type Card = {
   icon: LucideIcon
@@ -66,6 +67,11 @@ export default function Differentiators() {
                 viewport={{ once: true, margin: '-80px' }}
                 transition={{ duration: 0.55, delay: i * 0.05 }}
                 whileHover={{ y: -2 }}
+                onMouseMove={(e: ReactMouseEvent<HTMLElement>) => {
+                  const rect = e.currentTarget.getBoundingClientRect()
+                  e.currentTarget.style.setProperty('--mx', `${e.clientX - rect.left}px`)
+                  e.currentTarget.style.setProperty('--my', `${e.clientY - rect.top}px`)
+                }}
                 className="group relative bg-bg/60 p-8 transition-colors hover:bg-surface md:p-10"
               >
                 <div
@@ -73,7 +79,7 @@ export default function Differentiators() {
                   className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
                   style={{
                     background:
-                      'radial-gradient(400px circle at var(--mx,50%) var(--my,50%), rgba(37,211,102,0.08), transparent 60%)',
+                      'radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgba(37,211,102,0.18), transparent 65%)',
                   }}
                 />
 

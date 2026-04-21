@@ -1,9 +1,12 @@
 'use client'
 
-import Image from 'next/image'
 import { AnimatePresence, LayoutGroup, motion } from 'framer-motion'
-import { useState } from 'react'
+import { useState, type ComponentType } from 'react'
 import { ShoppingBag, UtensilsCrossed, Briefcase, Truck } from 'lucide-react'
+import InboxMockup from '../mockups/InboxMockup'
+import TemplatesMockup from '../mockups/TemplatesMockup'
+import AIControlMockup from '../mockups/AIControlMockup'
+import PipelineMockup from '../mockups/PipelineMockup'
 
 type CaseId = 'ecommerce' | 'restaurantes' | 'servicios' | 'distribucion'
 
@@ -13,7 +16,7 @@ type Case = {
   icon: typeof ShoppingBag
   headline: string
   body: string
-  image: string
+  Mockup: ComponentType<{ className?: string }>
   metrics: { value: string; label: string }[]
 }
 
@@ -24,7 +27,7 @@ const CASES: Case[] = [
     icon: ShoppingBag,
     headline: 'La IA contesta stock, precios y envíos. El humano cierra.',
     body: 'Catálogo completo en la KB. La IA responde sobre disponibilidad, tiempos y promociones. Cuando el cliente está listo para pagar, te avisa.',
-    image: '/images/product-v2/inbox-chat.png',
+    Mockup: InboxMockup,
     metrics: [
       { value: 'Hasta 4 de cada 5', label: 'consultas resueltas sin humano' },
       { value: '< 1 min', label: 'tiempo medio de primera respuesta' },
@@ -36,7 +39,7 @@ const CASES: Case[] = [
     icon: UtensilsCrossed,
     headline: 'Reservas, menús y horarios sin que tu mesero conteste el teléfono.',
     body: 'Templates Meta para confirmaciones automáticas. La IA toma reservas, pasa el menú y avisa cuando llega un grupo grande.',
-    image: '/images/product-v2/templates.png',
+    Mockup: TemplatesMockup,
     metrics: [
       { value: '24/7', label: 'reservas tomadas, también de madrugada' },
       { value: '0', label: 'reservas perdidas por no contestar' },
@@ -48,7 +51,7 @@ const CASES: Case[] = [
     icon: Briefcase,
     headline: 'Modo sugerencia para sectores donde una palabra mal dicha cuesta caro.',
     body: 'Legal, salud, finanzas. La IA propone respuestas, tu equipo aprueba. Notas internas, exportación de conversaciones, auditoría completa.',
-    image: '/images/product-v2/agent-control.png',
+    Mockup: AIControlMockup,
     metrics: [
       { value: '100%', label: 'mensajes revisados antes de enviar' },
       { value: 'Auditable', label: 'cada conversación queda registrada' },
@@ -58,9 +61,9 @@ const CASES: Case[] = [
     id: 'distribucion',
     label: 'Distribución',
     icon: Truck,
-    headline: 'Broadcasts vía Meta, sin pelearte con la ventana de 24 horas.',
-    body: 'Templates aprobados, segmentación por etiquetas, seguimiento automático. Llegas a miles de contactos sin que se te bloquee el número.',
-    image: '/images/product-v2/pipeline.png',
+    headline: 'Pipeline real de tu equipo, no más planillas.',
+    body: 'Templates aprobados, segmentación por etiquetas, seguimiento automático. Visualiza el embudo y mueve oportunidades sin salir de WhatsApp.',
+    Mockup: PipelineMockup,
     metrics: [
       { value: '+11K', label: 'destinatarios alcanzados con templates' },
       { value: 'Meta directo', label: 'cero intermediarios, cero recargos' },
@@ -71,6 +74,7 @@ const CASES: Case[] = [
 export default function UseCases() {
   const [active, setActive] = useState<CaseId>(CASES[0].id)
   const current = CASES.find((c) => c.id === active)!
+  const Mockup = current.Mockup
 
   return (
     <section id="casos" className="relative py-32 md:py-40">
@@ -93,7 +97,11 @@ export default function UseCases() {
 
         <div className="mt-16">
           <LayoutGroup id="use-cases-tabs">
-            <div role="tablist" aria-label="Casos de uso" className="mx-auto flex max-w-3xl flex-wrap justify-center gap-2">
+            <div
+              role="tablist"
+              aria-label="Casos de uso"
+              className="mx-auto flex max-w-3xl flex-wrap justify-center gap-2"
+            >
               {CASES.map((c) => {
                 const Icon = c.icon
                 const isActive = c.id === active
@@ -155,14 +163,8 @@ export default function UseCases() {
                   </div>
                 </div>
 
-                <div className="frame relative aspect-[4/3] w-full overflow-hidden lg:aspect-[16/11]">
-                  <Image
-                    src={current.image}
-                    alt={current.label}
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 60vw"
-                    className="object-cover object-top"
-                  />
+                <div className="relative aspect-[4/3] w-full lg:aspect-[16/11]">
+                  <Mockup className="h-full w-full" />
                 </div>
               </motion.div>
             </AnimatePresence>
