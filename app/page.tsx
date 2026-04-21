@@ -1,48 +1,26 @@
-import Header from './components/shared/Header'
-import Hero from './components/hero/Hero'
-import Benefits from './components/benefits/Benefits'
-import ProductDemo from './components/product-demo/ProductDemo'
-import Features from './components/features/Features'
-import HowItWorks from './components/how-it-works/HowItWorks'
-import UseCases from './components/use-cases/UseCases'
-import WhyWhaapy from './components/why-whaapy/WhyWhaapy'
-import FAQ from './components/faq/FAQ'
-import Team from './components/team/Team'
-import CTA from './components/cta/CTA'
-import Footer from './components/shared/Footer'
-import ScrollProgress from './components/shared/ScrollProgress'
-import SmoothScroll from './components/shared/SmoothScroll'
+import Header from './components/shell/Header'
+import Footer from './components/shell/Footer'
+import Hero from './components/sections/Hero'
+import ProductScroll from './components/sections/ProductScroll'
+import HowItWorks from './components/sections/HowItWorks'
+import UseCases from './components/sections/UseCases'
+import Differentiators from './components/sections/Differentiators'
+import FAQ from './components/sections/FAQ'
+import CTAFinal from './components/sections/CTAFinal'
 
-export default function Home() {
+export default function HomePage() {
   return (
     <>
-      <SmoothScroll />
-      <ScrollProgress />
       <Header />
-      
-      <main className="relative overflow-hidden">
-        {/* Animated gradient mesh background */}
-        <div className="gradient-mesh" />
-        
-        {/* Grid overlay */}
-        <div className="grid-overlay" />
-        
-        {/* Background decorative elements */}
-        <div className="gradient-orb gradient-orb-1" />
-        <div className="gradient-orb gradient-orb-2" />
-        
+      <main className="relative">
         <Hero />
-        <Benefits />
-        <ProductDemo />
-        <Features />
+        <ProductScroll />
         <HowItWorks />
         <UseCases />
-        <WhyWhaapy />
+        <Differentiators />
         <FAQ />
-        <Team />
-        <CTA />
+        <CTAFinal />
       </main>
-      
       <Footer />
     </>
   )

@@ -1,43 +1,67 @@
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import type { Metadata, Viewport } from 'next'
+import { GeistSans } from 'geist/font/sans'
+import { GeistMono } from 'geist/font/mono'
+import { Instrument_Serif } from 'next/font/google'
 import './globals.css'
 import PostHogAnalytics from './components/analytics/PostHogAnalytics'
+import LenisProvider from './components/providers/LenisProvider'
+import MotionProvider from './components/providers/MotionProvider'
+import ThemeProvider from './components/providers/ThemeProvider'
 
-const inter = Inter({ 
+const instrument = Instrument_Serif({
   subsets: ['latin'],
+  weight: '400',
+  style: ['normal', 'italic'],
+  variable: '--font-instrument',
   display: 'swap',
-  variable: '--font-inter',
 })
 
+export const viewport: Viewport = {
+  themeColor: '#0A0A0A',
+  width: 'device-width',
+  initialScale: 1,
+}
+
 export const metadata: Metadata = {
-  title: 'Whaapy - Tu WhatsApp vende por ti mientras descansas',
-  description: 'Un asistente inteligente que responde a tus clientes 24/7 por WhatsApp. Configúralo en 10 minutos, sin técnicos ni instalaciones.',
-  keywords: ['WhatsApp Business', 'asistente WhatsApp', 'chatbot WhatsApp', 'atención automática', 'ventas WhatsApp', 'respuestas automáticas', 'negocio WhatsApp'],
+  metadataBase: new URL('https://whaapy.com'),
+  title: 'Whaapy — La capa que convierte WhatsApp en tu canal de venta principal',
+  description:
+    'IA que atiende, vende y te avisa cuando intervenir. Conectada directo a Meta. Hecha en LATAM.',
+  keywords: [
+    'WhatsApp Business API',
+    'IA para WhatsApp',
+    'Meta Cloud API',
+    'CRM WhatsApp',
+    'plataforma WhatsApp',
+    'ventas WhatsApp',
+    'atención al cliente WhatsApp',
+  ],
   authors: [{ name: 'Whaapy' }],
   icons: {
     icon: '/favicon.ico',
     apple: '/icons/whaapy-icon-512.png',
   },
-  metadataBase: new URL('https://whaapy.com'),
   openGraph: {
-    title: 'Whaapy - Tu WhatsApp vende por ti mientras descansas',
-    description: 'Un asistente inteligente que responde a tus clientes 24/7 por WhatsApp. Configúralo en 10 minutos.',
-    url: 'https://whaapy.com',
-    siteName: 'Whaapy',
     type: 'website',
+    siteName: 'Whaapy',
+    url: 'https://whaapy.com',
+    title: 'Whaapy — La capa que convierte WhatsApp en tu canal de venta principal',
+    description:
+      'IA que atiende, vende y te avisa cuando intervenir. Conectada directo a Meta. Hecha en LATAM.',
     images: [
       {
         url: '/icons/whaapy-icon-512.png',
         width: 512,
         height: 512,
-        alt: 'Whaapy - Tu WhatsApp vende por ti',
-      }
+        alt: 'Whaapy',
+      },
     ],
   },
   twitter: {
-    card: 'summary',
-    title: 'Whaapy - Tu WhatsApp vende por ti',
-    description: 'Asistente inteligente que responde a tus clientes 24/7 por WhatsApp. Configúralo en minutos.',
+    card: 'summary_large_image',
+    title: 'Whaapy — La capa que convierte WhatsApp en tu canal de venta principal',
+    description:
+      'IA que atiende, vende y te avisa cuando intervenir. Conectada directo a Meta.',
     images: ['/icons/whaapy-icon-512.png'],
   },
   other: {
@@ -45,18 +69,23 @@ export const metadata: Metadata = {
   },
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es" className={inter.variable}>
-      <body className="font-sans antialiased">
-        <PostHogAnalytics />
-        {children}
+    <html
+      lang="es"
+      suppressHydrationWarning
+      className={`${GeistSans.variable} ${GeistMono.variable} ${instrument.variable}`}
+    >
+      <body className="bg-bg text-text font-sans antialiased">
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+          <MotionProvider>
+            <LenisProvider>
+              <PostHogAnalytics />
+              {children}
+            </LenisProvider>
+          </MotionProvider>
+        </ThemeProvider>
       </body>
     </html>
   )
 }
-
