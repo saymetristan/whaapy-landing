@@ -7,6 +7,8 @@ import PostHogAnalytics from './components/analytics/PostHogAnalytics'
 import LenisProvider from './components/providers/LenisProvider'
 import MotionProvider from './components/providers/MotionProvider'
 import ThemeProvider from './components/providers/ThemeProvider'
+import CursorBlob from './components/visuals/CursorBlob'
+import ScrollProgress from './components/visuals/ScrollProgress'
 
 const instrument = Instrument_Serif({
   subsets: ['latin'],
@@ -80,10 +82,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${GeistSans.variable} ${GeistMono.variable} ${instrument.variable}`}
     >
       <body className="bg-bg text-text font-sans antialiased">
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
           <MotionProvider>
             <LenisProvider>
               <PostHogAnalytics />
+              <ScrollProgress />
+              <CursorBlob />
               {children}
             </LenisProvider>
           </MotionProvider>

@@ -1,0 +1,87 @@
+'use client'
+
+type Variant = 'hero' | 'subtle' | 'corner' | 'aurora'
+
+const VARIANTS: Record<Variant, { stops: { x: number; y: number; r: number; color: string }[] }> = {
+  hero: {
+    stops: [
+      { x: 18, y: 22, r: 42, color: 'rgba(37, 211, 102, 0.55)' },
+      { x: 78, y: 18, r: 38, color: 'rgba(99, 102, 241, 0.42)' },
+      { x: 56, y: 78, r: 48, color: 'rgba(56, 189, 248, 0.32)' },
+      { x: 12, y: 88, r: 28, color: 'rgba(244, 114, 182, 0.22)' },
+    ],
+  },
+  subtle: {
+    stops: [
+      { x: 30, y: 30, r: 38, color: 'rgba(37, 211, 102, 0.18)' },
+      { x: 80, y: 70, r: 40, color: 'rgba(99, 102, 241, 0.15)' },
+    ],
+  },
+  corner: {
+    stops: [
+      { x: 88, y: 12, r: 36, color: 'rgba(37, 211, 102, 0.32)' },
+      { x: 92, y: 88, r: 30, color: 'rgba(56, 189, 248, 0.18)' },
+    ],
+  },
+  aurora: {
+    stops: [
+      { x: 50, y: 0, r: 60, color: 'rgba(61, 220, 122, 0.45)' },
+      { x: 20, y: 30, r: 40, color: 'rgba(99, 102, 241, 0.35)' },
+      { x: 80, y: 30, r: 40, color: 'rgba(56, 189, 248, 0.30)' },
+    ],
+  },
+}
+
+export default function MeshGradient({
+  variant = 'hero',
+  className,
+  blur = 90,
+  noise = true,
+}: {
+  variant?: Variant
+  className?: string
+  blur?: number
+  noise?: boolean
+}) {
+  const v = VARIANTS[variant]
+
+  return (
+    <div
+      aria-hidden
+      className={`pointer-events-none absolute inset-0 overflow-hidden ${className ?? ''}`}
+    >
+      <svg
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+        className="absolute inset-0 h-full w-full"
+        style={{ filter: `blur(${blur}px)` }}
+      >
+        {v.stops.map((s, i) => (
+          <radialGradient
+            key={i}
+            id={`mesh-${variant}-${i}`}
+            cx={s.x}
+            cy={s.y}
+            r={s.r}
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop offset="0%" stopColor={s.color} />
+            <stop offset="100%" stopColor={s.color.replace(/[\d.]+\)$/, '0)')} />
+          </radialGradient>
+        ))}
+        {v.stops.map((_, i) => (
+          <rect key={i} width="100" height="100" fill={`url(#mesh-${variant}-${i})`} />
+        ))}
+      </svg>
+      {noise && (
+        <div
+          className="absolute inset-0 opacity-[0.45] mix-blend-overlay"
+          style={{
+            backgroundImage:
+              "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
+          }}
+        />
+      )}
+    </div>
+  )
+}

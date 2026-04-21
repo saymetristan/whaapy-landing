@@ -23,8 +23,9 @@ const config: Config = {
         display: ['var(--font-instrument)', 'Georgia', 'serif'],
       },
       fontSize: {
-        'display-2xl': ['clamp(3.5rem, 8vw, 6.5rem)', { lineHeight: '0.95', letterSpacing: '-0.04em' }],
-        'display-xl': ['clamp(2.75rem, 6vw, 4.75rem)', { lineHeight: '1', letterSpacing: '-0.035em' }],
+        'display-3xl': ['clamp(4rem, 9.5vw, 9rem)', { lineHeight: '0.88', letterSpacing: '-0.05em' }],
+        'display-2xl': ['clamp(3.5rem, 8vw, 6.5rem)', { lineHeight: '0.92', letterSpacing: '-0.045em' }],
+        'display-xl': ['clamp(2.75rem, 6vw, 4.75rem)', { lineHeight: '0.98', letterSpacing: '-0.04em' }],
         'display-lg': ['clamp(2.25rem, 4.5vw, 3.5rem)', { lineHeight: '1.05', letterSpacing: '-0.03em' }],
         'display-md': ['clamp(1.75rem, 3vw, 2.5rem)', { lineHeight: '1.1', letterSpacing: '-0.025em' }],
       },

@@ -2,7 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+:root,
+:root.dark {
+  --bg: 8 8 10;
+  --surface: 15 15 18;
+  --surface-2: 22 22 26;
+  --border: 38 38 44;
+  --text: 250 250 250;
+  --text-muted: 161 161 170;
+  --text-subtle: 113 113 122;
+  --grid-line: 255 255 255;
+  --grid-alpha: 0.05;
+  --glow-blend: screen;
+  --frame-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.04) inset, 0 0 0 1px rgba(255, 255, 255, 0.06),
+    0 30px 90px -20px rgba(0, 0, 0, 0.7);
+  --mesh-1: 37 211 102;
+  --mesh-2: 99 102 241;
+  --mesh-3: 56 189 248;
+}
+
+:root.light {
   --bg: 250 250 250;
   --surface: 255 255 255;
   --surface-2: 246 246 247;
@@ -17,21 +36,6 @@
     0 30px 60px -20px rgba(9, 9, 11, 0.18);
 }
 
-:root.dark {
-  --bg: 9 9 11;
-  --surface: 17 17 20;
-  --surface-2: 24 24 27;
-  --border: 39 39 42;
-  --text: 250 250 250;
-  --text-muted: 161 161 170;
-  --text-subtle: 113 113 122;
-  --grid-line: 255 255 255;
-  --grid-alpha: 0.04;
-  --glow-blend: screen;
-  --frame-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.04) inset, 0 0 0 1px rgba(255, 255, 255, 0.06),
-    0 30px 80px -20px rgba(0, 0, 0, 0.6);
-}
-
 * {
   border-color: rgb(var(--border));
 }
@@ -43,11 +47,11 @@ html {
   -moz-osx-font-smoothing: grayscale;
   font-feature-settings: 'cv11', 'ss01', 'ss03';
   text-rendering: optimizeLegibility;
-  color-scheme: light;
+  color-scheme: dark;
 }
 
-html.dark {
-  color-scheme: dark;
+html.light {
+  color-scheme: light;
 }
 
 body {
@@ -59,7 +63,7 @@ body {
 }
 
 ::selection {
-  background: rgba(37, 211, 102, 0.3);
+  background: rgba(37, 211, 102, 0.35);
   color: rgb(var(--text));
 }
 
@@ -78,7 +82,6 @@ body {
   background: rgb(var(--text-subtle));
 }
 
-/* Lenis */
 html.lenis,
 html.lenis body {
   height: auto;
@@ -110,7 +113,7 @@ html.lenis body {
   }
 
   .btn-primary {
-    @apply btn bg-accent text-white hover:bg-accent-bright hover:shadow-glow active:scale-[0.98] dark:text-black;
+    @apply btn relative overflow-hidden bg-accent text-black hover:bg-accent-bright hover:shadow-glow active:scale-[0.98];
   }
 
   .btn-ghost {
@@ -122,7 +125,7 @@ html.lenis body {
   }
 
   .frame {
-    @apply rounded-3xl border border-border bg-surface;
+    @apply rounded-2xl border border-border bg-surface;
     box-shadow: var(--frame-shadow);
   }
 
@@ -132,6 +135,43 @@ html.lenis body {
 
   .text-balance {
     text-wrap: balance;
+  }
+
+  .gradient-border {
+    position: relative;
+    isolation: isolate;
+  }
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    z-index: -1;
+    border-radius: inherit;
+    background: conic-gradient(
+      from var(--angle, 0deg),
+      transparent 0deg,
+      rgb(var(--mesh-1) / 0.7) 90deg,
+      transparent 180deg,
+      rgb(var(--mesh-2) / 0.55) 270deg,
+      transparent 360deg
+    );
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    animation: rotate-border 8s linear infinite;
+  }
+  .gradient-border:hover::before {
+    opacity: 1;
+  }
+
+  @property --angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+  }
+  @keyframes rotate-border {
+    to {
+      --angle: 360deg;
+    }
   }
 }
 
@@ -144,6 +184,23 @@ html.lenis body {
   .mask-fade-r {
     -webkit-mask-image: linear-gradient(to right, black 70%, transparent 100%);
     mask-image: linear-gradient(to right, black 70%, transparent 100%);
+  }
+
+  .mask-marquee {
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 12%,
+      black 88%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 12%,
+      black 88%,
+      transparent 100%
+    );
   }
 
   .glow-accent {
@@ -161,12 +218,33 @@ html.lenis body {
     -webkit-text-fill-color: transparent;
   }
 
+  .text-gradient-iridescent {
+    background: linear-gradient(120deg, #3ddc7a 0%, #38bdf8 40%, #6366f1 70%, #f472b6 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
   .grid-faint {
     background-image: linear-gradient(
         rgb(var(--grid-line) / var(--grid-alpha)) 1px,
         transparent 1px
       ),
       linear-gradient(90deg, rgb(var(--grid-line) / var(--grid-alpha)) 1px, transparent 1px);
+  }
+
+  .perspective-card {
+    perspective: 1400px;
+    perspective-origin: 50% 0%;
+  }
+
+  .tilt-hero {
+    transform: rotateX(8deg) rotateY(-4deg) translateZ(0);
+    transform-style: preserve-3d;
+  }
+
+  .tilt-hero-soft {
+    transform: rotateX(4deg) rotateY(-2deg);
   }
 }
 
