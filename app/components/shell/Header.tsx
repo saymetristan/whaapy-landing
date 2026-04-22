@@ -11,6 +11,7 @@ const NAV = [
   { label: 'Casos', href: '#casos' },
   { label: 'Diferenciadores', href: '#diferenciadores' },
   { label: 'FAQ', href: '#faq' },
+  { label: 'Contáctanos', href: '#contacto' },
 ] as const
 
 export default function Header() {
@@ -51,15 +52,12 @@ export default function Header() {
           ))}
         </nav>
 
-        <div className="hidden items-center gap-3 md:flex">
+        <div className="hidden md:flex">
           <Link
             href="https://app.whaapy.com"
-            className="text-sm font-medium text-text-muted transition-colors hover:text-text"
+            className="text-sm font-semibold text-text transition-colors hover:text-primary"
           >
             Iniciar sesión
-          </Link>
-          <Link href="https://app.whaapy.com/signup" className="btn-primary text-sm">
-            Probar gratis
           </Link>
         </div>
 
@@ -96,20 +94,13 @@ export default function Header() {
                   {item.label}
                 </Link>
               ))}
-              <div className="mt-2 flex flex-col gap-3 border-t border-border pt-4">
+              <div className="mt-2 border-t border-border pt-4">
                 <Link
                   href="https://app.whaapy.com"
-                  className="text-base text-text-muted"
+                  className="text-base font-semibold text-primary"
                   onClick={() => setOpen(false)}
                 >
                   Iniciar sesión
-                </Link>
-                <Link
-                  href="https://app.whaapy.com/signup"
-                  className="btn-primary w-full"
-                  onClick={() => setOpen(false)}
-                >
-                  Probar gratis
                 </Link>
               </div>
             </nav>

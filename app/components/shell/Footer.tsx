@@ -15,7 +15,7 @@ const COLUMNS = [
     title: 'Empresa',
     links: [
       { label: 'Iniciar sesión', href: 'https://app.whaapy.com' },
-      { label: 'Contacto', href: 'mailto:soporte@whaapy.com' },
+      { label: 'Contáctanos', href: '#contacto' },
       { label: 'colme-2', href: '/colme-2' },
     ],
   },

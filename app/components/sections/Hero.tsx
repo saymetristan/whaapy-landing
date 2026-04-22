@@ -2,7 +2,7 @@
 
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { ArrowRight, ArrowUpRight } from 'lucide-react'
+import { ArrowUpRight, MessageCircle } from 'lucide-react'
 import { STATS_DISPLAY } from '../../lib/stats'
 import MeshGradient from '../visuals/MeshGradient'
 import Grid from '../visuals/Grid'
@@ -87,9 +87,9 @@ export default function Hero() {
               {...fade(0.2)}
               className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center"
             >
-              <MagneticButton href="https://app.whaapy.com/signup">
-                Probar gratis
-                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+              <MagneticButton href="#contacto">
+                Contáctanos
+                <MessageCircle className="h-4 w-4 transition-transform group-hover:scale-105" />
               </MagneticButton>
               <MagneticButton href="#producto" variant="ghost">
                 Ver el producto
