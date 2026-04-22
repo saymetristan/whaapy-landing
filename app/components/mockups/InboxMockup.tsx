@@ -49,8 +49,8 @@ export default function InboxMockup({ className }: { className?: string }) {
       className={className}
       innerClassName="bg-surface-alt/50"
     >
-      <div className="grid h-full min-h-[280px] grid-cols-[minmax(0,150px),minmax(0,1fr)_minmax(0,1.25fr)] md:grid-cols-[180px,minmax(0,1fr)_minmax(0,1.4fr)]">
-        <aside className="flex flex-col border-r border-border bg-primary-light/40 px-2 py-3">
+      <div className="grid h-full min-h-[260px] grid-cols-[minmax(0,1fr)_minmax(0,1.25fr)] sm:grid-cols-[minmax(0,150px),minmax(0,1fr)_minmax(0,1.25fr)] md:grid-cols-[180px,minmax(0,1fr)_minmax(0,1.4fr)]">
+        <aside className="hidden flex-col border-r border-border bg-primary-light/40 px-2 py-3 sm:flex">
           <div className="space-y-0.5">
             {[
               { icon: Inbox, label: 'Conversaciones', active: true },

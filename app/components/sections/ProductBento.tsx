@@ -31,7 +31,7 @@ const CELLS: Cell[] = [
     body: 'Cada conversación, cada contacto, cada nota interna en una sola pantalla. Tu equipo deja de saltar entre apps.',
     icon: MessageSquareText,
     Mockup: InboxMockup,
-    mockupClass: 'aspect-[16/10]',
+    mockupClass: 'aspect-[4/3] sm:aspect-[16/10]',
   },
   {
     id: 'ai',
@@ -40,7 +40,7 @@ const CELLS: Cell[] = [
     body: 'Catálogo, políticas, tono. Responde como tú, en segundos.',
     icon: Bot,
     Mockup: AIChatMockup,
-    mockupClass: 'aspect-[3/4]',
+    mockupClass: 'aspect-[4/5] sm:aspect-[3/4]',
   },
   {
     id: 'control',
@@ -49,7 +49,7 @@ const CELLS: Cell[] = [
     body: 'Auto, sugerencia o pausada. Tú decides el riesgo.',
     icon: ShieldCheck,
     Mockup: AIControlMockup,
-    mockupClass: 'aspect-[3/4]',
+    mockupClass: 'aspect-[4/5] sm:aspect-[3/4]',
   },
   {
     id: 'pipeline',
@@ -58,7 +58,7 @@ const CELLS: Cell[] = [
     body: 'Mueve oportunidades, etiqueta contactos y cierra deals sin salir de WhatsApp.',
     icon: ListChecks,
     Mockup: PipelineMockup,
-    mockupClass: 'aspect-[16/8]',
+    mockupClass: 'aspect-[5/4] sm:aspect-[16/9] lg:aspect-[16/8]',
   },
   {
     id: 'templates',
@@ -67,7 +67,7 @@ const CELLS: Cell[] = [
     body: 'Broadcasts a miles sin pelearte con la ventana de 24h. Segmentación por etiquetas.',
     icon: Settings2,
     Mockup: TemplatesMockup,
-    mockupClass: 'aspect-[16/9]',
+    mockupClass: 'aspect-[5/4] sm:aspect-[16/9]',
   },
   {
     id: 'integrations',
@@ -76,7 +76,7 @@ const CELLS: Cell[] = [
     body: 'Meta, n8n, HighLevel, webhooks, API.',
     icon: Workflow,
     Mockup: IntegrationsMockup,
-    mockupClass: 'aspect-square',
+    mockupClass: 'aspect-[5/4] sm:aspect-square',
   },
 ]
 
@@ -112,7 +112,7 @@ function BentoCard({ cell, index }: { cell: Cell; index: number }) {
 
 export default function ProductBento() {
   return (
-    <section id="producto" className="relative bg-bg py-32 md:py-40">
+    <section id="producto" className="relative bg-bg py-20 md:py-32 lg:py-40">
       <MeshGradient variant="subtle" className="-z-10 opacity-80" blur={140} noise={false} />
 
       <div className="container-page">
@@ -144,7 +144,7 @@ export default function ProductBento() {
 
 function Block(): ReactNode {
   return (
-    <div className="mt-16 grid grid-cols-1 gap-4 md:gap-5 lg:grid-cols-12">
+    <div className="mt-12 grid grid-cols-1 gap-4 md:mt-16 md:gap-5 lg:grid-cols-12">
       {CELLS.map((cell, i) => (
         <BentoCard key={cell.id} cell={cell} index={i} />
       ))}

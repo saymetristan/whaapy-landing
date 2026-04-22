@@ -21,8 +21,12 @@ export default function MagneticButton({
   const { ref, x, y } = useMagnetic(strength)
   const cls = variant === 'primary' ? 'btn-primary group' : 'btn-ghost group'
 
+  const isFullWidth = (className ?? '').includes('w-full')
   return (
-    <motion.div style={{ x, y }} className="inline-block will-change-transform">
+    <motion.div
+      style={{ x, y }}
+      className={`will-change-transform ${isFullWidth ? 'block w-full sm:inline-block sm:w-auto' : 'inline-block'}`}
+    >
       <Link
         ref={ref as React.RefObject<HTMLAnchorElement>}
         href={href}

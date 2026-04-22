@@ -30,7 +30,7 @@ const STEPS = [
 
 export default function HowItWorks() {
   return (
-    <section className="relative bg-surface-alt py-32 md:py-40">
+    <section className="relative bg-surface-alt py-20 md:py-32 lg:py-40">
       <div className="container-page">
         <motion.div
           initial={{ opacity: 0, y: 12 }}
@@ -52,13 +52,13 @@ export default function HowItWorks() {
           </p>
         </motion.div>
 
-        <div className="relative mt-20">
+        <div className="relative mt-14 md:mt-20">
           <div
             aria-hidden
             className="pointer-events-none absolute left-[12%] right-[12%] top-10 hidden h-0 border-t-2 border-dashed border-primary/35 md:block"
           />
 
-          <div className="grid gap-14 md:grid-cols-3 md:gap-8">
+          <div className="grid gap-12 md:grid-cols-3 md:gap-8">
             {STEPS.map((step, i) => {
               const Icon = step.icon
               return (

@@ -78,7 +78,7 @@ export default function UseCases() {
   const Mockup = current.Mockup
 
   return (
-    <section id="casos" className="relative bg-surface py-32 md:py-40">
+    <section id="casos" className="relative bg-surface py-20 md:py-32 lg:py-40">
       <div className="container-page">
         <motion.div
           initial={{ opacity: 0, y: 12 }}
@@ -96,12 +96,12 @@ export default function UseCases() {
           </p>
         </motion.div>
 
-        <div className="mt-16">
+        <div className="mt-12 md:mt-16">
           <LayoutGroup id="use-cases-tabs">
             <div
               role="tablist"
               aria-label="Casos de uso"
-              className="mx-auto flex max-w-3xl flex-wrap justify-center gap-2"
+              className="mx-auto -mx-5 flex max-w-3xl snap-x snap-mandatory gap-2 overflow-x-auto px-5 pb-1 sm:mx-auto sm:flex-wrap sm:justify-center sm:overflow-visible sm:px-0"
             >
               {CASES.map((c) => {
                 const Icon = c.icon
@@ -114,7 +114,7 @@ export default function UseCases() {
                     aria-controls={`panel-${c.id}`}
                     id={`tab-${c.id}`}
                     onClick={() => setActive(c.id)}
-                    className={`relative inline-flex items-center gap-2 border-b-2 border-transparent px-4 py-2.5 text-sm font-semibold transition-colors ${
+                    className={`relative inline-flex shrink-0 snap-start items-center gap-2 border-b-2 border-transparent px-3 py-2.5 text-sm font-semibold transition-colors sm:px-4 ${
                       isActive ? 'text-primary' : 'text-text-muted hover:text-text'
                     }`}
                   >
@@ -137,7 +137,7 @@ export default function UseCases() {
             role="tabpanel"
             id={`panel-${current.id}`}
             aria-labelledby={`tab-${current.id}`}
-            className="mt-12"
+            className="mt-10 md:mt-12"
           >
             <AnimatePresence mode="wait">
               <motion.div

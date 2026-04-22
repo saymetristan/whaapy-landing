@@ -50,6 +50,23 @@ body {
   color: rgb(var(--text));
   font-family: var(--font-geist-sans), system-ui, sans-serif;
   overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+@media (max-width: 640px) {
+  ::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  input,
+  textarea,
+  select {
+    font-size: 16px !important;
+  }
 }
 
 ::selection {
@@ -91,7 +108,7 @@ html.lenis body {
 
 @layer components {
   .container-page {
-    @apply mx-auto w-full max-w-[1280px] px-6 md:px-10;
+    @apply mx-auto w-full max-w-[1280px] px-5 sm:px-6 md:px-8 lg:px-10;
   }
 
   .eyebrow {

@@ -31,8 +31,8 @@ const COLUMNS = [
 export default function Footer() {
   return (
     <footer className="border-t border-border bg-bg">
-      <div className="container-page grid gap-12 py-16 md:grid-cols-[1.4fr,1fr,1fr,1fr]">
-        <div className="max-w-sm">
+      <div className="container-page grid grid-cols-2 gap-8 py-12 sm:gap-10 md:grid-cols-[1.4fr,1fr,1fr,1fr] md:gap-12 md:py-16">
+        <div className="col-span-2 max-w-sm md:col-span-1">
           <Logo />
           <p className="mt-4 text-sm leading-relaxed text-text-muted">
             La capa que convierte WhatsApp en tu canal de venta principal. Hecho en LATAM, conectado

@@ -14,7 +14,7 @@ const STATS = [
 
 export default function SocialProof() {
   return (
-    <section className="relative bg-surface py-32 md:py-40">
+    <section className="relative bg-surface py-20 md:py-32 lg:py-40">
       <MeshGradient variant="corner" className="-z-10 opacity-70" blur={130} noise={false} />
 
       <div className="container-page">
@@ -34,18 +34,18 @@ export default function SocialProof() {
           </SectionReveal>
         </motion.div>
 
-        <div className="mt-16 grid grid-cols-1 gap-5 lg:grid-cols-12">
+        <div className="mt-12 grid grid-cols-1 gap-5 md:mt-16 lg:grid-cols-12">
           <motion.figure
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="relative overflow-hidden rounded-3xl border border-border bg-surface p-8 shadow-premium-lg md:p-12 lg:col-span-7"
+            className="relative overflow-hidden rounded-3xl border border-border bg-surface p-6 shadow-premium-lg sm:p-8 md:p-12 lg:col-span-7"
           >
-            <Quote className="absolute right-6 top-6 h-20 w-20 text-accent/15" />
+            <Quote className="absolute right-4 top-4 h-14 w-14 text-accent/15 sm:right-6 sm:top-6 sm:h-20 sm:w-20" />
 
             <blockquote className="relative">
-              <p className="font-display text-2xl font-bold leading-tight tracking-tight text-text md:text-3xl">
+              <p className="font-display text-xl font-bold leading-tight tracking-tight text-text sm:text-2xl md:text-3xl">
                 &ldquo;Pasamos de perder mensajes los fines de semana a cerrar ventas a las 3am.
                 <span className="font-normal text-text-muted">
                   {' '}

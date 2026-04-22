@@ -56,7 +56,7 @@ const CARDS: Card[] = [
 
 export default function Differentiators() {
   return (
-    <section id="diferenciadores" className="relative bg-bg py-32 md:py-40">
+    <section id="diferenciadores" className="relative bg-bg py-20 md:py-32 lg:py-40">
       <div className="container-page">
         <motion.div
           initial={{ opacity: 0, y: 12 }}
@@ -73,7 +73,7 @@ export default function Differentiators() {
           </SectionReveal>
         </motion.div>
 
-        <div className="mt-16 grid grid-cols-1 gap-4 md:gap-5 lg:grid-cols-12">
+        <div className="mt-12 grid grid-cols-1 gap-4 md:mt-16 md:gap-5 lg:grid-cols-12">
           {CARDS.map((card, i) => {
             const Icon = card.icon
             const Mockup = card.Mockup

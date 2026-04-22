@@ -55,9 +55,9 @@ function FaqItem({ q, a }: { q: string; a: string }) {
             window.setTimeout(() => window.__lenis?.resize(), 380)
           })
         }}
-        className="flex w-full items-center justify-between gap-6 py-6 text-left transition-colors hover:text-primary"
+        className="flex w-full items-center justify-between gap-4 py-5 text-left transition-colors hover:text-primary md:gap-6 md:py-6"
       >
-        <span className="text-base font-semibold text-text md:text-lg">{q}</span>
+        <span className="text-[15px] font-semibold leading-snug text-text md:text-lg">{q}</span>
         <motion.span
           animate={{ rotate: open ? 45 : 0 }}
           transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
@@ -79,7 +79,7 @@ function FaqItem({ q, a }: { q: string; a: string }) {
             transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
             className="overflow-hidden"
           >
-            <p className="pb-7 pr-12 text-sm leading-relaxed text-text-muted md:text-base">{a}</p>
+            <p className="pb-7 pr-2 text-sm leading-relaxed text-text-muted md:pr-12 md:text-base">{a}</p>
           </motion.div>
         )}
       </AnimatePresence>
@@ -89,8 +89,8 @@ function FaqItem({ q, a }: { q: string; a: string }) {
 
 export default function FAQ() {
   return (
-    <section id="faq" className="relative bg-bg py-32 md:py-40">
-      <div className="container-page grid gap-16 lg:grid-cols-[1fr,1.6fr] lg:gap-24">
+    <section id="faq" className="relative bg-bg py-20 md:py-32 lg:py-40">
+      <div className="container-page grid gap-12 md:gap-16 lg:grid-cols-[1fr,1.6fr] lg:gap-24">
         <div>
           <p className="eyebrow">FAQ</p>
           <SectionReveal className="mt-6">

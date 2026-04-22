@@ -83,21 +83,24 @@ export default function Header() {
             transition={{ duration: 0.2 }}
             className="border-t border-border bg-surface/98 shadow-premium-lg backdrop-blur-md md:hidden"
           >
-            <nav className="container-page flex flex-col gap-4 py-6" aria-label="Móvil">
+            <nav
+              className="container-page flex flex-col gap-1 py-4 pb-[max(env(safe-area-inset-bottom),1rem)]"
+              aria-label="Móvil"
+            >
               {NAV.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
                   onClick={() => setOpen(false)}
-                  className="text-base font-medium text-text"
+                  className="-mx-2 rounded-lg px-2 py-3 text-base font-medium text-text active:bg-primary-light/40"
                 >
                   {item.label}
                 </Link>
               ))}
-              <div className="mt-2 border-t border-border pt-4">
+              <div className="mt-2 border-t border-border pt-3">
                 <Link
                   href="https://app.whaapy.com"
-                  className="text-base font-semibold text-primary"
+                  className="-mx-2 block rounded-lg px-2 py-3 text-base font-semibold text-primary active:bg-primary-light/40"
                   onClick={() => setOpen(false)}
                 >
                   Iniciar sesión

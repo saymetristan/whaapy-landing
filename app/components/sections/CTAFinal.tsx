@@ -53,7 +53,7 @@ export default function CTAFinal() {
   return (
     <section
       id="contacto"
-      className="relative overflow-hidden bg-gradient-to-br from-primary via-primary-hover to-[#0d6b5e] py-24 text-primary-foreground md:py-32"
+      className="relative overflow-hidden bg-gradient-to-br from-primary via-primary-hover to-[#0d6b5e] py-16 text-primary-foreground md:py-24 lg:py-32"
     >
       <LiquidBlobs placement="cta" className="opacity-60" />
       <div
@@ -72,17 +72,17 @@ export default function CTAFinal() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-80px' }}
           transition={{ duration: 0.7 }}
-          className="mx-auto max-w-lg px-4 md:px-8"
+          className="mx-auto max-w-lg px-0 sm:px-4 md:px-8"
         >
           <p className="text-center text-label text-primary-foreground/90">Contacto</p>
           <SectionReveal className="mt-4">
-            <h2 className="text-center font-display text-3xl font-bold text-balance text-primary-foreground md:text-4xl">
+            <h2 className="text-center font-display text-2xl font-bold text-balance text-primary-foreground sm:text-3xl md:text-4xl">
               Cuéntanos qué necesitas
             </h2>
           </SectionReveal>
-          <p className="mx-auto mt-4 max-w-md text-center text-sm leading-relaxed text-primary-foreground/85">
-            Te respondemos en <strong className="font-semibold">services@whaapy.com</strong>. Deja tu
-            mensaje y te contactamos.
+          <p className="mx-auto mt-4 max-w-md text-center text-[13px] leading-relaxed text-primary-foreground/85 sm:text-sm">
+            Te respondemos en <strong className="font-semibold break-words">services@whaapy.com</strong>.
+            Deja tu mensaje y te contactamos.
           </p>
 
           {status === 'success' ? (
@@ -90,7 +90,7 @@ export default function CTAFinal() {
               Listo. Revisa tu correo por si necesitamos aclarar algo.
             </p>
           ) : (
-            <form onSubmit={onSubmit} className="mt-8 space-y-4 text-left">
+            <form onSubmit={onSubmit} className="mt-7 space-y-3.5 text-left sm:mt-8 sm:space-y-4">
               <input
                 type="text"
                 name="website"
@@ -161,7 +161,7 @@ export default function CTAFinal() {
               <button
                 type="submit"
                 disabled={status === 'loading'}
-                className="flex w-full items-center justify-center gap-2 rounded-full border-2 border-primary-foreground/30 bg-primary-foreground px-6 py-3.5 text-sm font-bold text-primary shadow-premium-lg transition hover:bg-primary-foreground/95 disabled:opacity-70"
+                className="flex w-full items-center justify-center gap-2 rounded-full border-2 border-primary-foreground/30 bg-primary-foreground px-6 py-4 text-base font-bold text-primary shadow-premium-lg transition hover:bg-primary-foreground/95 disabled:opacity-70 sm:py-3.5 sm:text-sm"
               >
                 {status === 'loading' ? (
                   <>
