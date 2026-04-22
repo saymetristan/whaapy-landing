@@ -51,7 +51,7 @@ export default function MetaConnectMockup({ className }: { className?: string })
         <motion.div
           animate={{ y: [0, -3, 0] }}
           transition={{ duration: 2.2, repeat: Infinity, ease: 'easeInOut' }}
-          className="grid h-7 w-7 place-items-center rounded-full bg-accent text-black shadow-glow"
+          className="grid h-7 w-7 place-items-center rounded-full bg-primary text-primary-foreground shadow-premium"
         >
           <CheckCircle2 className="h-4 w-4" />
         </motion.div>
@@ -63,7 +63,7 @@ export default function MetaConnectMockup({ className }: { className?: string })
           transition={{ duration: 0.5, delay: 0.15 }}
           className="flex flex-col items-center gap-2"
         >
-          <div className="relative grid h-14 w-14 place-items-center rounded-2xl border border-accent/30 bg-surface shadow-glow">
+          <div className="relative grid h-14 w-14 place-items-center rounded-2xl border border-primary/30 bg-surface shadow-premium-lg">
             <Image
               src="/icons/whaapy-icon-128.png"
               alt=""
@@ -72,15 +72,15 @@ export default function MetaConnectMockup({ className }: { className?: string })
               className="h-9 w-9 rounded-lg"
             />
           </div>
-          <span className="font-mono text-[9px] uppercase tracking-[0.14em] text-accent-bright">
+          <span className="font-mono text-[9px] uppercase tracking-[0.14em] text-primary">
             Whaapy
           </span>
         </motion.div>
       </div>
 
-      <div className="absolute bottom-3 flex items-center gap-1.5 rounded-full border border-accent/30 bg-accent/10 px-2.5 py-1">
-        <CheckCircle2 className="h-3 w-3 text-accent-bright" />
-        <span className="font-mono text-[9px] uppercase tracking-[0.14em] text-accent-bright">
+      <div className="absolute bottom-3 flex items-center gap-1.5 rounded-full border border-primary/30 bg-primary-light px-2.5 py-1">
+        <CheckCircle2 className="h-3 w-3 text-primary" />
+        <span className="font-mono text-[9px] uppercase tracking-[0.14em] text-primary">
           Embedded Signup oficial
         </span>
       </div>

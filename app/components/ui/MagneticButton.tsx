@@ -19,10 +19,7 @@ export default function MagneticButton({
   strength?: number
 }) {
   const { ref, x, y } = useMagnetic(strength)
-  const cls =
-    variant === 'primary'
-      ? 'btn-primary group gradient-border'
-      : 'btn-ghost group gradient-border'
+  const cls = variant === 'primary' ? 'btn-primary group' : 'btn-ghost group'
 
   return (
     <motion.div style={{ x, y }} className="inline-block will-change-transform">

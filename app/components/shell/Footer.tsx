@@ -42,7 +42,7 @@ export default function Footer() {
 
         {COLUMNS.map((col) => (
           <div key={col.title}>
-            <p className="text-xs font-medium uppercase tracking-[0.14em] text-text-subtle">
+            <p className="text-label text-text-subtle">
               {col.title}
             </p>
             <ul className="mt-4 space-y-3">

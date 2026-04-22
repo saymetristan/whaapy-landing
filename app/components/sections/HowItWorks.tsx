@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { Plug, BookOpen, Zap } from 'lucide-react'
+import SectionReveal from '../visuals/SectionReveal'
 
 const STEPS = [
   {
@@ -29,7 +30,7 @@ const STEPS = [
 
 export default function HowItWorks() {
   return (
-    <section className="relative py-32 md:py-40">
+    <section className="relative bg-surface-alt py-32 md:py-40">
       <div className="container-page">
         <motion.div
           initial={{ opacity: 0, y: 12 }}
@@ -39,10 +40,12 @@ export default function HowItWorks() {
           className="mx-auto max-w-2xl text-center"
         >
           <p className="eyebrow">Onboarding</p>
-          <h2 className="display mt-6 text-display-lg text-balance">
-            De cero a vendiendo, en{' '}
-            <span className="text-gradient-accent">15 minutos</span>.
-          </h2>
+          <SectionReveal className="mt-6">
+            <h2 className="display text-display-lg text-balance">
+              De cero a vendiendo, en{' '}
+              <span className="gradient-text font-serif italic">15 minutos</span>.
+            </h2>
+          </SectionReveal>
           <p className="mt-5 text-base leading-relaxed text-text-muted">
             Tres pasos. Sin código. Sin agencia. Sin esperar dos meses a que un proveedor te
             integre.
@@ -52,14 +55,10 @@ export default function HowItWorks() {
         <div className="relative mt-20">
           <div
             aria-hidden
-            className="pointer-events-none absolute left-0 right-0 top-12 hidden h-px md:block"
-            style={{
-              backgroundImage:
-                'linear-gradient(90deg, transparent 0%, rgb(var(--border)) 12%, rgb(var(--border)) 88%, transparent 100%)',
-            }}
+            className="pointer-events-none absolute left-[12%] right-[12%] top-10 hidden h-0 border-t-2 border-dashed border-primary/35 md:block"
           />
 
-          <div className="grid gap-10 md:grid-cols-3 md:gap-8">
+          <div className="grid gap-14 md:grid-cols-3 md:gap-8">
             {STEPS.map((step, i) => {
               const Icon = step.icon
               return (
@@ -69,25 +68,20 @@ export default function HowItWorks() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: '-80px' }}
                   transition={{ duration: 0.6, delay: i * 0.1 }}
-                  className="relative"
+                  className="relative flex flex-col items-center text-center"
                 >
-                  <div className="relative z-10 mx-auto grid h-24 w-24 place-items-center rounded-full border border-border bg-surface">
-                    <div
-                      aria-hidden
-                      className="absolute inset-0 rounded-full opacity-40 blur-xl"
-                      style={{
-                        background:
-                          'radial-gradient(circle, rgba(37,211,102,0.25), transparent 70%)',
-                      }}
-                    />
-                    <Icon className="h-7 w-7 text-accent" />
+                  <div className="relative z-10 grid h-24 w-24 place-items-center rounded-full border-2 border-primary/25 bg-primary-light shadow-premium">
+                    <span className="font-display text-2xl font-black text-primary">{step.n}</span>
+                    <span className="absolute -bottom-1 grid h-9 w-9 place-items-center rounded-full border border-border bg-surface shadow-premium">
+                      <Icon className="h-4 w-4 text-primary" />
+                    </span>
                   </div>
 
-                  <div className="mt-8 text-center">
-                    <p className="font-mono text-xs uppercase tracking-[0.18em] text-text-subtle">
+                  <div className="mt-10 max-w-sm">
+                    <p className="text-label text-text-subtle">
                       Paso {step.n} · {step.time}
                     </p>
-                    <h3 className="mt-3 text-lg font-medium text-text">{step.title}</h3>
+                    <h3 className="mt-3 font-display text-lg font-bold text-text">{step.title}</h3>
                     <p className="mt-3 text-sm leading-relaxed text-text-muted">{step.body}</p>
                   </div>
                 </motion.div>

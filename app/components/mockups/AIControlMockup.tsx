@@ -3,7 +3,7 @@
 import { motion, useInView } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
 import { Bot, Hand, MessageSquareText, Sparkles, UserCog } from 'lucide-react'
-import MockFrame from './MockFrame'
+import WhaapyFrame from './WhaapyFrame'
 
 type Mode = 'auto' | 'sugerencia' | 'pausada'
 
@@ -32,16 +32,16 @@ export default function AIControlMockup({ className }: { className?: string }) {
   const enabled = mode !== 'pausada'
 
   return (
-    <div ref={ref}>
-      <MockFrame title="control IA · conversación" className={className}>
-        <div className="flex h-full flex-col gap-5 px-6 py-6">
+    <div ref={ref} className="h-full">
+      <WhaapyFrame title="Control IA" subtitle="Por conversación" showAiBadge className={className}>
+        <div className="flex h-full flex-col gap-5 bg-surface px-5 py-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <span className="grid h-9 w-9 place-items-center rounded-lg bg-accent/15 text-accent-deep dark:text-accent-bright">
+              <span className="grid h-9 w-9 place-items-center rounded-lg bg-primary-light text-primary">
                 <Bot className="h-4 w-4" />
               </span>
               <div>
-                <p className="text-xs font-medium text-text">Asistente Whaapy</p>
+                <p className="font-display text-xs font-semibold text-text">Asistente Whaapy</p>
                 <p className="text-[10px] text-text-muted">Conversación con María González</p>
               </div>
             </div>
@@ -52,20 +52,20 @@ export default function AIControlMockup({ className }: { className?: string }) {
               aria-checked={enabled}
               tabIndex={-1}
               className={`relative h-6 w-11 rounded-full transition-colors ${
-                enabled ? 'bg-accent' : 'bg-text-subtle/30'
+                enabled ? 'bg-primary' : 'bg-text-subtle/35'
               }`}
             >
               <motion.span
                 layout
                 transition={{ type: 'spring', stiffness: 500, damping: 30 }}
-                className={`absolute top-0.5 h-5 w-5 rounded-full bg-white shadow ${
+                className={`absolute top-0.5 h-5 w-5 rounded-full bg-surface shadow-premium ${
                   enabled ? 'left-[22px]' : 'left-0.5'
                 }`}
               />
             </button>
           </div>
 
-          <div className="rounded-xl border border-border bg-surface-2/50 p-1">
+          <div className="rounded-xl border border-border bg-surface-2 p-1 shadow-premium">
             {MODES.map((m) => {
               const isActive = m.id === mode
               const Icon = m.icon
@@ -80,21 +80,17 @@ export default function AIControlMockup({ className }: { className?: string }) {
                     <motion.span
                       layoutId="ai-mode-pill"
                       transition={{ type: 'spring', stiffness: 380, damping: 32 }}
-                      className="absolute inset-0 -z-10 rounded-lg border border-accent/30 bg-accent/10"
+                      className="absolute inset-0 -z-10 rounded-lg border border-primary/25 bg-primary-light"
                     />
                   )}
                   <Icon
-                    className={`h-3.5 w-3.5 ${
-                      isActive ? 'text-accent-deep dark:text-accent-bright' : 'text-text-subtle'
-                    }`}
+                    className={`h-3.5 w-3.5 ${isActive ? 'text-primary' : 'text-text-subtle'}`}
                   />
-                  <span className={isActive ? 'font-medium text-text' : 'text-text-muted'}>
+                  <span className={isActive ? 'font-semibold text-text' : 'text-text-muted'}>
                     {m.label}
                   </span>
                   <span
-                    className={`ml-auto h-2 w-2 rounded-full ${
-                      isActive ? 'bg-accent' : 'bg-transparent'
-                    }`}
+                    className={`ml-auto h-2 w-2 rounded-full ${isActive ? 'bg-primary' : 'bg-transparent'}`}
                   />
                 </button>
               )
@@ -106,7 +102,7 @@ export default function AIControlMockup({ className }: { className?: string }) {
             initial={{ opacity: 0, y: 4 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
-            className="flex items-start gap-2 rounded-lg border border-border bg-surface px-3 py-2.5"
+            className="flex items-start gap-2 rounded-lg border border-border bg-surface-2 px-3 py-2.5 shadow-premium"
           >
             <MessageSquareText className="mt-0.5 h-3.5 w-3.5 shrink-0 text-text-subtle" />
             <p className="text-[10.5px] leading-snug text-text-muted">
@@ -114,7 +110,7 @@ export default function AIControlMockup({ className }: { className?: string }) {
             </p>
           </motion.div>
         </div>
-      </MockFrame>
+      </WhaapyFrame>
     </div>
   )
 }

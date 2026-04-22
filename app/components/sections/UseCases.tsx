@@ -7,6 +7,7 @@ import InboxMockup from '../mockups/InboxMockup'
 import TemplatesMockup from '../mockups/TemplatesMockup'
 import AIControlMockup from '../mockups/AIControlMockup'
 import PipelineMockup from '../mockups/PipelineMockup'
+import SectionReveal from '../visuals/SectionReveal'
 
 type CaseId = 'ecommerce' | 'restaurantes' | 'servicios' | 'distribucion'
 
@@ -77,7 +78,7 @@ export default function UseCases() {
   const Mockup = current.Mockup
 
   return (
-    <section id="casos" className="relative py-32 md:py-40">
+    <section id="casos" className="relative bg-surface py-32 md:py-40">
       <div className="container-page">
         <motion.div
           initial={{ opacity: 0, y: 12 }}
@@ -87,9 +88,9 @@ export default function UseCases() {
           className="mx-auto max-w-2xl text-center"
         >
           <p className="eyebrow">Casos de uso</p>
-          <h2 className="display mt-6 text-display-lg text-balance">
-            Equipos en producción, hoy.
-          </h2>
+          <SectionReveal className="mt-6">
+            <h2 className="display text-display-lg text-balance">Equipos en producción, hoy.</h2>
+          </SectionReveal>
           <p className="mt-5 text-base leading-relaxed text-text-muted">
             Whaapy se adapta a cómo vendes. Cuatro formas reales de usarlo, mismo control.
           </p>
@@ -113,19 +114,19 @@ export default function UseCases() {
                     aria-controls={`panel-${c.id}`}
                     id={`tab-${c.id}`}
                     onClick={() => setActive(c.id)}
-                    className={`relative inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm transition-colors ${
-                      isActive ? 'text-text' : 'text-text-muted hover:text-text'
+                    className={`relative inline-flex items-center gap-2 border-b-2 border-transparent px-4 py-2.5 text-sm font-semibold transition-colors ${
+                      isActive ? 'text-primary' : 'text-text-muted hover:text-text'
                     }`}
                   >
-                    {isActive && (
-                      <motion.span
-                        layoutId="usecase-pill"
-                        className="absolute inset-0 -z-10 rounded-full border border-border bg-surface"
-                        transition={{ type: 'spring', stiffness: 320, damping: 30 }}
-                      />
-                    )}
                     <Icon className="h-4 w-4" />
                     {c.label}
+                    {isActive && (
+                      <motion.span
+                        layoutId="usecase-underline"
+                        className="absolute bottom-0 left-2 right-2 h-0.5 rounded-full bg-primary"
+                        transition={{ type: 'spring', stiffness: 380, damping: 34 }}
+                      />
+                    )}
                   </button>
                 )
               })}
@@ -148,15 +149,15 @@ export default function UseCases() {
                 className="grid gap-10 lg:grid-cols-[1fr,1.4fr] lg:gap-14"
               >
                 <div className="flex flex-col justify-center">
-                  <h3 className="text-2xl font-medium leading-tight text-text md:text-3xl">
+                  <h3 className="font-display text-2xl font-bold leading-tight text-text md:text-3xl">
                     {current.headline}
                   </h3>
                   <p className="mt-4 text-base leading-relaxed text-text-muted">{current.body}</p>
 
-                  <div className="mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-border bg-border">
+                  <div className="mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-border bg-border shadow-premium">
                     {current.metrics.map((m) => (
-                      <div key={m.label} className="bg-bg/60 p-4">
-                        <p className="font-mono text-sm font-medium text-text">{m.value}</p>
+                      <div key={m.label} className="bg-surface p-4">
+                        <p className="font-display text-sm font-bold text-text">{m.value}</p>
                         <p className="mt-1 text-xs text-text-subtle">{m.label}</p>
                       </div>
                     ))}
@@ -164,7 +165,9 @@ export default function UseCases() {
                 </div>
 
                 <div className="relative aspect-[4/3] w-full lg:aspect-[16/11]">
-                  <Mockup className="h-full w-full" />
+                  <div className="h-full w-full overflow-hidden rounded-xl border border-border shadow-premium-lg">
+                    <Mockup className="h-full w-full" />
+                  </div>
                 </div>
               </motion.div>
             </AnimatePresence>

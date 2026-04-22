@@ -1,5 +1,5 @@
 import { Check } from 'lucide-react'
-import MockFrame from './MockFrame'
+import WhaapyFrame from './WhaapyFrame'
 
 const TEMPLATES = [
   {
@@ -25,13 +25,13 @@ const TEMPLATES = [
 ]
 
 const CATEGORY_TONE: Record<string, string> = {
-  UTILITY: 'bg-sky-500/10 text-sky-600 dark:text-sky-400',
-  MARKETING: 'bg-violet-500/10 text-violet-600 dark:text-violet-400',
+  UTILITY: 'bg-sky-100 text-sky-700',
+  MARKETING: 'bg-accent-light text-accent',
 }
 
 export default function TemplatesMockup({ className }: { className?: string }) {
   return (
-    <MockFrame title="templates · Meta WhatsApp" className={className}>
+    <WhaapyFrame title="Templates" subtitle="Meta WhatsApp" className={className}>
       <div className="flex h-full flex-col">
         <div className="flex items-center justify-between border-b border-border px-4 py-2.5">
           <p className="text-[11px] font-medium text-text">Plantillas aprobadas</p>
@@ -40,7 +40,7 @@ export default function TemplatesMockup({ className }: { className?: string }) {
         <ul className="flex-1 divide-y divide-border overflow-hidden">
           {TEMPLATES.map((t) => (
             <li key={t.name} className="flex items-start gap-3 px-4 py-3">
-              <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-accent/15 text-accent-deep dark:text-accent-bright">
+              <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-primary-light text-primary">
                 <Check className="h-2.5 w-2.5" strokeWidth={3} />
               </span>
               <div className="min-w-0 flex-1">
@@ -51,7 +51,7 @@ export default function TemplatesMockup({ className }: { className?: string }) {
                   >
                     {t.category}
                   </span>
-                  <span className="ml-auto rounded-full border border-accent/40 bg-accent/10 px-1.5 py-0.5 text-[8px] font-medium text-accent-deep dark:text-accent-bright">
+                  <span className="ml-auto rounded-full border border-primary/30 bg-primary-light px-1.5 py-0.5 text-[8px] font-semibold text-primary">
                     Aprobado
                   </span>
                 </div>
@@ -63,6 +63,6 @@ export default function TemplatesMockup({ className }: { className?: string }) {
           ))}
         </ul>
       </div>
-    </MockFrame>
+    </WhaapyFrame>
   )
 }

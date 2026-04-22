@@ -8,6 +8,7 @@ import AIControlMockup from '../mockups/AIControlMockup'
 import IntegrationsMockup from '../mockups/IntegrationsMockup'
 import MetaConnectMockup from '../mockups/MetaConnectMockup'
 import LatamMapMockup from '../mockups/LatamMapMockup'
+import SectionReveal from '../visuals/SectionReveal'
 
 type Card = {
   icon: LucideIcon
@@ -55,7 +56,7 @@ const CARDS: Card[] = [
 
 export default function Differentiators() {
   return (
-    <section id="diferenciadores" className="relative py-32 md:py-40">
+    <section id="diferenciadores" className="relative bg-bg py-32 md:py-40">
       <div className="container-page">
         <motion.div
           initial={{ opacity: 0, y: 12 }}
@@ -65,9 +66,11 @@ export default function Differentiators() {
           className="mx-auto max-w-2xl text-center"
         >
           <p className="eyebrow">Diferenciadores</p>
-          <h2 className="display mt-6 text-display-lg text-balance">
-            Por qué Whaapy y no <span className="font-display italic text-text-muted">otro bot</span>.
-          </h2>
+          <SectionReveal className="mt-6">
+            <h2 className="display text-display-lg text-balance">
+              Por qué Whaapy y no <span className="font-serif italic text-text-muted">otro bot</span>.
+            </h2>
+          </SectionReveal>
         </motion.div>
 
         <div className="mt-16 grid grid-cols-1 gap-4 md:gap-5 lg:grid-cols-12">
@@ -86,33 +89,31 @@ export default function Differentiators() {
                   e.currentTarget.style.setProperty('--mx', `${e.clientX - rect.left}px`)
                   e.currentTarget.style.setProperty('--my', `${e.clientY - rect.top}px`)
                 }}
-                className={`group relative flex flex-col gap-5 overflow-hidden rounded-3xl border border-border bg-surface/40 p-6 backdrop-blur-md md:p-8 ${card.span}`}
+                className={`group relative flex flex-col gap-5 overflow-hidden rounded-3xl border border-border bg-surface p-6 shadow-premium-lg md:p-8 ${card.span}`}
               >
                 <div
                   aria-hidden
                   className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
                   style={{
                     background:
-                      'radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgba(37,211,102,0.18), transparent 65%)',
+                      'radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgba(37,211,102,0.1), transparent 65%)',
                   }}
                 />
 
                 <div className="relative flex items-start gap-4">
-                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-border bg-surface text-accent transition-all duration-500 group-hover:border-accent/40 group-hover:bg-accent/10 group-hover:shadow-glow">
+                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-primary/20 bg-primary-light text-primary transition-all duration-500 group-hover:shadow-glow">
                     <Icon className="h-5 w-5" />
                   </span>
                   <div className="min-w-0 flex-1">
-                    <h3 className="text-lg font-medium tracking-tight text-text md:text-xl">
+                    <h3 className="font-display text-lg font-bold tracking-tight text-text md:text-xl">
                       {card.title}
                     </h3>
                     <p className="mt-2 text-sm leading-relaxed text-text-muted">{card.body}</p>
-                    <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.16em] text-text-subtle">
-                      {card.detail}
-                    </p>
+                    <p className="mt-3 text-label text-text-subtle">{card.detail}</p>
                   </div>
                 </div>
 
-                <div className="relative mt-2 aspect-[16/9] w-full overflow-hidden rounded-xl border border-border/60 bg-surface/40">
+                <div className="relative mt-2 aspect-[16/9] w-full overflow-hidden rounded-xl border border-border bg-surface-alt/50">
                   <Mockup className="h-full w-full" />
                 </div>
               </motion.article>

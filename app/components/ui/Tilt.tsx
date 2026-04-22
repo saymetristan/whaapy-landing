@@ -75,7 +75,7 @@ export default function Tilt({
               background: useTransform(
                 [glareX, glareY] as never,
                 ([x, y]: string[]) =>
-                  `radial-gradient(400px circle at ${x} ${y}, rgba(255,255,255,0.18), transparent 60%)`,
+                  `radial-gradient(400px circle at ${x} ${y}, rgba(255,255,255,0.1), transparent 60%)`,
               ),
             }}
           />

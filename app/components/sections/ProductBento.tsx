@@ -11,6 +11,7 @@ import IntegrationsMockup from '../mockups/IntegrationsMockup'
 import TemplatesMockup from '../mockups/TemplatesMockup'
 import PipelineMockup from '../mockups/PipelineMockup'
 import MeshGradient from '../visuals/MeshGradient'
+import SectionReveal from '../visuals/SectionReveal'
 
 type Cell = {
   id: string
@@ -88,14 +89,16 @@ function BentoCard({ cell, index }: { cell: Cell; index: number }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-80px' }}
       transition={{ duration: 0.6, delay: index * 0.05, ease: [0.22, 1, 0.36, 1] }}
-      className={`group relative flex flex-col gap-5 rounded-3xl border border-border bg-surface/40 p-5 backdrop-blur-md gradient-border md:p-7 ${cell.span}`}
+      className={`group bento-hover relative flex flex-col gap-5 rounded-3xl border border-border bg-surface p-5 shadow-premium-lg md:p-7 ${cell.span}`}
     >
       <div className="flex items-start gap-3">
-        <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-border bg-surface text-text">
+        <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg border border-primary/20 bg-primary-light text-primary">
           <Icon className="h-4 w-4" />
         </span>
         <div className="min-w-0">
-          <h3 className="text-lg font-medium tracking-tight text-text md:text-xl">{cell.title}</h3>
+          <h3 className="font-display text-lg font-bold tracking-tight text-text md:text-xl">
+            {cell.title}
+          </h3>
           <p className="mt-1.5 text-sm leading-relaxed text-text-muted">{cell.body}</p>
         </div>
       </div>
@@ -109,8 +112,8 @@ function BentoCard({ cell, index }: { cell: Cell; index: number }) {
 
 export default function ProductBento() {
   return (
-    <section id="producto" className="relative py-32 md:py-40">
-      <MeshGradient variant="subtle" className="-z-10 opacity-50" blur={140} noise={false} />
+    <section id="producto" className="relative bg-bg py-32 md:py-40">
+      <MeshGradient variant="subtle" className="-z-10 opacity-80" blur={140} noise={false} />
 
       <div className="container-page">
         <motion.div
@@ -121,10 +124,12 @@ export default function ProductBento() {
           className="mx-auto max-w-2xl text-center"
         >
           <p className="eyebrow">Producto</p>
-          <h2 className="display mt-6 text-display-lg text-balance">
-            Una <span className="font-display italic text-gradient-iridescent">capa</span>.
-            Toda tu operación en WhatsApp.
-          </h2>
+          <SectionReveal className="mt-6">
+            <h2 className="display text-display-lg text-balance">
+              Una <span className="font-serif italic text-primary">capa</span>. Toda tu operación en{' '}
+              <span className="gradient-text font-serif italic">WhatsApp</span>.
+            </h2>
+          </SectionReveal>
           <p className="mt-5 text-base leading-relaxed text-text-muted">
             Seis piezas que ya viven en producción. No es una promesa, es lo que tu equipo abre
             cada mañana.

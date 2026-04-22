@@ -25,7 +25,7 @@ function Mark({ icon }: { icon: string }) {
     api: '{}',
   }
   return (
-    <span className="grid h-7 w-7 place-items-center rounded-md border border-border bg-surface text-[10px] font-medium text-text-muted">
+    <span className="grid h-7 w-7 place-items-center rounded-md border border-border bg-surface text-[10px] font-semibold text-text-muted shadow-premium">
       {map[icon]}
     </span>
   )
@@ -36,11 +36,9 @@ export default function Marquee() {
   const loop = [...ITEMS, ...ITEMS]
 
   return (
-    <section className="relative border-y border-border bg-surface/40 py-7">
+    <section className="relative border-y border-border bg-surface py-8">
       <div className="container-page">
-        <p className="text-center font-mono text-[10px] uppercase tracking-[0.2em] text-text-subtle">
-          Conectado con tu stack
-        </p>
+        <p className="text-center text-label text-text-muted">Conectado con tu stack</p>
         <div className="mask-marquee mt-5 overflow-hidden">
           <motion.div
             className="flex w-max items-center gap-12 will-change-transform"

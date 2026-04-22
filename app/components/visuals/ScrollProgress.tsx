@@ -10,7 +10,7 @@ export default function ScrollProgress() {
     <motion.div
       aria-hidden
       style={{ scaleX, transformOrigin: '0% 50%' }}
-      className="pointer-events-none fixed inset-x-0 top-0 z-[55] h-[2px] bg-gradient-to-r from-accent via-accent-bright to-sky-400"
+      className="pointer-events-none fixed inset-x-0 top-0 z-[55] h-[2px] bg-gradient-to-r from-primary via-primary-hover to-accent"
     />
   )
 }

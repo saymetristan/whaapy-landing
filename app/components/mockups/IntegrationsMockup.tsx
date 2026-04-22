@@ -2,7 +2,7 @@
 
 import { motion, useReducedMotion } from 'framer-motion'
 import Image from 'next/image'
-import MockFrame from './MockFrame'
+import WhaapyFrame from './WhaapyFrame'
 
 const NODES = [
   { id: 'meta', label: 'Meta', short: 'M', tone: 'from-blue-500 to-blue-700', angle: 315 },
@@ -15,7 +15,12 @@ export default function IntegrationsMockup({ className }: { className?: string }
   const reduced = useReducedMotion()
 
   return (
-    <MockFrame title="integraciones · API · webhooks" className={className}>
+    <WhaapyFrame
+      title="Integraciones"
+      subtitle="API · webhooks"
+      className={className}
+      innerClassName="bg-surface"
+    >
       <div className="relative h-full w-full overflow-hidden">
         <div className="absolute inset-0 grid place-items-center">
           <div
@@ -157,6 +162,6 @@ export default function IntegrationsMockup({ className }: { className?: string }
           </p>
         </div>
       </div>
-    </MockFrame>
+    </WhaapyFrame>
   )
 }

@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { Bot, Filter, Inbox, Search, Send, Sparkles, Tag } from 'lucide-react'
-import MockFrame from './MockFrame'
+import WhaapyFrame from './WhaapyFrame'
 
 const CHATS = [
   { name: 'María González', preview: '¿Sigue disponible el descuento?', time: '10:42', unread: 2, color: 'from-fuchsia-400 to-rose-500', online: true, tag: 'VIP' },
@@ -14,9 +14,9 @@ const CHATS = [
 ]
 
 const TAB_TONE: Record<string, string> = {
-  VIP: 'bg-amber-500/15 text-amber-500',
-  Hot: 'bg-rose-500/15 text-rose-500',
-  Soporte: 'bg-sky-500/15 text-sky-400',
+  VIP: 'bg-amber-100 text-amber-700',
+  Hot: 'bg-rose-100 text-rose-600',
+  Soporte: 'bg-sky-100 text-sky-700',
 }
 
 const FILTERS = [
@@ -29,12 +29,12 @@ function Avatar({ name, color, online }: { name: string; color: string; online?:
   return (
     <span className="relative">
       <span
-        className={`grid h-9 w-9 shrink-0 place-items-center rounded-full bg-gradient-to-br ${color} text-xs font-medium text-white`}
+        className={`grid h-9 w-9 shrink-0 place-items-center rounded-full bg-gradient-to-br ${color} font-display text-xs font-bold text-white`}
       >
         {name.charAt(0)}
       </span>
       {online && (
-        <span className="absolute bottom-0 right-0 grid h-2.5 w-2.5 place-items-center rounded-full border-2 border-surface bg-emerald-400" />
+        <span className="absolute bottom-0 right-0 grid h-2.5 w-2.5 place-items-center rounded-full border-2 border-surface bg-primary" />
       )}
     </span>
   )
@@ -42,9 +42,15 @@ function Avatar({ name, color, online }: { name: string; color: string; online?:
 
 export default function InboxMockup({ className }: { className?: string }) {
   return (
-    <MockFrame title="inbox.whaapy.com" className={className}>
-      <div className="grid h-full grid-cols-[180px,minmax(0,1fr)_minmax(0,1.4fr)]">
-        <aside className="flex flex-col border-r border-border bg-surface-2/40 px-2 py-3">
+    <WhaapyFrame
+      title="Inbox"
+      subtitle="inbox.whaapy.com"
+      showAiBadge
+      className={className}
+      innerClassName="bg-surface-alt/50"
+    >
+      <div className="grid h-full min-h-[280px] grid-cols-[minmax(0,150px),minmax(0,1fr)_minmax(0,1.25fr)] md:grid-cols-[180px,minmax(0,1fr)_minmax(0,1.4fr)]">
+        <aside className="flex flex-col border-r border-border bg-primary-light/40 px-2 py-3">
           <div className="space-y-0.5">
             {[
               { icon: Inbox, label: 'Conversaciones', active: true },
@@ -56,10 +62,8 @@ export default function InboxMockup({ className }: { className?: string }) {
               return (
                 <div
                   key={it.label}
-                  className={`flex items-center gap-2 rounded-md px-2 py-1.5 text-[11px] ${
-                    it.active
-                      ? 'bg-accent/10 text-accent-bright'
-                      : 'text-text-muted'
+                  className={`flex items-center gap-2 rounded-md px-2 py-1.5 text-[11px] font-medium ${
+                    it.active ? 'bg-surface text-primary shadow-sm' : 'text-text-muted'
                   }`}
                 >
                   <Icon className="h-3 w-3" />
@@ -69,10 +73,8 @@ export default function InboxMockup({ className }: { className?: string }) {
             })}
           </div>
 
-          <div className="mt-4 border-t border-border pt-3">
-            <p className="px-2 font-mono text-[8px] uppercase tracking-[0.16em] text-text-subtle">
-              Etiquetas
-            </p>
+          <div className="mt-4 border-t border-primary/15 pt-3">
+            <p className="px-2 text-label text-text-subtle">Etiquetas</p>
             <div className="mt-2 space-y-0.5 px-2">
               {[
                 { dot: 'bg-amber-400', label: 'VIP' },
@@ -89,24 +91,22 @@ export default function InboxMockup({ className }: { className?: string }) {
           </div>
         </aside>
 
-        <div className="flex flex-col border-r border-border">
+        <div className="flex flex-col border-r border-border bg-surface">
           <div className="border-b border-border px-3 py-2">
-            <div className="flex items-center gap-2 rounded-md border border-border bg-surface-2/60 px-2 py-1">
+            <div className="flex items-center gap-2 rounded-md border border-border bg-surface-2 px-2 py-1">
               <Search className="h-3 w-3 text-text-subtle" />
               <span className="text-[10px] text-text-subtle">Buscar conversaciones</span>
             </div>
-            <div className="mt-2 flex items-center gap-1">
+            <div className="mt-2 flex flex-wrap items-center gap-1">
               {FILTERS.map((f) => (
                 <span
                   key={f.label}
-                  className={`flex items-center gap-1 rounded-md px-2 py-0.5 text-[10px] ${
-                    f.active
-                      ? 'bg-accent/15 text-accent-bright'
-                      : 'text-text-muted'
+                  className={`flex items-center gap-1 rounded-md px-2 py-0.5 text-[10px] font-medium ${
+                    f.active ? 'bg-primary-light text-primary' : 'text-text-muted'
                   }`}
                 >
                   {f.label}
-                  <span className="font-mono text-[9px] opacity-60">{f.count}</span>
+                  <span className="font-mono text-[9px] opacity-70">{f.count}</span>
                 </span>
               ))}
               <Filter className="ml-auto h-3 w-3 text-text-subtle" />
@@ -116,21 +116,21 @@ export default function InboxMockup({ className }: { className?: string }) {
             {CHATS.map((chat, i) => (
               <li
                 key={chat.name}
-                className={`flex items-center gap-3 border-b border-border/60 px-3 py-2.5 ${
-                  i === 0 ? 'bg-accent/5' : ''
+                className={`flex items-center gap-3 border-b border-border/70 px-3 py-2.5 ${
+                  i === 0 ? 'bg-primary-light/50' : ''
                 }`}
               >
                 <Avatar name={chat.name} color={chat.color} online={chat.online} />
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center justify-between gap-2">
-                    <p className="truncate text-[11px] font-medium text-text">{chat.name}</p>
+                    <p className="truncate font-display text-[11px] font-semibold text-text">{chat.name}</p>
                     <span className="font-mono text-[9px] text-text-subtle">{chat.time}</span>
                   </div>
                   <div className="mt-0.5 flex items-center gap-1.5">
                     <p className="truncate text-[10px] text-text-muted">{chat.preview}</p>
                     {chat.tag && (
                       <span
-                        className={`shrink-0 rounded-sm px-1 py-px text-[8px] font-medium ${TAB_TONE[chat.tag]}`}
+                        className={`shrink-0 rounded-sm px-1 py-px text-[8px] font-semibold ${TAB_TONE[chat.tag]}`}
                       >
                         {chat.tag}
                       </span>
@@ -138,7 +138,7 @@ export default function InboxMockup({ className }: { className?: string }) {
                   </div>
                 </div>
                 {chat.unread > 0 && (
-                  <span className="grid h-4 min-w-4 place-items-center rounded-full bg-accent px-1 text-[9px] font-medium text-black">
+                  <span className="grid h-4 min-w-4 place-items-center rounded-full bg-primary px-1 text-[9px] font-bold text-primary-foreground">
                     {chat.unread}
                   </span>
                 )}
@@ -147,59 +147,60 @@ export default function InboxMockup({ className }: { className?: string }) {
           </ul>
         </div>
 
-        <div className="flex flex-col bg-surface-2/30">
-          <div className="flex items-center gap-3 border-b border-border px-4 py-2.5">
+        <div className="relative flex flex-col bg-surface-alt/80">
+          <div className="chat-pattern absolute inset-0 opacity-[0.35]" aria-hidden />
+          <div className="relative z-[1] flex items-center gap-3 border-b border-border/80 bg-surface/90 px-4 py-2.5 backdrop-blur-sm">
             <Avatar name={CHATS[0].name} color={CHATS[0].color} online />
             <div className="min-w-0 flex-1">
-              <p className="text-[11px] font-medium text-text">{CHATS[0].name}</p>
+              <p className="font-display text-[11px] font-semibold text-text">{CHATS[0].name}</p>
               <p className="text-[10px] text-text-muted">+52 55 1234 5678 · en línea</p>
             </div>
-            <span className="flex items-center gap-1 rounded-full border border-accent/40 bg-accent/10 px-2 py-0.5 text-[9px] font-medium text-accent-bright">
+            <span className="flex items-center gap-1 rounded-full border border-primary/30 bg-primary-light px-2 py-0.5 text-[9px] font-semibold text-primary">
               <Sparkles className="h-2.5 w-2.5" />
               IA activa
             </span>
           </div>
-          <div className="flex flex-1 flex-col justify-end gap-2 px-5 py-4">
-            <div className="max-w-[78%] self-start rounded-2xl rounded-bl-md bg-surface px-3 py-2 text-[11px] text-text shadow-sm">
+          <div className="relative z-[1] flex flex-1 flex-col justify-end gap-2 px-4 py-3 md:px-5 md:py-4">
+            <div className="max-w-[78%] self-start rounded-2xl rounded-bl-md bg-surface px-3 py-2 text-[11px] text-text shadow-premium">
               Hola, ¿sigue disponible el descuento que vi en su historia?
               <span className="mt-1 block text-[8px] text-text-subtle">10:41</span>
             </div>
-            <div className="max-w-[78%] self-end rounded-2xl rounded-br-md bg-accent px-3 py-2 text-[11px] text-black">
-              <span className="mb-0.5 flex items-center gap-1 text-[8px] font-medium uppercase tracking-[0.14em] opacity-80">
+            <div className="max-w-[78%] self-end rounded-2xl rounded-br-md bg-primary px-3 py-2 text-[11px] text-primary-foreground shadow-premium">
+              <span className="mb-0.5 flex items-center gap-1 text-[8px] font-semibold uppercase tracking-[0.14em] text-primary-foreground/95">
                 <Sparkles className="h-2.5 w-2.5" />
                 Whaapy IA
               </span>
               ¡Hola María! Sí, el 15% sigue activo hasta el viernes. ¿Te paso el catálogo?
-              <span className="mt-1 block text-[8px] opacity-70">10:42 · respondió en 3s</span>
+              <span className="mt-1 block text-[8px] text-primary-foreground/80">10:42 · respondió en 3s</span>
             </div>
-            <div className="max-w-[78%] self-start rounded-2xl rounded-bl-md bg-surface px-3 py-2 text-[11px] text-text shadow-sm">
+            <div className="max-w-[78%] self-start rounded-2xl rounded-bl-md bg-surface px-3 py-2 text-[11px] text-text shadow-premium">
               Sí porfa, me interesa el modelo en negro.
             </div>
             <motion.div
-              className="self-end flex items-center gap-1 rounded-2xl rounded-br-md bg-accent/85 px-3 py-2"
-              animate={{ opacity: [0.7, 1, 0.7] }}
+              className="self-end flex items-center gap-1 rounded-2xl rounded-br-md bg-primary px-3 py-2 shadow-premium"
+              animate={{ opacity: [0.75, 1, 0.75] }}
               transition={{ duration: 1.4, repeat: Infinity }}
             >
               {[0, 1, 2].map((i) => (
                 <motion.span
                   key={i}
-                  className="h-1.5 w-1.5 rounded-full bg-black"
-                  animate={{ opacity: [0.3, 1, 0.3] }}
+                  className="h-1.5 w-1.5 rounded-full bg-primary-foreground"
+                  animate={{ opacity: [0.35, 1, 0.35] }}
                   transition={{ duration: 1, repeat: Infinity, delay: i * 0.18 }}
                 />
               ))}
             </motion.div>
           </div>
-          <div className="flex items-center gap-2 border-t border-border px-4 py-2.5">
+          <div className="relative z-[1] flex items-center gap-2 border-t border-border/80 bg-surface/95 px-4 py-2.5 backdrop-blur-sm">
             <div className="flex-1 rounded-full border border-border bg-surface px-3 py-1.5 text-[10px] text-text-subtle">
               Escribe un mensaje...
             </div>
-            <span className="grid h-7 w-7 place-items-center rounded-full bg-accent text-black">
+            <span className="grid h-7 w-7 place-items-center rounded-full bg-primary text-primary-foreground shadow-premium">
               <Send className="h-3 w-3" strokeWidth={2.5} />
             </span>
           </div>
         </div>
       </div>
-    </MockFrame>
+    </WhaapyFrame>
   )
 }

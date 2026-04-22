@@ -25,7 +25,7 @@ export default function LatamMapMockup({ className }: { className?: string }) {
       >
         <defs>
           <pattern id="dots-latam" x="0" y="0" width="2" height="2" patternUnits="userSpaceOnUse">
-            <circle cx="1" cy="1" r="0.35" fill="rgb(var(--text-subtle) / 0.45)" />
+            <circle cx="1" cy="1" r="0.35" fill="#9ca3af" fillOpacity="0.35" />
           </pattern>
           <mask id="latam-mask">
             <path
@@ -67,7 +67,7 @@ export default function LatamMapMockup({ className }: { className?: string }) {
       </svg>
 
       <div className="absolute bottom-3 left-1/2 flex -translate-x-1/2 items-center gap-1.5 rounded-full border border-border bg-surface/80 px-2.5 py-1 backdrop-blur">
-        <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-accent" />
+        <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-primary" />
         <span className="font-mono text-[9px] uppercase tracking-[0.14em] text-text-muted">
           Soporte en español
         </span>

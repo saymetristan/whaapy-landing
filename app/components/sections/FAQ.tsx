@@ -3,6 +3,7 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { Plus } from 'lucide-react'
 import { useId, useState } from 'react'
+import SectionReveal from '../visuals/SectionReveal'
 
 const FAQS = [
   {
@@ -54,15 +55,15 @@ function FaqItem({ q, a }: { q: string; a: string }) {
             window.setTimeout(() => window.__lenis?.resize(), 380)
           })
         }}
-        className="flex w-full items-center justify-between gap-6 py-6 text-left transition-colors hover:text-text"
+        className="flex w-full items-center justify-between gap-6 py-6 text-left transition-colors hover:text-primary"
       >
-        <span className="text-base font-medium text-text md:text-lg">{q}</span>
+        <span className="text-base font-semibold text-text md:text-lg">{q}</span>
         <motion.span
           animate={{ rotate: open ? 45 : 0 }}
           transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-          className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-border text-text-muted"
+          className="grid h-8 w-8 shrink-0 place-items-center rounded-full border border-border bg-surface text-text-muted shadow-premium"
         >
-          <Plus className="h-4 w-4" />
+          <Plus className="h-4 w-4" strokeWidth={2.5} />
         </motion.span>
       </button>
 
@@ -88,18 +89,18 @@ function FaqItem({ q, a }: { q: string; a: string }) {
 
 export default function FAQ() {
   return (
-    <section id="faq" className="relative py-32 md:py-40">
+    <section id="faq" className="relative bg-bg py-32 md:py-40">
       <div className="container-page grid gap-16 lg:grid-cols-[1fr,1.6fr] lg:gap-24">
         <div>
           <p className="eyebrow">FAQ</p>
-          <h2 className="display mt-6 text-display-lg text-balance">
-            Lo que importa antes de probar.
-          </h2>
+          <SectionReveal className="mt-6">
+            <h2 className="display text-display-lg text-balance">Lo que importa antes de probar.</h2>
+          </SectionReveal>
           <p className="mt-5 text-base leading-relaxed text-text-muted">
             ¿Te queda alguna duda? Escríbenos a{' '}
             <a
               href="mailto:soporte@whaapy.com"
-              className="text-text underline decoration-accent decoration-2 underline-offset-4"
+              className="font-semibold text-primary underline decoration-primary/40 decoration-2 underline-offset-4 hover:decoration-primary"
             >
               soporte@whaapy.com
             </a>{' '}
@@ -107,7 +108,7 @@ export default function FAQ() {
           </p>
         </div>
 
-        <div>
+        <div className="rounded-2xl border border-border bg-surface p-2 shadow-premium-lg md:p-4">
           {FAQS.map((item) => (
             <FaqItem key={item.q} q={item.q} a={item.a} />
           ))}

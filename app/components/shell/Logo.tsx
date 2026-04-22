@@ -16,7 +16,7 @@ export default function Logo({ className }: { className?: string }) {
         priority
         className="h-7 w-7 rounded-md"
       />
-      <span className="text-[15px] font-medium tracking-tight text-text">whaapy</span>
+      <span className="font-display text-[15px] font-bold tracking-tight text-text">whaapy</span>
     </Link>
   )
 }

@@ -11,16 +11,16 @@ export default function Grid({
 }) {
   const bg =
     variant === 'dotted'
-      ? 'radial-gradient(rgb(var(--grid-line) / 0.18) 1px, transparent 1px)'
+      ? 'radial-gradient(rgba(37, 211, 102, 0.12) 1px, transparent 1px)'
       : variant === 'lines'
-        ? 'linear-gradient(rgb(var(--grid-line) / var(--grid-alpha)) 1px, transparent 1px), linear-gradient(90deg, rgb(var(--grid-line) / var(--grid-alpha)) 1px, transparent 1px)'
-        : 'linear-gradient(90deg, rgb(var(--grid-line) / var(--grid-alpha)) 1px, transparent 1px)'
+        ? 'linear-gradient(rgba(37, 211, 102, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(37, 211, 102, 0.04) 1px, transparent 1px)'
+        : 'linear-gradient(90deg, rgba(37, 211, 102, 0.04) 1px, transparent 1px)'
 
   const size = variant === 'dotted' ? '24px 24px' : '64px 64px'
 
   const mask =
     fade === 'radial'
-      ? 'radial-gradient(ellipse at center, black 35%, transparent 75%)'
+      ? 'radial-gradient(ellipse at center, black 0%, black 40%, transparent 72%)'
       : fade === 'top'
         ? 'linear-gradient(to bottom, black 0%, transparent 80%)'
         : fade === 'bottom'

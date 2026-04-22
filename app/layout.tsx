@@ -6,8 +6,6 @@ import './globals.css'
 import PostHogAnalytics from './components/analytics/PostHogAnalytics'
 import LenisProvider from './components/providers/LenisProvider'
 import MotionProvider from './components/providers/MotionProvider'
-import ThemeProvider from './components/providers/ThemeProvider'
-import CursorBlob from './components/visuals/CursorBlob'
 import ScrollProgress from './components/visuals/ScrollProgress'
 
 const instrument = Instrument_Serif({
@@ -19,10 +17,7 @@ const instrument = Instrument_Serif({
 })
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#FAFAFA' },
-    { media: '(prefers-color-scheme: dark)', color: '#09090B' },
-  ],
+  themeColor: '#25D366',
   width: 'device-width',
   initialScale: 1,
 }
@@ -82,16 +77,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${GeistSans.variable} ${GeistMono.variable} ${instrument.variable}`}
     >
       <body className="bg-bg text-text font-sans antialiased">
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
-          <MotionProvider>
-            <LenisProvider>
-              <PostHogAnalytics />
-              <ScrollProgress />
-              <CursorBlob />
-              {children}
-            </LenisProvider>
-          </MotionProvider>
-        </ThemeProvider>
+        <MotionProvider>
+          <LenisProvider>
+            <PostHogAnalytics />
+            <ScrollProgress />
+            {children}
+          </LenisProvider>
+        </MotionProvider>
       </body>
     </html>
   )
