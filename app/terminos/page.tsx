@@ -26,7 +26,7 @@ export default function TerminosPage() {
       <article className="max-w-4xl mx-auto px-6 py-16 prose prose-lg">
         <h1 className="text-4xl md:text-5xl font-bold mb-4">Términos y Condiciones</h1>
         <p className="text-xl text-text-secondary mb-12">
-          Última actualización: 15 de Octubre, 2025
+          Última actualización: 12 de octubre de 2026
         </p>
 
         <p className="lead">
@@ -66,7 +66,7 @@ export default function TerminosPage() {
           <li>Métricas y reportes de desempeño.</li>
         </ul>
 
-        <p><strong>Nota importante:</strong> Whaapy depende de servicios de terceros (Kapso, Meta/WhatsApp, OpenAI). No nos hacemos responsables por interrupciones en estos servicios externos.</p>
+        <p><strong>Nota importante:</strong> Whaapy depende de servicios de terceros (Kapso, Meta/WhatsApp, OpenAI, OpenRouter y el proveedor que ejecute el modelo configurado). No nos hacemos responsables por interrupciones en estos servicios externos.</p>
 
         <h2>4. Registro y Cuenta</h2>
         <h3>4.1. Requisitos</h3>
@@ -161,8 +161,9 @@ export default function TerminosPage() {
         <p>El Cliente otorga a Whaapy una licencia limitada, no exclusiva y revocable para:</p>
         <ul>
           <li>Procesar y almacenar sus datos para proveer el Servicio.</li>
-          <li>Utilizar datos agregados y anonimizados para mejorar la Plataforma.</li>
+          <li>Utilizar datos agregados y anonimizados para mejorar la Plataforma, excluyendo los datos de Google Calendar y sus derivados.</li>
         </ul>
+        <p>La autorización de Google Calendar se limita a las funciones de agenda y del asistente que el Cliente autorice. Los datos de Google Calendar y sus derivados no se venden, no se utilizan para publicidad, no se utilizan para entrenar modelos generales de IA ni para la mejora general de la Plataforma, incluso agregados o anonimizados. Su tratamiento, proveedores, conservación y eliminación se describen en la <Link href="/privacidad#google-calendar" className="text-accent hover:underline">sección de Google Calendar del Aviso de Privacidad</Link>.</p>
 
         <h2>9. Privacidad y Protección de Datos</h2>
         <p>
@@ -184,7 +185,7 @@ export default function TerminosPage() {
           <li>Daños indirectos, incidentales o consecuentes.</li>
           <li>Pérdida de ingresos, datos o oportunidades de negocio.</li>
           <li>Errores en las respuestas del agente de IA que afecten a sus clientes.</li>
-          <li>Interrupciones causadas por terceros (Meta, Kapso, OpenAI, etc.).</li>
+          <li>Interrupciones causadas por terceros (Meta, Kapso, OpenAI, OpenRouter, el proveedor que ejecute el modelo configurado, etc.).</li>
         </ul>
 
         <p><strong>Responsabilidad máxima:</strong> En caso de que Whaapy sea declarado responsable de cualquier daño, la compensación máxima no excederá el monto pagado por el Cliente en los últimos 3 meses.</p>
