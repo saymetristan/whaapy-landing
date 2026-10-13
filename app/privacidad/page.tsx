@@ -26,7 +26,7 @@ export default function PrivacidadPage() {
       <article className="max-w-4xl mx-auto px-6 py-16 prose prose-lg">
         <h1 className="text-4xl md:text-5xl font-bold mb-4">Aviso de Privacidad</h1>
         <p className="text-xl text-text-secondary mb-12">
-          Última actualización: 15 de Octubre, 2025
+          Última actualización: 12 de octubre de 2026
         </p>
 
         <p className="lead">
@@ -63,7 +63,7 @@ export default function PrivacidadPage() {
         <ul>
           <li>Proveer el servicio de asistente de IA para WhatsApp Business.</li>
           <li>Gestionar conversaciones entre su negocio y sus clientes.</li>
-          <li>Entrenar y configurar agentes de IA personalizados.</li>
+          <li>Entrenar y configurar agentes de IA personalizados, excluyendo los datos de Google Calendar y sus derivados del entrenamiento.</li>
           <li>Procesar pagos y gestionar suscripciones.</li>
           <li>Emitir facturas y cumplir con obligaciones fiscales.</li>
           <li>Brindar soporte técnico y atención al cliente.</li>
@@ -79,12 +79,24 @@ export default function PrivacidadPage() {
         </ul>
 
         <p>Si no desea que sus datos personales sean tratados para las finalidades secundarias, puede manifestarlo enviando un correo a <a href="mailto:contacto@datagora.mx">contacto@datagora.mx</a>.</p>
+        <p>Los datos obtenidos de Google Calendar y sus derivados se utilizan exclusivamente para las funciones de Calendar autorizadas, según la sección siguiente; no se utilizan para las finalidades secundarias de mejora general del producto.</p>
+
+        <section id="google-calendar" className="scroll-mt-24 space-y-4 leading-relaxed [&_a]:underline [&_a]:underline-offset-2" aria-labelledby="google-calendar-title">
+          <h2 id="google-calendar-title" className="text-2xl font-semibold">3.1. Integración con Google Calendar</h2>
+          <p>Conectar Google Calendar es opcional. Whaapy solicita acceso a la lista de calendarios para que usted elija uno y permisos para leer, crear, modificar y borrar eventos. Hay dos autorizaciones separadas: una para gestionar la agenda manualmente en Whaapy y otra para que el asistente de IA consulte disponibilidad y gestione citas en el calendario seleccionado.</p>
+          <p>Estos permisos corresponden a <code>calendar.calendarlist.readonly</code> y <code>calendar.events</code>. Los datos tratados pueden incluir identificadores y nombres de calendarios, títulos y descripciones de eventos, fechas, horarios, ubicación, participantes y enlaces de reunión, según la operación solicitada.</p>
+          <p>Al autorizar al asistente, los parámetros y resultados de las operaciones de Calendar necesarios para responder se transmiten al proveedor de IA configurado. Esto puede incluir OpenAI, OpenRouter como intermediario y el proveedor que ejecute el modelo seleccionado. Puede consultar la configuración de su asistente y solicitar información sobre los proveedores aplicables a <a href="mailto:contacto@datagora.mx">contacto@datagora.mx</a>. Las respuestas pueden compartirse con los participantes de la conversación por el canal utilizado, incluido WhatsApp y sus proveedores de infraestructura.</p>
+          <p>Whaapy almacena los tokens de autorización cifrados en su base de datos. La selección y configuración del calendario, los parámetros y resultados de operaciones y los datos incluidos en conversaciones pueden conservarse en los registros del servicio. Los registros anteriores se conservan hasta que sea atendida una solicitud de eliminación. Esta conservación no habilita otros usos de esos datos.</p>
+          <p>Desconectar una autorización elimina sus tokens locales y detiene su uso por Whaapy, pero conserva la selección y configuración del calendario, los eventos en Google y los registros y conversaciones anteriores. Revocar el acceso de Whaapy desde su cuenta de Google puede retirar ambas autorizaciones. Para solicitar la eliminación de los datos de Calendar conservados en Whaapy, escriba a <a href="mailto:contacto@datagora.mx">contacto@datagora.mx</a>.</p>
+          <p>Los datos de Google Calendar y sus derivados no se venden, no se utilizan para publicidad, no se utilizan para entrenar modelos generales de IA ni para mejorar de forma general la Plataforma, incluso cuando estén agregados o anonimizados. Solo se comparten en la medida necesaria para las funciones de Calendar autorizadas.</p>
+          <p>El uso y la transferencia por Whaapy de información recibida de las API de Google cumplen la <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener noreferrer">Política de Datos de Usuario de los Servicios API de Google</a>, incluidos sus requisitos de Uso Limitado (Limited Use).</p>
+        </section>
 
         <h2>4. Transferencia de Datos Personales</h2>
         <p>Whaapy no compartirá, venderá ni transferirá sus datos personales a terceros sin su consentimiento previo, salvo en los siguientes casos:</p>
         <ul>
           <li><strong>Kapso.ai:</strong> Proveedor de infraestructura de WhatsApp Business API. Los datos de conversaciones se procesan a través de su plataforma.</li>
-          <li><strong>OpenAI:</strong> Proveedor de modelos de inteligencia artificial para el procesamiento de mensajes.</li>
+          <li><strong>Proveedores de inteligencia artificial:</strong> OpenAI, OpenRouter como intermediario y el proveedor que ejecute el modelo configurado para procesar mensajes y las operaciones autorizadas del asistente. Para Google Calendar se aplican las restricciones de la sección 3.1.</li>
           <li><strong>Proveedores de servicios en la nube:</strong> Para almacenamiento seguro de datos (Railway, Vercel, Supabase, Upstash).</li>
           <li><strong>Procesadores de pago:</strong> Para gestionar cobros de suscripciones.</li>
           <li>Cuando sea necesario para el cumplimiento de obligaciones legales.</li>
@@ -138,6 +150,7 @@ export default function PrivacidadPage() {
         <p>Puede configurar su navegador para rechazar cookies, pero esto puede afectar la funcionalidad de la plataforma.</p>
 
         <h2>8. Retención de Datos Personales</h2>
+        <p>Para los datos de Google Calendar y sus derivados, incluidos los presentes en conversaciones y registros, se aplica la conservación y el procedimiento de eliminación de la sección 3.1; los periodos generales siguientes no amplían su uso ni establecen un plazo específico para estos datos.</p>
         <p>Los datos personales serán conservados durante:</p>
         <ul>
           <li><strong>Datos de cuenta:</strong> Mientras su suscripción esté activa, más 5 años adicionales para cumplir con obligaciones fiscales.</li>
